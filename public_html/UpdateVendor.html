@@ -1,0 +1,32 @@
+<html>
+<head>
+<title>Update a Vendor</title>
+</head>
+<body onload="">
+	<h1>Update a Vendor</h1>
+
+	<h2>Select a Vendor to Update:</h2>
+		<form id="selectVendorForm" method="POST" action="UpdateVendor.php">
+		</form>
+	<h2>Update Vendor Information:</h2>
+		<form id="updateForm" method="POST" action="UpdateVendor.php">
+			<table>
+				<tr><td><label><b>Vendor ID:</b></label>									</td>	<td><p id="vendorId"></p></td></tr>
+				<tr><td><label>Vendor Code:</label>											</td>	<td><input type="text" id="vendorCode">				</td></tr>
+				<tr><td><label>Vendor Name:</label>											</td>	<td><input type="text" id="vendorName">				</td></tr>
+				<tr><td><label>Address:</label>												</td>	<td><input type="text" id="address">				</td></tr>
+				<tr><td><label>City:</label>												</td>	<td><input type="text" id="city">					</td></tr>
+				<tr><td><label>State:</label>												</td>	<td><input type="text" id="state">					</td></tr>
+				<tr><td><label>ZIP:</label>													</td>	<td><input type="text" id="zip">					</td></tr>
+				<tr><td><label>Phone:</label>												</td>	<td><input type="text" id="phone">					</td></tr>
+				<tr><td><label>Contact Person:</label>										</td>	<td><input type="text" id="contactPersonName">		</td></tr>
+				<tr><td colspan="2"><hr>																												</td></tr>
+				<tr><tr><td><label><b>Update Password:</b></label>							</td>	<td>												</td></tr>
+				<tr><td><label>Current Password:</label>									</td>	<td><input type="password" id="password">			</td></tr>
+				<tr><td><label>New Password:</label>										</td>	<td><input type="password" id="newPassword">		</td></tr>
+				<tr><td><label>Confirm New Password:</label>								</td>	<td><input type="password" id="confirmNewPassword">	</td></tr>
+				<tr><td><center><br><input type="submit" value="Submit Changes"></center>	</td>	<td><center><br><input type="button" value="Undo Changes"></center></td></tr>
+			</table>
+		</form>
+
+</body>
