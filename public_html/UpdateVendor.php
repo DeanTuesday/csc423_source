@@ -41,6 +41,10 @@ echo "
 
 		<h2 align='center'>Select a Vendor to Update:</h2>
 			<form id='selectVendorForm' name='selectVendorForm' method='POST' action='UpdateVendor.php'>
+			<select>
+			<option>Select a Vendor</option>
+			</select>
+			<input type='submit' value='Go'>
 			</form>
 		<h2 align='center'>Update Vendor Information:</h2>
 				<form id='updateForm' name='updateForm' method='POST' action='UpdateVendor.php'>
