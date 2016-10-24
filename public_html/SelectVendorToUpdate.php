@@ -1,8 +1,4 @@
 <?php
-
-
-
-
 echo "
 <html>
 	<head>
@@ -10,10 +6,20 @@ echo "
 		<script type='text/javascript' language='javascript'>
 		function setSelectedVendor()
 		{
-			var selectedVendor=	document.getElementById('vendorOptions');
+			var selectedVendor=	document.getElementById('vendorOptions');   
 
 			document.getElementById('vendorId').value = selectedVendor.options[selectedVendor.selectedIndex].value;
 		}
+
+		function addOptionToVendors(text, value)
+		{
+			ddl = document.getELementById('VendorOptions');
+			var option = document.createElement('option');
+			option.value = value;
+			option.text = text;
+			ddl.options.add(option);	
+		}
+
 		</script>
 	</head>
 	<body>
@@ -26,8 +32,43 @@ echo "
 						<td>
 							<select id='vendorOptions'>
 								<option>Select a Vendor</option>
-								<option name='option1' value='1'>Option 1</option>
-								<option name='option2' value='2'>Option 1</option>
+								";
+
+$addr = 'csdb.brockport.edu';
+$user = 'wdean2';
+$pass = 'csc423?';
+$db = 'fal16_csc423_wdean2';
+
+$db = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
+echo("Connected to Database<br>");
+
+$query = "Select VendorId, VendorCode, VendorName from Vendor";
+$result = $db->query($query);
+
+if($result->num_rows > 0)
+{
+	while($row = $result->fetch_assoc())
+	{
+
+		$vId = $row["VendorId"];
+		$vCode = $row["VendorCode"];
+		$vName = $row["VendorName"];
+
+		echo"<option value='$vId'>$vCode - $vName</option>";
+	}
+}
+else
+{
+    echo "0 results";
+}
+
+$db->close();
+
+
+
+
+echo
+								"
 							</select>
 						</td>
 						<td>
@@ -40,5 +81,5 @@ echo "
 			</form>
 		<body>
 </html>
-"
+";
 ?>
