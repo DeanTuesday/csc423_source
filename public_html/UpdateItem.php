@@ -180,14 +180,7 @@ echo "
 </tr>
 			</table>
 		</form>
-		<?PHP
-			if($_POST['imgfn']))
-			{
-				echo "
-					<img src="img/$imgfn" alt="$imgfn" style='width:200px;height:200px;'> 
-				";
-			}
-		?>
+	
 </body>
 </html>
 ";
