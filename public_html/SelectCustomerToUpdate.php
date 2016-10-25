@@ -8,7 +8,7 @@ echo "
 		{
 			var selectedCustomer=	document.getElementById('customerOptions');   
 
-			document.getElementById('customerId').value = selectedCustomer.options[selectedCustomer.selectedIndex].value;
+			document.getElementById('CustomerId').value = selectedCustomer.options[selectedCustomer.selectedIndex].value;
 		}
 
 		function addOptionToCustomers(text, value)
@@ -54,7 +54,7 @@ echo "
 									
 										$cName = $row["Name"];
 
-										echo"<option value=$cId> - $cName</option>";
+										echo"<option value='$cId'> - $cName</option>";
 									}
 								}
 								else
