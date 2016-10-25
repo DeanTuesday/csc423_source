@@ -42,7 +42,7 @@ echo "
 								$db = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
 								echo("Connected to Database<br>");
 
-								$query = "Select ItemId, Description from InventoryItem";
+								$query = "Select ItemId, Description, ItemCost, ItemRetail from InventoryItem";
 								$result = $db->query($query);
 
 								if($result->num_rows > 0)
@@ -51,8 +51,8 @@ echo "
 									{
 										$vId = $row["ItemId"];
 										$vd = $row["Description"];
-										//$vCode = $row["Description"];
-										//$vName = $row["Size"];
+										$iCost = $row["ItemCost"];
+										$iRetail = $row["ItemRetail"];
 
 										echo"<option value='$vId'>$vd</option>";
 									}
