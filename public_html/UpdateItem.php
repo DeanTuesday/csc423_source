@@ -66,7 +66,7 @@
 
 		if (isset($_POST['SubmitChangesCheck']))
 		{
-			$itemCode=htmlspecialchars(($_POST['itemCode']));
+			$ItemId=htmlspecialchars(($_POST['ItemId']));
 			$description=htmlspecialchars(($_POST['Description']));
 			$size=htmlspecialchars(($_POST['Size']));
 			/*$address=htmlspecialchars(($_POST['address']));
@@ -106,7 +106,7 @@ echo "
 		<form id='updateForm' name='updateForm' method='POST' action='UpdateItem.php'>
 			<table align='center'>
 <tr>
-			<td><b>Item id</b></td><td><input type='text' name='ItemId' id='ItemId' value='$itemCode'>
+			<td><b>Item id</b></td><td><input type='text' name='ItemId' id='ItemId' value='$ItemId'>
 			</td>
 </tr>
 <tr>
