@@ -54,7 +54,7 @@ echo "
 									
 										$cName = $row["Name"];
 
-										echo"<option value='$cId'> - $cName</option>";
+										echo"<option value='$cId'> $cId- $cName</option>";
 									}
 								}
 								else
@@ -70,7 +70,7 @@ echo "
 						<td>
 							<input type='submit' value='Go'>
 							<input name='SubmitCheck' type='hidden' value='sent'>
-							<input name='Name' id='CustomerId' type='hidden'>
+							<input name='customerId' id='customerId' type='hidden'>
 						</td>
 					</tr>
 				</table>
