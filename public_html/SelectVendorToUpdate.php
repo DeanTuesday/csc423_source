@@ -34,40 +34,36 @@ echo "
 								<option>Select a Vendor</option>
 								";
 
-$addr = 'csdb.brockport.edu';
-$user = 'wdean2';
-$pass = 'csc423?';
-$db = 'fal16_csc423_wdean2';
+								$addr = 'localhost';
+								$user = 'wdean2';
+								$pass = 'csc423?';
+								$db = 'fal16_csc423_wdean2';
 
-$db = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
-echo("Connected to Database<br>");
+								$db = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
+								echo("Connected to Database<br>");
 
-$query = "Select VendorId, VendorCode, VendorName from Vendor";
-$result = $db->query($query);
+								$query = "Select VendorId, VendorCode, VendorName from Vendor";
+								$result = $db->query($query);
 
-if($result->num_rows > 0)
-{
-	while($row = $result->fetch_assoc())
-	{
+								if($result->num_rows > 0)
+								{
+									while($row = $result->fetch_assoc())
+									{
 
-		$vId = $row["VendorId"];
-		$vCode = $row["VendorCode"];
-		$vName = $row["VendorName"];
+										$vId = $row["VendorId"];
+										$vCode = $row["VendorCode"];
+										$vName = $row["VendorName"];
 
-		echo"<option value='$vId'>$vCode - $vName</option>";
-	}
-}
-else
-{
-    echo "0 results";
-}
+										echo"<option value='$vId'>$vCode - $vName</option>";
+									}
+								}
+								else
+								{
+								    echo "0 results";
+								}
 
-$db->close();
-
-
-
-
-echo
+								$db->close();
+							echo
 								"
 							</select>
 						</td>
