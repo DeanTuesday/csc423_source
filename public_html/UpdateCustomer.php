@@ -5,7 +5,7 @@
 	{
 		if (isset($_POST['SubmitCheck']))
 		{
-			$customerId=($_POST['customerId']);
+			$CustomerId=($_POST['customerId']);
 			
 			$addr = 'localhost';
 			$user = 'wdean2';
@@ -14,23 +14,23 @@
 
 			$db = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
 			echo("Connected to Database<br>");
-			$query = "Select CustomerId, Name, Address, City, State, ZIP, Phone, Email from Customer Where CustomerId=$customerId";
+			$query = "Select * from Customer Where CustomerId=$CustomerId";
 			$result = $db->query($query);
 			if($result->num_rows > 0)
 			{
 				while($row = $result->fetch_assoc())
 				{
-					$cId = $row["CustomerId"];
+				
 					$cName = $row["Name"];
 					$cAddress = $row["Address"];
 					$cCity = $row["City"];
 					$cState = $row["State"];
 					$cZip = $row["ZIP"];
 					$cPhone = $row["Phone"];
-					$cContact = $row["Email"];
+					$cEmail = $row["Email"];
 					
 
-					$customerId=htmlspecialchars($cId);
+				
 					$customerName=htmlspecialchars($cName);
 					$address=htmlspecialchars($cAddress);
 					$city=htmlspecialchars($cCity);
@@ -93,26 +93,7 @@
 
 			function confirmNewPassword()
 			{
-				/*
-				var userPass = document.getElementById('password').value;
-				var newPass = document.getElementById('newPassword').value;
-				var confirmNewPass = document.getElementById('confirmNewPassword').value;
-
-				if(userPass== '' && newPass == '' && confirmNewPass == '')
-				{
-					return true;
-				}
-
-				else if(userPass != $vPassword)
-				{
-					alert('Enter your current password to change your password.');
-					return false;
-				}
-				else if(newPass != confirmNewPass)
-				{
-					alert('New password does not match confirmation field.');
-				}
-				*\
+		
 			}
 			</script>
 			</head>
@@ -127,8 +108,8 @@
 						<table align='center'>
 							<tr><td colspan='2'><center><label><b>Customer ID: $customerId <input type='hidden' name='customerId' value=$customerId></b></center></label>															</td></tr>
 							<!-----Customer Details----->
-												
-							<tr><td><label>Customer Name:</label>												</td>	<td><input type='text' id='customerName' name='customerName' value='$cName'>							</td></tr>
+							<tr><td><label>Customer Id:</label>												</td>	<td><input type='text' id='customerId' name='customerId' value= $customerId>					</td></tr>		
+							<tr><td><label>Customer Name:</label>												</td>	<td><input type='text' id='customerName' name='customerName' value=$customerName>							</td></tr>
 							<tr><td><label>Address:</label>													</td>	<td><input type='text' id='address' name='address' value=$address>										</td></tr>
 							<tr><td><label>City:</label>													</td>	<td><input type='text' id='city' name='city' value=$city>												</td></tr>
 							<tr><td><label>State:</label>													</td>	<td><input type='text' id='state' name='state' value=$state>											</td></tr>

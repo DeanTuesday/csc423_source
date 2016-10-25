@@ -14,7 +14,7 @@
 
 			$db = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
 			echo("Connected to Database<br>");
-			$query = "Select Description, Size from InventoryItem Where ItemId=$ItemId";
+			$query = "Select Description, Size, ItemCost, ItemRetail from InventoryItem Where ItemId=$ItemId";
 			$result = $db->query($query);
 			if($result->num_rows > 0)
 			{
@@ -23,9 +23,9 @@
 					//$iid = $row["ItemId"];
 					$vDescription = $row["Description"];
 					$vSize = $row["Size"];
-					/*$vCity = $row["City"];
-					$vState = $row["State"];
-					$vZip = $row["ZIP"];
+					$viCost = $row["ItemCost"];
+					$vrCost = $row["ItemRetail"];
+					/*$vZip = $row["ZIP"];
 					$vPhone = $row["Phone"];
 					$vContact = $row["ContactPersonName"];
 					$vPassword = $row["Password"];
@@ -33,9 +33,9 @@
 					//$itemCode=htmlspecialchars($iCode);
 					$description=htmlspecialchars($vDescription);
 					$size=htmlspecialchars($vSize);
-					/*$city=htmlspecialchars($vCity);
-					$state=htmlspecialchars($vState);
-					$zip=htmlspecialchars($vZip);
+					$itemc=htmlspecialchars($viCost);
+					$itemr=htmlspecialchars($vrCost);
+					/*$zip=htmlspecialchars($vZip);
 					$phone=htmlspecialchars($vPhone);
 					$contactPersonName=htmlspecialchars($vContact);
 					$vendorPassword=htmlspecialchars($vPassword);
@@ -69,9 +69,9 @@
 			$ItemId=htmlspecialchars(($_POST['ItemId']));
 			$description=htmlspecialchars(($_POST['Description']));
 			$size=htmlspecialchars(($_POST['Size']));
-			/*$address=htmlspecialchars(($_POST['address']));
-			$city=htmlspecialchars(($_POST['city']));
-			$state=htmlspecialchars(($_POST['state']));
+			$itemc=htmlspecialchars(($_POST['ItemCost']));
+			$itemr=htmlspecialchars(($_POST['ItemRetail']));
+			/*$state=htmlspecialchars(($_POST['state']));
 			$zip=htmlspecialchars(($_POST['zip']));
 			$phone=htmlspecialchars(($_POST['phone']));
 			$contactPersonName=htmlspecialchars(($_POST['contactPersonName']));
@@ -134,11 +134,11 @@ echo "
 </tr>
 </select>
 <tr>
-			<td><b>Item Cost</b></td><td><input type='text' name='itemcost' id='itemcost'>
+			<td><b>Item Cost</b></td><td><input type='text' name='itemcost' id='itemcost' value=$itemc>
 			</td>
 </tr>
 <tr>
-			<td><b>Item Retail</b></td><td><input type='text' name='Itemretail' id='itemretail'>
+			<td><b>Item Retail</b></td><td><input type='text' name='Itemretail' id='itemretail' value=$itemr>
 			</td>
 </tr>
 <tr>
