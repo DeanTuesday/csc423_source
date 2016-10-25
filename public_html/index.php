@@ -6,6 +6,7 @@
 	echo '<a href="selectItemToUpdate.php">Update A Item</a><br>';
 	echo 'My name is Mason Mascle, this is my contribution:<br>';
 	echo '<a href="SelectCustomerToUpdate.php">Update A Customer</a><br>';
-	
+	echo 'My name is Marlin, this is my contribution:<br>';
+	echo '<a href="addvendor2.php">Add Vendor</a><br>';
 ?>
 
