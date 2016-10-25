@@ -54,7 +54,7 @@ echo "
 										//$vCode = $row["Decscription"];
 										//$vName = $row["Size"];
 
-										echo"<option value='$vId'>$vId</option>";
+										echo"<option value='$vId'> - $vId</option>";
 									}
 								}
 								else
@@ -70,7 +70,7 @@ echo "
 						<td>
 							<input type='submit' value='Go'>
 							<input name='SubmitCheck' type='hidden' value='sent'>
-							<input name='itemId' id='itemId' type='hidden'>
+							<input name='Name' id='itemId' type='hidden'>
 						</td>
 					</tr>
 				</table>
