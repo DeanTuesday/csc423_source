@@ -70,7 +70,7 @@ echo "
 						<td>
 							<input type='submit' value='Go'>
 							<input name='SubmitCheck' type='hidden' value='sent'>
-							<input name='Name' id='ItemIdasdf' type='hidden'>
+							<input name='ItemId' id='ItemId' type='hidden'>
 						</td>
 					</tr>
 				</table>
