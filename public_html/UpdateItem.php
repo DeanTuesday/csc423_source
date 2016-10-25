@@ -14,13 +14,13 @@
 
 			$db = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
 			echo("Connected to Database<br>");
-			$query = "Select ItemId, Description, Size from InventoryItem Where ItemId=$ItemId";
+			$query = "Select Description, Size from InventoryItem Where ItemId=$ItemId";
 			$result = $db->query($query);
 			if($result->num_rows > 0)
 			{
 				while($row = $result->fetch_assoc())
 				{
-					$iCode = $row["ItemId"];
+					//$iCode = $row["ItemId"];
 					$vDescription = $row["Description"];
 					$vSize = $row["Size"];
 					/*$vCity = $row["City"];
@@ -30,7 +30,7 @@
 					$vContact = $row["ContactPersonName"];
 					$vPassword = $row["Password"];
 */
-					$itemCode=htmlspecialchars($iCode);
+					//$itemCode=htmlspecialchars($iCode);
 					$description=htmlspecialchars($vDescription);
 					$size=htmlspecialchars($vSize);
 					/*$city=htmlspecialchars($vCity);
@@ -106,7 +106,7 @@ echo "
 		<form id='updateForm' name='updateForm' method='POST' action='UpdateItem.php'>
 			<table align='center'>
 <tr>
-			<td><b>Item id</b></td><td><input type='text' name='ItemId' id='ItemId' value='$ItemId'>
+			<td><b>Item id</b></td><td><input type='text' name='ItemId' id='ItemId' value=$ItemId>
 			</td>
 </tr>
 <tr>
