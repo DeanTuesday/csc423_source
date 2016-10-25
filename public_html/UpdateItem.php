@@ -103,9 +103,6 @@ echo "
 <center>
 	<h1>Add Item</h1>
 </center>
-		<form id="updateForm" name="updateForm" method="POST" action="AddItem.php">
-		</form>
-	
 		<form id="updateForm" method="POST" action="AddItem.php">
 			<table align="center">
 <tr>
