@@ -10,5 +10,6 @@
 	echo '<a href="SelectLocationToUpdate.php">Update A Location</a><br>';
 	echo 'My name is Marlin, this is my contribution:<br>';
 	echo '<a href="addvendor2.php">Add Vendor</a><br>';
+	echo '<a href="test45.php">test</a><br>';
 ?>
 
