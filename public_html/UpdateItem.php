@@ -103,7 +103,7 @@ echo "
 <center>
 	<h1>Add Item</h1>
 </center>
-		<form id="updateForm" method="POST" action="AddItem.php">
+		<form id="updateForm" method="POST" action="Updateitem.php">
 			<table align="center">
 <tr>
 			<td><b>Item id</b></td><td><input type="text" name="itemid" id="itemid" value="$itemcode">
