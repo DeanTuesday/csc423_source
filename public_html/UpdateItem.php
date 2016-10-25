@@ -179,7 +179,7 @@ echo "
 			</td>
 </tr>
 			</table>
-			<img src=img/"<?php echo htmlspecialchars($imgfn); ?>" alt="test" />
+			
 		</form>
 	
 </body>
