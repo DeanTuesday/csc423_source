@@ -29,7 +29,7 @@
 			}
 			function validateAddress(){
 				var a = document.getElementById("address").value;
-				if (!/^[\d]+ [a-zA-Z]+ [a-zA-Z]+\.?$/.test(a1)){
+				if (!/^[\d]+ [a-zA-Z]+ [a-zA-Z]+\.?$/.test(a)){
 					alert("Address was not valid.");
 				}
 			}
@@ -74,8 +74,9 @@
     
     <body>
 		<?php
-			if(isset($_POST['addVendor'])) {
-				$addr = 'localhost';
+			echo $_POST["submitCheck"];
+			if(isset($_POST['submitCheck'])) {
+				$addr = 'csdb.brockport.edu';
 				$user = 'wdean2';
 				$pass = 'csc423?';
 				$db = 'fal16_csc423_wdean2';
@@ -91,22 +92,23 @@
 				$vid = null;
 				$vcode = $_POST['vcode'];
 				$vname = $_POST['vname'];
-				$address1 = $_POST['address'];
+				$address = $_POST['address'];
 				$city = $_POST['city'];
 				$state = $_POST['state'];
 				$zip = $_POST['zip'];
 				$phone = $_POST['phone'];
-				$contract = $_POST['contract'];
+				$contact = $_POST['contact'];
 				$pwd = $_POST['pwd'];
 				$pwdc = $_POST['pwdc'];
 				
-				$sql = "INSERT INTO Vendor (VendorId, VendorCode, VendorName, Address, City, State, ZIP, Phone, ContactPersonName, Password) ".
-						"VALUES ($vid, $vcode, $vname, $address, $city, $state, $zip, $phone, $contact, $pwd)";
+				$sql = "insert into Vendor (VendorId, VendorCode, VendorName, Address, City, State, ZIP, Phone, ContactPersonName, Password) ".
+						"values ($vid, $vcode, $vname, $address, $city, $state, $zip, $phone, $contact, $pwd)";
 						
-				mysql_select_db('fal16_csc423_wdean2');
-				$send = mysql_query( $sql, $conn );
+				// mysql_select_db('fal16_csc423_wdean2');
+				$result = mysql_query( $sql );
+				// $result = $db->query($sql);
 				
-				if(!$send ) {
+				if(!$result ) {
 				   die('Could not enter data: ' . mysql_error());
 				}
 				
@@ -118,7 +120,7 @@
 		?>
         
     	<div>
-        	<form method="POST" action="addVendor2.php">
+        	<form method="POST" action="addVendor2.php" name="addVendor2">
                 <h3>Register a Vendor</h3>
                 <table>
                     <tr>
@@ -156,6 +158,7 @@
                     <i>Last updated:
                         <!-- #BeginDate format:Am1 -->October 25, 2016<!-- #EndDate --></i>
                 </p>
+                <input type="hidden" name="submitCheck">
             </form>
             </div>
         <?php
