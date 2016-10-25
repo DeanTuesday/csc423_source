@@ -26,7 +26,6 @@
 					$viCost = $row["ItemCost"];
 					$vrCost = $row["ItemRetail"];
 					
-*/
 					//$itemCode=htmlspecialchars($iCode);
 					$description=htmlspecialchars($vDescription);
 					$size=htmlspecialchars($vSize);
