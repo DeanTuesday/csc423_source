@@ -180,8 +180,8 @@ echo "
 </tr>
 			</table>
 		</form>
-";
-		<?PHP
+
+		
 			if(isset($_POST['imgfn']))
 			{
 				echo "
