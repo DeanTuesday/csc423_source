@@ -182,7 +182,7 @@ echo "
 		</form>
 
 		
-			if(isset($_POST['imgfn']))
+			$ItemId=($_POST['imgfn']);
 			{
 				echo "
 					<img src='img/$imgfn' alt='$imgfn' style='width:200px;height:200px;'> 
