@@ -167,15 +167,15 @@ echo "
 				<option value='17'>DEMET'S CANDY COMPANY</option>
 				<option value='18'>RAGOLD CONFECTIONS</option>
 				<option value='19'>SARA LEE BAKERY GROUP INC (WEST)</option>
-				<option value="20">SUNRISE CONFECTIONS</option>
-				<option value="21">KELLOGG SALES COMPANY</option>
-				<option value="22">INTERBAKE FOODS INC SIOUX CITY D</option>
-				<option value="23">LANCE INC (PP-GA)</option>
-				<option value="24">MONDELEZ GLOBAL LLC (CAT 361)</option>
-				<option value="25">FLASH SALES INC</option>
-				<option value="26">GIBSON ENTERPRISES INC</option>
-				<option value="27">J M SMUCKER (COFFEE PREPAID)</option>
-				<option value="28">CLEMENT PAPPAS & CO INC (P-MOUNT)</option>
+				<option value='20'>SUNRISE CONFECTIONS</option>
+				<option value='21'>KELLOGG SALES COMPANY</option>
+				<option value='22'>INTERBAKE FOODS INC SIOUX CITY D</option>
+				<option value='23'>LANCE INC (PP-GA)</option>
+				<option value='24'>MONDELEZ GLOBAL LLC (CAT 361)</option>
+				<option value='25'>FLASH SALES INC</option>
+				<option value='26'>GIBSON ENTERPRISES INC</option>
+				<option value='27'>J M SMUCKER (COFFEE PREPAID)</option>
+				<option value='28'>CLEMENT PAPPAS & CO INC (P-MOUNT)</option>
 			</td>
 </tr>
 			</table>
