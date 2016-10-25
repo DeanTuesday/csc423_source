@@ -8,7 +8,7 @@ echo "
 		{
 			var selectedItem=	document.getElementById('itemOptions');   
 
-			document.getElementById('vendorId').value = selectedItem.options[selectedItem.selectedIndex].value;
+			document.getElementById('itemId').value = selectedItem.options[selectedItem.selectedIndex].value;
 		}
 
 		function addOptionToItems(text, value)
