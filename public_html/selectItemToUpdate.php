@@ -8,7 +8,7 @@ echo "
 		{
 			var selectedItem=	document.getElementById('itemOptions');   
 
-			document.getElementById('itemId').value = selectedItem.options[selectedItem.selectedIndex].value;
+			document.getElementById('ItemId').value = selectedItem.options[selectedItem.selectedIndex].value;
 		}
 
 		function addOptionToItems(text, value)
@@ -70,7 +70,7 @@ echo "
 						<td>
 							<input type='submit' value='Go'>
 							<input name='SubmitCheck' type='hidden' value='sent'>
-							<input name='Name' id='itemId' type='hidden'>
+							<input name='Name' id='ItemId' type='hidden'>
 						</td>
 					</tr>
 				</table>

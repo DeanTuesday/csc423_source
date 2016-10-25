@@ -106,7 +106,7 @@ echo "
 		<form id='updateForm' name='updateForm' method='POST' action='UpdateItem.php'>
 			<table align='center'>
 <tr>
-			<td><b>Item id</b></td><td><input type='text' name='Itemid' id='Itemid' value='$itemCode'>
+			<td><b>Item id</b></td><td><input type='text' name='ItemId' id='ItemId' value='$itemCode'>
 			</td>
 </tr>
 <tr>
