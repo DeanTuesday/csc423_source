@@ -5,7 +5,7 @@
 	{
 		if (isset($_POST['SubmitCheck']))
 		{
-			$vendorId=($_POST['ItemId']);
+			$ItemId=($_POST['ItemId']);
 			
 			$addr = 'localhost';
 			$user = 'wdean2';
