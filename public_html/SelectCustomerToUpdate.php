@@ -31,7 +31,7 @@ echo "
 					<tr>
 						<td>
 							<select id='customerOptions'>
-								<option>Select a Vendor</option>
+								<option>Select a Customer</option>
 								";
 
 								$addr = 'localhost';
@@ -54,7 +54,7 @@ echo "
 									
 										$cName = $row["Name"];
 
-										echo"<option value='$cId'> - $cName</option>";
+										echo"<option value=$cId> - $cName</option>";
 									}
 								}
 								else
