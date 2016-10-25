@@ -8,7 +8,7 @@ echo "
 		{
 			var selectedItem=	document.getElementById('itemOptions');   
 
-			document.getElementById('itemId').value = selectedItem.options[selectedItem.selectedIndex].value;
+			document.getElementById('ItemId').value = selectedItem.options[selectedItem.selectedIndex].value;
 		}
 
 		function addOptionToItems(text, value)
@@ -42,7 +42,7 @@ echo "
 								$db = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
 								echo("Connected to Database<br>");
 
-								$query = "Select ItemId, Decscription, Size from InventoryItem";
+								$query = "Select Description from InventoryItem";
 								$result = $db->query($query);
 
 								if($result->num_rows > 0)
@@ -50,11 +50,11 @@ echo "
 									while($row = $result->fetch_assoc())
 									{
 
-										$vId = $row["ItemId"];
-										$vCode = $row["Decscription"];
-										$vName = $row["Size"];
+										$vId = $row["Description"];
+										//$vCode = $row["Description"];
+										//$vName = $row["Size"];
 
-										echo"<option value='$vId'>$vCode - $vName</option>";
+										echo"<option value='$vId'>$vId</option>";
 									}
 								}
 								else
@@ -70,7 +70,7 @@ echo "
 						<td>
 							<input type='submit' value='Go'>
 							<input name='SubmitCheck' type='hidden' value='sent'>
-							<input name='itemId' id='itemId' type='hidden'>
+							<input name='Name' id='ItemId' type='hidden'>
 						</td>
 					</tr>
 				</table>

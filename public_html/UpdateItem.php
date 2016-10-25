@@ -5,7 +5,7 @@
 	{
 		if (isset($_POST['SubmitCheck']))
 		{
-			$vendorId=($_POST['itemidId']);
+			$ItemId=($_POST['ItemId']);
 			
 			$addr = 'localhost';
 			$user = 'wdean2';
@@ -14,15 +14,15 @@
 
 			$db = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
 			echo("Connected to Database<br>");
-			$query = "Select itemid, description, size from InventoryItem Where ItemId=$ItemId";
+			$query = "Select Description, Size from InventoryItem Where ItemId=$ItemId";
 			$result = $db->query($query);
 			if($result->num_rows > 0)
 			{
 				while($row = $result->fetch_assoc())
 				{
-					$iCode = $row["itemid"];
-					$vDescription = $row["description"];
-					$vSize = $row["size"];
+					//$iid = $row["ItemId"];
+					$vDescription = $row["Description"];
+					$vSize = $row["Size"];
 					/*$vCity = $row["City"];
 					$vState = $row["State"];
 					$vZip = $row["ZIP"];
@@ -30,7 +30,7 @@
 					$vContact = $row["ContactPersonName"];
 					$vPassword = $row["Password"];
 */
-					$itemCode=htmlspecialchars($iCode);
+					//$itemCode=htmlspecialchars($iCode);
 					$description=htmlspecialchars($vDescription);
 					$size=htmlspecialchars($vSize);
 					/*$city=htmlspecialchars($vCity);
@@ -66,9 +66,9 @@
 
 		if (isset($_POST['SubmitChangesCheck']))
 		{
-			$itemCode=htmlspecialchars(($_POST['itemCode']));
-			$description=htmlspecialchars(($_POST['description']));
-			$size=htmlspecialchars(($_POST['size']));
+			$ItemId=htmlspecialchars(($_POST['ItemId']));
+			$description=htmlspecialchars(($_POST['Description']));
+			$size=htmlspecialchars(($_POST['Size']));
 			/*$address=htmlspecialchars(($_POST['address']));
 			$city=htmlspecialchars(($_POST['city']));
 			$state=htmlspecialchars(($_POST['state']));
@@ -106,7 +106,7 @@ echo "
 		<form id='updateForm' name='updateForm' method='POST' action='UpdateItem.php'>
 			<table align='center'>
 <tr>
-			<td><b>Item id</b></td><td><input type='text' name='itemid' id='itemid' value='$itemCode'>
+			<td><b>Item id</b></td><td><input type='text' name='ItemId' id='ItemId' value=$ItemId>
 			</td>
 </tr>
 <tr>
@@ -167,15 +167,15 @@ echo "
 				<option value='17'>DEMET'S CANDY COMPANY</option>
 				<option value='18'>RAGOLD CONFECTIONS</option>
 				<option value='19'>SARA LEE BAKERY GROUP INC (WEST)</option>
-				<option value="20">SUNRISE CONFECTIONS</option>
-				<option value="21">KELLOGG SALES COMPANY</option>
-				<option value="22">INTERBAKE FOODS INC SIOUX CITY D</option>
-				<option value="23">LANCE INC (PP-GA)</option>
-				<option value="24">MONDELEZ GLOBAL LLC (CAT 361)</option>
-				<option value="25">FLASH SALES INC</option>
-				<option value="26">GIBSON ENTERPRISES INC</option>
-				<option value="27">J M SMUCKER (COFFEE PREPAID)</option>
-				<option value="28">CLEMENT PAPPAS & CO INC (P-MOUNT)</option>
+				<option value='20'>SUNRISE CONFECTIONS</option>
+				<option value='21'>KELLOGG SALES COMPANY</option>
+				<option value='22'>INTERBAKE FOODS INC SIOUX CITY D</option>
+				<option value='23'>LANCE INC (PP-GA)</option>
+				<option value='24'>MONDELEZ GLOBAL LLC (CAT 361)</option>
+				<option value='25'>FLASH SALES INC</option>
+				<option value='26'>GIBSON ENTERPRISES INC</option>
+				<option value='27'>J M SMUCKER (COFFEE PREPAID)</option>
+				<option value='28'>CLEMENT PAPPAS & CO INC (P-MOUNT)</option>
 			</td>
 </tr>
 			</table>
