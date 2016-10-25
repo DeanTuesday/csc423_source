@@ -180,13 +180,13 @@ echo "
 </tr>
 			</table>
 		</form>
-
+";
 		
-			$ItemId=($_POST['imgfn']);
+			if(isset($ItemId=($_POST['imgfn']);
 			{
 				echo "
 					<img src='img/$imgfn' alt='$imgfn' style='width:200px;height:200px;'> 
-				";
+				
 			}
 		?>
 </body>
