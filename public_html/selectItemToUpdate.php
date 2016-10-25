@@ -42,19 +42,19 @@ echo "
 								$db = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
 								echo("Connected to Database<br>");
 
-								$query = "Select Description from InventoryItem";
+								$query = "Select ItemId, Description from InventoryItem";
 								$result = $db->query($query);
 
 								if($result->num_rows > 0)
 								{
 									while($row = $result->fetch_assoc())
 									{
-
-										$vId = $row["Description"];
+										$vId = $row["ItemId"];
+										$vd = $row["Description"];
 										//$vCode = $row["Description"];
 										//$vName = $row["Size"];
 
-										echo"<option value='$vId'>$vId</option>";
+										echo"<option value='$vId'>$vd</option>";
 									}
 								}
 								else
@@ -70,7 +70,7 @@ echo "
 						<td>
 							<input type='submit' value='Go'>
 							<input name='SubmitCheck' type='hidden' value='sent'>
-							<input name='Name' id='ItemId' type='hidden'>
+							<input name='ItemId' id='ItemId' type='hidden'>
 						</td>
 					</tr>
 				</table>
