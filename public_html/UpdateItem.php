@@ -75,7 +75,7 @@ echo "
 			</td>
 </tr>
 <tr>
-			<td><b>Description</b></td><td><input type='text' name='description' id='description' value='$description' width='20'>
+			<td><b>Description</b></td><td><input type='text' name='description' id='description' value='$description' width='30'>
 			</td>
 </tr>
 <tr>
