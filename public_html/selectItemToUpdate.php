@@ -42,7 +42,7 @@ echo "
 								$db = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
 								echo("Connected to Database<br>");
 
-								$query = "Select Decscription from InventoryItem";
+								$query = "Select Description from InventoryItem";
 								$result = $db->query($query);
 
 								if($result->num_rows > 0)
@@ -50,8 +50,8 @@ echo "
 									while($row = $result->fetch_assoc())
 									{
 
-										$vId = $row["Decscription"];
-										//$vCode = $row["Decscription"];
+										$vId = $row["Description"];
+										//$vCode = $row["Description"];
 										//$vName = $row["Size"];
 
 										echo"<option value='$vId'>$vId</option>";
