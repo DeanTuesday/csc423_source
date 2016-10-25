@@ -20,7 +20,7 @@
 			{
 				while($row = $result->fetch_assoc())
 				{
-					//$iCode = $row["ItemId"];
+					//$iid = $row["ItemId"];
 					$vDescription = $row["Description"];
 					$vSize = $row["Size"];
 					/*$vCity = $row["City"];
