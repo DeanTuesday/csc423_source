@@ -1,28 +1,123 @@
+<?php
+
+
+	if(isset($_POST['SubmitCheck']) || isset($_POST['SubmitChangesCheck']))
+	{
+		if (isset($_POST['SubmitCheck']))
+		{
+			$vendorId=($_POST['itemidId']);
+			
+			$addr = 'localhost';
+			$user = 'wdean2';
+			$pass = 'csc423?';
+			$db = 'fal16_csc423_wdean2';
+
+			$db = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
+			echo("Connected to Database<br>");
+			$query = "Select itemid, description, size from InventoryItem Where ItemId=$ItemId";
+			$result = $db->query($query);
+			if($result->num_rows > 0)
+			{
+				while($row = $result->fetch_assoc())
+				{
+					$iCode = $row["itemid"];
+					$vDescription = $row["description"];
+					$vSize = $row["size"];
+					/*$vCity = $row["City"];
+					$vState = $row["State"];
+					$vZip = $row["ZIP"];
+					$vPhone = $row["Phone"];
+					$vContact = $row["ContactPersonName"];
+					$vPassword = $row["Password"];
+*/
+					$itemCode=htmlspecialchars($iCode);
+					$description=htmlspecialchars($vDescription);
+					$size=htmlspecialchars($vSize);
+					/*$city=htmlspecialchars($vCity);
+					$state=htmlspecialchars($vState);
+					$zip=htmlspecialchars($vZip);
+					$phone=htmlspecialchars($vPhone);
+					$contactPersonName=htmlspecialchars($vContact);
+					$vendorPassword=htmlspecialchars($vPassword);
+					*/
+				}
+			}
+			else
+			{
+			    echo "0 results";
+			}
+
+			$db->close();
+
+			//$vendorId=htmlspecialchars(($_POST['vendorId']));
+			
+			/*
+			$vendorCode="";
+			$vendorName="";
+			$address="";
+			$city="";
+			$state="";
+			$zip="";
+			$phone="";
+			$contactPersonName="";
+			*/
+
+		}
+
+		if (isset($_POST['SubmitChangesCheck']))
+		{
+			$itemCode=htmlspecialchars(($_POST['itemCode']));
+			$description=htmlspecialchars(($_POST['description']));
+			$size=htmlspecialchars(($_POST['size']));
+			/*$address=htmlspecialchars(($_POST['address']));
+			$city=htmlspecialchars(($_POST['city']));
+			$state=htmlspecialchars(($_POST['state']));
+			$zip=htmlspecialchars(($_POST['zip']));
+			$phone=htmlspecialchars(($_POST['phone']));
+			$contactPersonName=htmlspecialchars(($_POST['contactPersonName']));
+			$vendorPassword=htmlspecialchars(($_POST['password']));
+			$vendorNewPassword=htmlspecialchars(($_POST['newPassword']));
+			$vendorConfirmNewPassword=htmlspecialchars(($_POST['confirmNewPassword']));
+
+			$vPassword = ($_POST['password']);
+			*/
+		}
+
+			
+		/*
+		$password=($_POST['password']);
+		$newPassword=($_POST['newPassword']);
+		$confirmPassword=($_POST['confirmPassword']);
+		*/
+
+echo"
 <html>
 <head>
 <center>
 	<title>Add Item</title>
 </center>
 </head>
-<body onload="">
+";
+echo "
+<body>
 <center>
 	<h1>Add Item</h1>
 </center>
-		<form id="selectAddItem" method="POST" action="AddItem.php">
+		<form id="updateForm" name="updateForm" method="POST" action="AddItem.php">
 		</form>
 	
 		<form id="updateForm" method="POST" action="AddItem.php">
 			<table align="center">
 <tr>
-			<td><b>Item id</b></td><td><input type="text" name="itemid" id="itemid">
+			<td><b>Item id</b></td><td><input type="text" name="itemid" id="itemid" value="$itemcode">
 			</td>
 </tr>
 <tr>
-			<td><b>Description</b></td><td><input type="text" name="description" id="description">
+			<td><b>Description</b></td><td><input type="text" name="description" id="description" value="$description">
 			</td>
 </tr>
 <tr>
-			<td><b>Size</b></td><td><input type="text" name="Size" id="Size">
+			<td><b>Size</b></td><td><input type="text" name="size" id="size" value="$size">
 			</td>
 </tr>
 
@@ -90,3 +185,17 @@
 		</form>
 
 </body>
+</html>
+";
+
+		if(isset($_POST['SubmitChangesCheck']))
+		{
+			echo "Vendor Updated!";
+		};
+
+	}
+	else
+	{
+		echo "Sorry mate, that's an error!";
+	};
+?>
