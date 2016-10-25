@@ -42,7 +42,7 @@ echo "
 								$db = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
 								echo("Connected to Database<br>");
 
-								$query = "Select VendorId, VendorCode, VendorName from Vendor";
+								$query = "Select CustomerId, Name from Customer";
 								$result = $db->query($query);
 
 								if($result->num_rows > 0)
@@ -50,11 +50,11 @@ echo "
 									while($row = $result->fetch_assoc())
 									{
 
-										$vId = $row["VendorId"];
-										$vCode = $row["VendorCode"];
-										$vName = $row["VendorName"];
+										$cId = $row["CustomerId"];
+									
+										$cName = $row["Name"];
 
-										echo"<option value='$vId'>$vCode - $vName</option>";
+										echo"<option value='$cId'> - $cName</option>";
 									}
 								}
 								else
@@ -70,7 +70,7 @@ echo "
 						<td>
 							<input type='submit' value='Go'>
 							<input name='SubmitCheck' type='hidden' value='sent'>
-							<input name='vendorId' id='vendorId' type='hidden'>
+							<input name='Name' id='CustomerId' type='hidden'>
 						</td>
 					</tr>
 				</table>
