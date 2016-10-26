@@ -25,21 +25,13 @@
 					$vSize = $row["Size"];
 					$viCost = $row["ItemCost"];
 					$vrCost = $row["ItemRetail"];
-					/*$vZip = $row["ZIP"];
-					$vPhone = $row["Phone"];
-					$vContact = $row["ContactPersonName"];
-					$vPassword = $row["Password"];
-*/
+					
 					//$itemCode=htmlspecialchars($iCode);
 					$description=htmlspecialchars($vDescription);
 					$size=htmlspecialchars($vSize);
 					$itemc=htmlspecialchars($viCost);
 					$itemr=htmlspecialchars($vrCost);
-					/*$zip=htmlspecialchars($vZip);
-					$phone=htmlspecialchars($vPhone);
-					$contactPersonName=htmlspecialchars($vContact);
-					$vendorPassword=htmlspecialchars($vPassword);
-					*/
+					
 				}
 			}
 			else
@@ -49,19 +41,7 @@
 
 			$db->close();
 
-			//$vendorId=htmlspecialchars(($_POST['vendorId']));
-			
-			/*
-			$vendorCode="";
-			$vendorName="";
-			$address="";
-			$city="";
-			$state="";
-			$zip="";
-			$phone="";
-			$contactPersonName="";
-			*/
-
+		
 		}
 
 		if (isset($_POST['SubmitChangesCheck']))
@@ -71,25 +51,10 @@
 			$size=htmlspecialchars(($_POST['Size']));
 			$itemc=htmlspecialchars(($_POST['ItemCost']));
 			$itemr=htmlspecialchars(($_POST['ItemRetail']));
-			/*$state=htmlspecialchars(($_POST['state']));
-			$zip=htmlspecialchars(($_POST['zip']));
-			$phone=htmlspecialchars(($_POST['phone']));
-			$contactPersonName=htmlspecialchars(($_POST['contactPersonName']));
-			$vendorPassword=htmlspecialchars(($_POST['password']));
-			$vendorNewPassword=htmlspecialchars(($_POST['newPassword']));
-			$vendorConfirmNewPassword=htmlspecialchars(($_POST['confirmNewPassword']));
-
-			$vPassword = ($_POST['password']);
-			*/
+			
 		}
 
 			
-		/*
-		$password=($_POST['password']);
-		$newPassword=($_POST['newPassword']);
-		$confirmPassword=($_POST['confirmPassword']);
-		*/
-
 echo"
 <html>
 <head>
@@ -110,7 +75,7 @@ echo "
 			</td>
 </tr>
 <tr>
-			<td><b>Description</b></td><td><input type='text' name='description' id='description' value=$description>
+			<td><b>Description</b></td><td><input type='text' name='description' id='description' value=$description width='20'>
 			</td>
 </tr>
 <tr>
