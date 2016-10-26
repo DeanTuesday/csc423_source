@@ -18,13 +18,13 @@
 			$query = "Select Name, Address, City, State, ZIP, Phone, Email from Customer Where CustomerId=$CustomerId";
 			if(!empty($query))
 			{
-				echo ("query is not empty")
+				echo ("query is not empty");
 				
 			}
 			$result = $db->query($query);
 			if($result->num_rows > 0)
 			{
-				echo ("no reslts")
+				echo ("no reslts");
 				
 			}
 			if($result->num_rows > 0)
