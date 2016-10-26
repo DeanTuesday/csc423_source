@@ -89,13 +89,8 @@
 			<head>
 			<title>Update a Customer</title>
 
-			<script type='text/javascript' language='javascript'>
 
-			function confirmNewPassword()
-			{
-		
-			}
-			</script>
+			
 			</head>
 			";	
 
