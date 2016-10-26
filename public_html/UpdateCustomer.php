@@ -6,7 +6,7 @@
 		if (isset($_POST['SubmitCheck']))
 		{
 			$CustomerId=($_POST['CustomerId']);
-			$CustomerId=($_POST['CustomerId']);
+			
 			
 			$addr = 'localhost';
 			$user = 'wdean2';
@@ -54,7 +54,6 @@
 		if (isset($_POST['SubmitChangesCheck']))
 		{
 			$CustomerId=htmlspecialchars(($_POST['CustomerId']));
-			
 			$CustomerName=htmlspecialchars(($_POST['CustomerName']));
 			$Address=htmlspecialchars(($_POST['Address']));
 			$City=htmlspecialchars(($_POST['City']));
@@ -101,7 +100,7 @@
 							<tr><td><label>Email:</label>											</td>	<td><input type='text' id='email' name='email' value=$Email>		</td></tr>
 																																																	</td></tr>
 
-								<tr><td><center><br><input type='submit' value='Submit Changes' onsubmit='confirmNewPassword();'></center>		</td>	<td><center><br><input type='button' value='Undo Changes'></center>		</td></tr>
+								<tr><td><center><br><input type='submit' value='Submit Changes' ></center>		</td>	<td><center><br><input type='button' value='Undo Changes'></center>		</td></tr>
 							</table>
 							<input name='SubmitChangesCheck' type='hidden' value='sent'>
 						</form>
