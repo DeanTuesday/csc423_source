@@ -176,7 +176,6 @@ echo "
     </td>
     <?php
   endif;
-?>
 
 		if(isset($_POST['SubmitChangesCheck']))
 		{
