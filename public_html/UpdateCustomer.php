@@ -27,7 +27,7 @@
 					$cState = $row["State"];
 					$cZip = $row["ZIP"];
 					$cPhone = $row["Phone"];
-					$cContact = $row["Email"];
+					$cEmail = $row["Email"];
 					
 
 					$customerId=htmlspecialchars($cId);
@@ -127,8 +127,8 @@
 						<table align='center'>
 							<tr><td colspan='2'><center><label><b>Customer ID: $customerId <input type='hidden' name='customerId' value=$customerId></b></center></label>															</td></tr>
 							<!-----Customer Details----->
-												
-							<tr><td><label>Customer Name:</label>												</td>	<td><input type='text' id='customerName' name='customerName' value='$cName'>							</td></tr>
+							<tr><td><label>Customer Id:</label>												</td>	<td><input type='text' id='customerId' name='customerId' value=". "'$customerId'" . ">					</td></tr>		
+							<tr><td><label>Customer Name:</label>												</td>	<td><input type='text' id='customerName' name='customerName' value='$customerName'>							</td></tr>
 							<tr><td><label>Address:</label>													</td>	<td><input type='text' id='address' name='address' value=$address>										</td></tr>
 							<tr><td><label>City:</label>													</td>	<td><input type='text' id='city' name='city' value=$city>												</td></tr>
 							<tr><td><label>State:</label>													</td>	<td><input type='text' id='state' name='state' value=$state>											</td></tr>
