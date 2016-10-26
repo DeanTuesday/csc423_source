@@ -59,7 +59,7 @@ echo "
 					                $cPhone = $row["Phone"];
 					                $cEmail = $row["Email"];
 
-										echo"<option value='$cId'> $cId- $cName</option>";
+										echo"<option value='$cId'> $cName -$cPhone</option>";
 									}
 								}
 								else
