@@ -14,7 +14,7 @@
 
 			$db = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
 			echo("Connected to Database<br>");
-			$query = "Select CustomerId, Name, Address, City, State, ZIP, Phone, Email from Customer Where CustomerId=$customerId";
+			$query = "Select Name, Address, City, State, ZIP, Phone, Email from Customer Where CustomerId=$customerId";
 			$result = $db->query($query);
 			if($result->num_rows > 0)
 			{
