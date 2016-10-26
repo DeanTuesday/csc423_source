@@ -5,7 +5,7 @@
 	{
 		if (isset($_POST['SubmitCheck']))
 		{
-			$customerId=($_POST['customerId']);
+			$CustomerId=($_POST['customerId']);
 			
 			$addr = 'localhost';
 			$user = 'wdean2';
@@ -14,7 +14,7 @@
 
 			$db = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
 			echo("Connected to Database<br>");
-			$query = "Select Name, Address, City, State, ZIP, Phone, Email from Customer Where CustomerId=$customerId";
+			$query = "Select Name, Address, City, State, ZIP, Phone, Email from Customer Where CustomerId=$CustomerId";
 			$result = $db->query($query);
 			if($result->num_rows > 0)
 			{
@@ -93,26 +93,7 @@
 
 			function confirmNewPassword()
 			{
-				/*
-				var userPass = document.getElementById('password').value;
-				var newPass = document.getElementById('newPassword').value;
-				var confirmNewPass = document.getElementById('confirmNewPassword').value;
-
-				if(userPass== '' && newPass == '' && confirmNewPass == '')
-				{
-					return true;
-				}
-
-				else if(userPass != $vPassword)
-				{
-					alert('Enter your current password to change your password.');
-					return false;
-				}
-				else if(newPass != confirmNewPass)
-				{
-					alert('New password does not match confirmation field.');
-				}
-				*\
+		
 			}
 			</script>
 			</head>
