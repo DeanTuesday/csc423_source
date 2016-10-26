@@ -31,13 +31,13 @@
 					
 
 				
-					$customerName=htmlspecialchars($cName);
-					$address=htmlspecialchars($cAddress);
-					$city=htmlspecialchars($cCity);
-					$state=htmlspecialchars($cState);
-					$zip=htmlspecialchars($cZip);
-					$phone=htmlspecialchars($cPhone);
-					$email=htmlspecialchars($cContact);
+					$CustomerName=htmlspecialchars($cName);
+					$Address=htmlspecialchars($cAddress);
+					$City=htmlspecialchars($cCity);
+					$State=htmlspecialchars($cState);
+					$Zip=htmlspecialchars($cZip);
+					$Phone=htmlspecialchars($cPhone);
+					$Email=htmlspecialchars($cEmail);
 					
 				}
 			}
@@ -48,32 +48,19 @@
 
 			$db->close();
 
-			//$vendorId=htmlspecialchars(($_POST['vendorId']));
-			
-			/*
-			$vendorCode="";
-			$vendorName="";
-			$address="";
-			$city="";
-			$state="";
-			$zip="";
-			$phone="";
-			$contactPersonName="";
-			*/
-
 		}
 
 		if (isset($_POST['SubmitChangesCheck']))
 		{
-			$customerId=htmlspecialchars(($_POST['customerId']));
+			$CustomerId=htmlspecialchars(($_POST['CustomerId']));
 			
-			$customerName=htmlspecialchars(($_POST['customerName']));
-			$address=htmlspecialchars(($_POST['address']));
-			$city=htmlspecialchars(($_POST['city']));
-			$state=htmlspecialchars(($_POST['state']));
-			$zip=htmlspecialchars(($_POST['zip']));
-			$phone=htmlspecialchars(($_POST['phone']));
-			$email=htmlspecialchars(($_POST['email']));
+			$customerName=htmlspecialchars(($_POST['CustomerName']));
+			$address=htmlspecialchars(($_POST['Address']));
+			$city=htmlspecialchars(($_POST['City']));
+			$state=htmlspecialchars(($_POST['State']));
+			$zip=htmlspecialchars(($_POST['Zip']));
+			$phone=htmlspecialchars(($_POST['Phone']));
+			$email=htmlspecialchars(($_POST['Email']));
 			
 		}
 
