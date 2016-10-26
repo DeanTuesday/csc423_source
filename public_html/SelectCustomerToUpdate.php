@@ -6,7 +6,7 @@ echo "
 		<script type='text/javascript' language='javascript'>
 		function setSelectedCustomer()
 		{
-			var selectedCustomer=	document.getElementById('customerOptions');   
+			var selectedCustomer =	document.getElementById('customerOptions');   
 
 			document.getElementById('CustomerId').value = selectedCustomer.options[selectedCustomer.selectedIndex].value;
 		}
@@ -42,7 +42,7 @@ echo "
 								$db = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
 								echo("Connected to Database<br>");
 
-								$query = "Select CustomerId, Name from Customer";
+								$query = "Select * from Customer";
 								$result = $db->query($query);
 
 								if($result->num_rows > 0)
@@ -50,9 +50,14 @@ echo "
 									while($row = $result->fetch_assoc())
 									{
 
-										$cId = $row["CustomerId"];
-									
-										$cName = $row["Name"];
+									$cId = $row["CustomerId"];
+									$cName = $row["Name"];
+					                $cAddress = $row["Address"];
+					                $cCity = $row["City"];
+					                $cState = $row["State"];
+					                $cZip = $row["ZIP"];
+					                $cPhone = $row["Phone"];
+					                $cEmail = $row["Email"];
 
 										echo"<option value='$cId'> $cId- $cName</option>";
 									}
@@ -71,6 +76,7 @@ echo "
 							<input type='submit' value='Go'>
 							<input name='SubmitCheck' type='hidden' value='sent'>
 							<input name='CustomerId' id='CustomerId' type='hidden'>
+							<input name='CustomerName' id='CustomerName' type='hidden'>
 						</td>
 					</tr>
 				</table>
