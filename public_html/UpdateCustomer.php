@@ -88,16 +88,16 @@
 				<h3 align='center'>Update Customer Information:</h2>
 					<form id='updateForm' name='updateForm' method='POST' action='UpdateCustomer.php'>
 						<table align='center'>
-							<tr><td colspan='2'><center><label><b>Customer ID: $customerId <input type='hidden' name='customerId' value=$customerId></b></center></label>															</td></tr>
+							<tr><td colspan='2'><center><label><b>Customer ID: $CustomerId <input type='hidden' name='customerId' value=$CustomerId></b></center></label>															</td></tr>
 							<!-----Customer Details----->
-							<tr><td><label>Customer Id:</label>												</td>	<td><input type='text' id='customerId' name='customerId' value= $customerId>					</td></tr>		
-							<tr><td><label>Customer Name:</label>												</td>	<td><input type='text' id='customerName' name='customerName' value=$customerName>							</td></tr>
-							<tr><td><label>Address:</label>													</td>	<td><input type='text' id='address' name='address' value=$address>										</td></tr>
-							<tr><td><label>City:</label>													</td>	<td><input type='text' id='city' name='city' value=$city>												</td></tr>
-							<tr><td><label>State:</label>													</td>	<td><input type='text' id='state' name='state' value=$state>											</td></tr>
-							<tr><td><label>ZIP:</label>														</td>	<td><input type='text' id='zip' name='zip' value=$zip>													</td></tr>
-							<tr><td><label>Phone:</label>													</td>	<td><input type='text' id='phone' name='phone' value=$phone>											</td></tr>
-							<tr><td><label>Email:</label>											</td>	<td><input type='text' id='email' name='email' value=$email>		</td></tr>
+							<tr><td><label>Customer Id:</label>												</td>	<td><input type='text' id='customerId' name='customerId' value= $CustomerId>					</td></tr>		
+							<tr><td><label>Customer Name:</label>												</td>	<td><input type='text' id='customerName' name='customerName' value=$CustomerName>							</td></tr>
+							<tr><td><label>Address:</label>													</td>	<td><input type='text' id='address' name='address' value=$Address>										</td></tr>
+							<tr><td><label>City:</label>													</td>	<td><input type='text' id='city' name='city' value=$City>												</td></tr>
+							<tr><td><label>State:</label>													</td>	<td><input type='text' id='state' name='state' value=$State>											</td></tr>
+							<tr><td><label>ZIP:</label>														</td>	<td><input type='text' id='zip' name='zip' value=$Zip>													</td></tr>
+							<tr><td><label>Phone:</label>													</td>	<td><input type='text' id='phone' name='phone' value=$Phone>											</td></tr>
+							<tr><td><label>Email:</label>											</td>	<td><input type='text' id='email' name='email' value=$Email>		</td></tr>
 																																																	</td></tr>
 
 								<tr><td><center><br><input type='submit' value='Submit Changes' onsubmit='confirmNewPassword();'></center>		</td>	<td><center><br><input type='button' value='Undo Changes'></center>		</td></tr>
