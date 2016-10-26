@@ -20,7 +20,7 @@
 			{
 				while($row = $result->fetch_assoc())
 				{
-					$cId = $row["CustomerId"];
+				
 					$cName = $row["Name"];
 					$cAddress = $row["Address"];
 					$cCity = $row["City"];
@@ -30,7 +30,7 @@
 					$cEmail = $row["Email"];
 					
 
-					$customerId=htmlspecialchars($cId);
+				
 					$customerName=htmlspecialchars($cName);
 					$address=htmlspecialchars($cAddress);
 					$city=htmlspecialchars($cCity);
