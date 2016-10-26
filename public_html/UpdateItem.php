@@ -150,7 +150,7 @@ echo "
 </body>
 </html>
 ";
-	<?php
+	
   $dir = '/img/';
   $imgs = glob($dir.'*.*');
   if (empty($imgs)) :
