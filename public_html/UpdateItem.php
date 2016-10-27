@@ -74,7 +74,7 @@
 			$pass = 'csc423?';
 			$db = 'fal16_csc423_wdean2';
 			
-			$updateQuery= "Update InventoryItem Set ItemId='$ItemId', Description='$description', Size='$size', ItemCost='$itemc', ItemRetail='$itemr' Where ItemId=$ItemId";
+			$updateQuery= "Update InventoryItem Set ItemId='$ItemId', Description='$description', Size='$size', ItemCost='$itemc', ItemRetail='$itemr', Division='$division', Category='$category', ImageFileName='$imgfn', VendorId='$vendorid' Where ItemId=$ItemId";
 		
 		$db = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
 			
