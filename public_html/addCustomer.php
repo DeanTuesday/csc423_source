@@ -86,14 +86,14 @@
                 //$db = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
               
                 
-				    $cId = $_POST['$cId'];
-				    $cName = $_POST['$cName'];
-					$cAddress = $_POST['$cAddress'];
-					$cCity = $_POST['$cCity'];
-					$cState = $_POST['$cState'];
-					$cZip = $_POST['$cZip'];
-					$cPhone = $_POST['$cPhone'];
-					$cEmail = $_POST['$cEmail'];
+				    $cId = $_POST['cId'];
+				    $cName = $_POST['cName'];
+					$cAddress = $_POST['cAddress'];
+					$cCity = $_POST['cCity'];
+					$cState = $_POST['cState'];
+					$cZip = $_POST['cZip'];
+					$cPhone = $_POST['cPhone'];
+					$cEmail = $_POST['cEmail'];
 				
 				$query = "insert into Customer (CustomerId, Name, Address, City, State, ZIP, Phone, Email) ".
 						"values ('$cId', '$cName', '$cAddress', '$cCity', '$cState', '$cZip', '$cPhone', '$cEmail')";
