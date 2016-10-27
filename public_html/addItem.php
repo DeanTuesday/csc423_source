@@ -79,14 +79,15 @@
                 
                 mysql_select_db($db);
                 
-				$itemid = $_POST['itemid'];
+				$ItemId = $_POST['ItemId'];
+				$Division = $_POST['Division'];
 				$description = $_POST['description'];
 				$size = $_POST['size'];
 				$cost = $_POST['cost'];
 				$retail = $_POST['retail'];
 				$image = $_POST['image'];
 				
-				$sql = "insert into Vendor (ItemId, Description, Size, Division, Department, Category, itemCost, ItemRetail, ImageFileName, VendorId) ".
+				$sql = "insert into InventoryItem (ItemId, Description, Size, Division, Department, Category, itemCost, ItemRetail, ImageFileName, VendorId) ".
 						"values ('$ItemId', '$description', '$size', '$division', '$department', '$category', '$cost', '$retail', '$image', '$vid')";
 						
 				// mysql_select_db('fal16_csc423_wdean2');
@@ -119,7 +120,7 @@
                     </tr>
                     <tr>
                         <td align="right">Division:</td><td>
-                        <td><select align="left" name="Division" id="division"> 
+                        <td><select align="left" name="Division" id="Division"> 
                                 <option>Select a Division</option>
                                 <?php
                                 
