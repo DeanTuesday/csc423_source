@@ -148,6 +148,7 @@
 						$user = 'wdean2';
 						$pass = 'csc423?';
 						$db = 'fal16_csc423_wdean2';
+						
 				
 									$conn = mysql_connect($addr, $user, $pass);
 							mysql_select_db('$db');
@@ -160,7 +161,8 @@ while ($row = mysql_fetch_array($result)) {
     echo "<option value='" . $row['Division'] ."'>" . $row['Division'] ."</option>";
 }
 echo "</select>";
-
+mysql_close($conn);
+			}
                                 ?>
                             </select></td>
                     </tr>
