@@ -63,7 +63,7 @@
 			$Email=htmlspecialchars(($_POST['Email']));
 			
 			$updateQuery= "Update Customer Set Name='$$CustomerName', Address='$Address', City='$City', 
-			State='$State', ZIP='$Zip', Phone='$Phone', Email='$Email', Where VendorId=$vendorId";
+			State='$State', ZIP='$Zip', Phone='$Phone', Email='$Email', Where CustomerId LIKE '$CustomerId'";
 			
 		}
 
@@ -93,14 +93,14 @@
 						<table align='center'>
 							<tr><td colspan='2'><center><label><b>Customer ID: $CustomerId <input type='hidden' name='customerId' value=$CustomerId></b></center></label>															</td></tr>
 							<!-----Customer Details----->
-							<tr><td><label>Customer Id:</label>												</td>	<td><input type='text' id='customerId' name='customerId' value= $CustomerId>					</td></tr>		
+							<tr><td><label>Customer Id:</label>												</td>	<td><input type='text' id='customerId' name='CustomerId' value= $CustomerId>					</td></tr>		
 							<tr><td><label>Customer Name:</label>												</td>	<td><input type='text' id='customerName' name='customerName' value='$CustomerName'>							</td></tr>
-							<tr><td><label>Address:</label>													</td>	<td><input type='text' id='address' name='address' value='$Address'>										</td></tr>
-							<tr><td><label>City:</label>													</td>	<td><input type='text' id='city' name='city' value=$City>												</td></tr>
-							<tr><td><label>State:</label>													</td>	<td><input type='text' id='state' name='state' value=$State>											</td></tr>
-							<tr><td><label>ZIP:</label>														</td>	<td><input type='text' id='zip' name='zip' value=$Zip>													</td></tr>
-							<tr><td><label>Phone:</label>													</td>	<td><input type='text' id='phone' name='phone' value=$Phone>											</td></tr>
-							<tr><td><label>Email:</label>											</td>	<td><input type='text' id='email' name='email' value=$Email>		</td></tr>
+							<tr><td><label>Address:</label>													</td>	<td><input type='text' id='Address' name='address' value='$Address'>										</td></tr>
+							<tr><td><label>City:</label>													</td>	<td><input type='text' id='City' name='city' value=$City>												</td></tr>
+							<tr><td><label>State:</label>													</td>	<td><input type='text' id='State' name='state' value=$State>											</td></tr>
+							<tr><td><label>ZIP:</label>														</td>	<td><input type='text' id='Zip' name='zip' value=$Zip>													</td></tr>
+							<tr><td><label>Phone:</label>													</td>	<td><input type='text' id='Phone' name='phone' value=$Phone>											</td></tr>
+							<tr><td><label>Email:</label>											</td>	<td><input type='text' id='email' name='Email' value=$Email>		</td></tr>
 																																																	</td></tr>
 
 								<tr><td><center><br><input type='submit' value='Submit Changes' ></center>		</td>	<td><center><br><input type='button' value='Undo Changes'></center>		</td></tr>
