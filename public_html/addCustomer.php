@@ -82,12 +82,7 @@
 				
 			$db = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
                 
-				if (!$conn){
-					die('Could not connect: '.mysql_error());
-				}
-				else{
-					echo("Connected to Database<br>");
-				}
+			
                 //$db = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
               
                 
