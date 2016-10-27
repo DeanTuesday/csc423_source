@@ -86,7 +86,7 @@
 			$pass = 'csc423?';
 			$db = 'fal16_csc423_wdean2';
 			
-			$updateQuery= "Update Customer Set Name='$CustomerName', Address='$Address', City='$City',State='$State', ZIP='$Zip', Phone='$Phone', Email='$Email', Where CustomerId LIKE '$CustomerId'";
+			$updateQuery= "Update Customer Set Name='$CustomerName', Address='$Address', City='$City',State='$State', ZIP='$Zip', Phone='$Phone', Email='$Email', Where CustomerId = '$CustomerId'";
 			
 			$db = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
 				if ($db->query($updateQuery) === TRUE)
@@ -143,12 +143,12 @@
 							<tr><td colspan='2'><center><label><b>Customer ID: $CustomerId <input type='hidden' name='customerId' value=$CustomerId></b></center></label>															</td></tr>
 							<!-----Customer Details----->
 							<tr><td><label>Customer Id:</label>												</td>	<td><input type='text' id='customerId' name='CustomerId' value= $CustomerId>					</td></tr>		
-							<tr><td><label>Customer Name:</label>												</td>	<td><input type='text' id='customerName' name='customerName' value='$CustomerName'>							</td></tr>
-							<tr><td><label>Address:</label>													</td>	<td><input type='text' id='Address' name='address' value='$Address'>										</td></tr>
-							<tr><td><label>City:</label>													</td>	<td><input type='text' id='City' name='city' value=$City>												</td></tr>
-							<tr><td><label>State:</label>													</td>	<td><input type='text' id='State' name='state' value=$State>											</td></tr>
-							<tr><td><label>ZIP:</label>														</td>	<td><input type='text' id='Zip' name='zip' value=$Zip>													</td></tr>
-							<tr><td><label>Phone:</label>													</td>	<td><input type='text' id='Phone' name='phone' value=$Phone>											</td></tr>
+							<tr><td><label>Customer Name:</label>												</td>	<td><input type='text' id='customerName' name='CustomerName' value='$CustomerName'>							</td></tr>
+							<tr><td><label>Address:</label>													</td>	<td><input type='text' id='Address' name='Address' value='$Address'>										</td></tr>
+							<tr><td><label>City:</label>													</td>	<td><input type='text' id='City' name='City' value=$City>												</td></tr>
+							<tr><td><label>State:</label>													</td>	<td><input type='text' id='State' name='State' value=$State>											</td></tr>
+							<tr><td><label>ZIP:</label>														</td>	<td><input type='text' id='Zip' name='Zip' value=$Zip>													</td></tr>
+							<tr><td><label>Phone:</label>													</td>	<td><input type='text' id='Phone' name='Phone' value=$Phone>											</td></tr>
 							<tr><td><label>Email:</label>											</td>	<td><input type='text' id='email' name='Email' value=$Email>		</td></tr>
 																																																	</td></tr>
 
