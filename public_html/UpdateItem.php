@@ -25,12 +25,20 @@
 					$vSize = $row["Size"];
 					$viCost = $row["ItemCost"];
 					$vrCost = $row["ItemRetail"];
+					$vDivision = $row["Division"];
+					$vCategory = $row["Category"];
+					$vimgfn = $row["ImageFileName"];
+					$vVendorId = $row["VendorId"];
 					
 					//$itemCode=htmlspecialchars($iCode);
 					$description=htmlspecialchars($vDescription);
 					$size=htmlspecialchars($vSize);
 					$itemc=htmlspecialchars($viCost);
 					$itemr=htmlspecialchars($vrCost);
+					$division=htmlspecialchars($vDivision);
+					$category=htmlspecialchars($vCategory);
+					$imgfn=htmlspecialchars($vimgfn);
+					$vendorid=htmlspecialchars($vVendorId);
 					
 				}
 			}
@@ -56,6 +64,10 @@
 			$size=htmlspecialchars(($_POST['size']));
 			$itemc=htmlspecialchars(($_POST['itemcost']));
 			$itemr=htmlspecialchars(($_POST['itemretail']));
+			$division=htmlspecialchars(($_POST['division']));
+			$category=htmlspecialchars(($_POST['category']));
+			$imgfn=htmlspecialchars(($_POST['imgfn']));
+			$vendorid=htmlspecialchars(($_POST['vendorid']));
 			
 			$addr = 'localhost';
 			$user = 'wdean2';
