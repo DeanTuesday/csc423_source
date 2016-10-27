@@ -141,6 +141,10 @@ echo "
 				<option value='26'>GIBSON ENTERPRISES INC</option>
 				<option value='27'>J M SMUCKER (COFFEE PREPAID)</option>
 				<option value='28'>CLEMENT PAPPAS & CO INC (P-MOUNT)</option>
+				
+				<center><br><input type='submit' value='Submit Changes' </center>		<center><br><input type='button' value='Undo Changes'></center>	
+							
+							<input name='SubmitChangesCheck' type='hidden' value='sent'>
 			</td>
 </tr>
 			</table>
