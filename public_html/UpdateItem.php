@@ -145,7 +145,7 @@ echo "
 				</tr>
 				<tr>
 				<td>
-				<center><br><input type='submit' value='Submit Changes' </center>		<center><br><input type='button' value='Undo Changes'></center>	
+				<center><br><input type='submit' value='Submit Changes' </center>		<center><input type='button' value='Undo Changes'></center>	
 							
 							<input name='SubmitChangesCheck' type='hidden' value='sent'>
 				</tr>
