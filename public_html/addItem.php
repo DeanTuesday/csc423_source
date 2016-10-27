@@ -144,32 +144,38 @@
                         <td align="right">Image Name:</td><td><input type="text" name="image" id="image"></td>
                     </tr>
                     <tr>
-                        <td align="right">Vendor:</td>
-                        <td><select align="left" name="category" id="category"> 
-                                <option>Select a Vendor</option>
-                                <?php
-                                $vquery = "Select VendorId, VendorCode, VendorName from Vendor";
-								$vresult = $db->query($vquery);
-
-								if($vresult->num_rows > 0)
-								{
-									while($vrow = $vresult->fetch_assoc())
-									{
-
-										$vid = $vrow["VendorId"];
-										$vCode = $vrow["VendorCode"];
-										$vName = $vrow["VendorName"];
-
-										echo"<option value='$vid'>$vCode - $vName</option>";
-									}
-								}
-								else
-								{
-								    echo "0 results";
-								}
-                                ?>
-                            </select></td>
-                    </tr>
+                        <td><b>Vendor</b></td><td><select name='vendorid' id='vendorid'>
+				<option value='1'>FDS-MERCHANDISE</option>
+				<option value='2'>STEFANELLI DISTRIBUTING (DSD)</option>
+				<option value='3'>GLAZER'S INC (TX-WINE) DSD</option>
+				<option value='4'>AMERICAN BEVERAGE CORP (VERONA P)</option>
+				<option value='2'>STEFANELLI DISTRIBUTING (DSD)</option>
+				<option value='5'>PEPIN DISTRIBUTION CO</option>
+				<option value='6'>HOSTESS BRANDS LLC</option>
+				<option value='7'>FLOWERS FOODS SPECIALTY GROUP LLC</option>
+				<option value='8'>FUTURE SALES & LIQUIDATIONS (D3)</option>
+				<option value='9'>GENERAL MILLS INC</option>
+				<option value='10'>FOURSTAR GROUP(XIAMEN-HK BK)(LC)</option>
+				<option value='11'>JUST BORN INC</option>
+				<option value='12'>PIEDMONT CANDY CO (SEASONAL)</option>
+				<option value='13'>FOURSTAR GRP(D12-YANTIAN-HK BK)</option>
+				<option value='14'>R L ALBERT & SON INC</option>
+				<option value='15'>MARS CHOCOLATE NA LLC</option>
+				<option value='16'>PERFETTI VAN MELLE USA INC)</option>
+				<option value='17'>DEMET'S CANDY COMPANY</option>
+				<option value='18'>RAGOLD CONFECTIONS</option>
+				<option value='19'>SARA LEE BAKERY GROUP INC (WEST)</option>
+				<option value='20'>SUNRISE CONFECTIONS</option>
+				<option value='21'>KELLOGG SALES COMPANY</option>
+				<option value='22'>INTERBAKE FOODS INC SIOUX CITY D</option>
+				<option value='23'>LANCE INC (PP-GA)</option>
+				<option value='24'>MONDELEZ GLOBAL LLC (CAT 361)</option>
+				<option value='25'>FLASH SALES INC</option>
+				<option value='26'>GIBSON ENTERPRISES INC</option>
+				<option value='27'>J M SMUCKER (COFFEE PREPAID)</option>
+				<option value='28'>CLEMENT PAPPAS & CO INC (P-MOUNT)</option>
+				</td>
+				</tr>
                 </table>
                 <hr/>
                 <table>
