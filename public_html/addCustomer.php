@@ -86,14 +86,14 @@
                 //$db = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
               
                 
-				    $cId = $row['$cId'];
-				    $cName = $row['$cName'];
-					$cAddress = $row['$cAddress'];
-					$cCity = $row['$cCity'];
-					$cState = $row['$cState'];
-					$cZip = $row['$cZip'];
-					$cPhone = $row['$cPhone'];
-					$cEmail = $row['$cEmail'];
+				    $cId = $_POST['$cId'];
+				    $cName = $_POST['$cName'];
+					$cAddress = $_POST['$cAddress'];
+					$cCity = $_POST['$cCity'];
+					$cState = $_POST['$cState'];
+					$cZip = $_POST['$cZip'];
+					$cPhone = $_POST['$cPhone'];
+					$cEmail = $_POST['$cEmail'];
 				
 				$query = "insert into Customer (CustomerId, Name, Address, City, State, ZIP, Phone, Email) ".
 						"values ('$cId', '$cName', '$cAddress', '$cCity', '$cState', '$cZip', '$cPhone', '$cEmail')";
@@ -102,11 +102,14 @@
 				 $result = $db->query($query);
 				// $result = $db->query($sql);
 				
-				if(!$result ) {
-				   die('Could not enter data: ' . mysql_error());
-				}
-				
-				echo "Entered data successfully\n";
+					if ($db->query($query) === TRUE)
+			{
+			    echo "Record updated successfully";
+			}
+			else
+			{
+			    echo "Error updating record: " . $db->error;
+			}
 				
 				$db->close();
 			}
