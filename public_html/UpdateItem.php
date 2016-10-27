@@ -29,8 +29,8 @@
 					//$itemCode=htmlspecialchars($iCode);
 					$description=htmlspecialchars($vDescription);
 					$size=htmlspecialchars($vSize);
-					$itemc=htmlspecialchars($viCost);
-					$itemr=htmlspecialchars($vrCost);
+					$itemcost=htmlspecialchars($viCost);
+					$itemretail=htmlspecialchars($vrCost);
 					
 				}
 			}
@@ -47,10 +47,10 @@
 		if (isset($_POST['SubmitChangesCheck']))
 		{
 			$ItemId=htmlspecialchars(($_POST['ItemId']));
-			$description=htmlspecialchars(($_POST['Description']));
-			$size=htmlspecialchars(($_POST['Size']));
-			$itemc=htmlspecialchars(($_POST['ItemCost']));
-			$itemr=htmlspecialchars(($_POST['ItemRetail']));
+			$description=htmlspecialchars(($_POST['description']));
+			$size=htmlspecialchars(($_POST['size']));
+			$itemcost=htmlspecialchars(($_POST['itemcost']));
+			$itemretail=htmlspecialchars(($_POST['itemretail']));
 			
 		}
 
