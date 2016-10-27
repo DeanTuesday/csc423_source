@@ -12,7 +12,7 @@
 
 	$db = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
 	echo("Connected to Database<br>");
-	$query = "Select VendorCode, VendorName, Address, City, State, ZIP, Phone, ContactPersonName, Password from Vendor Where VendorId=$vendorId";
+	$query = "Select VendorCode, VendorName, Address, City, State, ZIP, Phone, ContactPersonName, Status, Password from Vendor Where VendorId=$vendorId";
 	$result = $db->query($query);
 
 	if($result->num_rows > 0)
@@ -27,6 +27,7 @@
 			$vZip = $row["ZIP"];
 			$vPhone = $row["Phone"];
 			$vContact = $row["ContactPersonName"];
+			$vendorStatus = $row["Status"];
 			$vPass = $row["Password"];
 
 			$vendorCode=htmlspecialchars($vCode);
@@ -71,9 +72,6 @@
 		}
 		if (isset($_POST['SubmitChangesCheck']))
 		{
-
-
-
 			$vendorId=($_POST['vendorId']);
 			$vendorCode=($_POST['vendorCode']);
 			$vendorName=($_POST['vendorName']);
@@ -83,6 +81,16 @@
 			$zip=($_POST['zip']);
 			$phone=($_POST['phone']);
 			$contactPersonName=($_POST['contactPersonName']);
+			$status=($_POST['vStatus']);
+
+			$vendorCode=htmlspecialchars($vendorCode);
+			$vendorName=htmlspecialchars($vendorName);
+			$address=htmlspecialchars($address);
+			$city=htmlspecialchars($city);
+			$state=htmlspecialchars($state);
+			$zip=htmlspecialchars($zip);
+			$phone=htmlspecialchars($phone);
+			$contactPersonName=htmlspecialchars($contactPersonName);
 
 		//	$vendorPassword=($_POST['password']);
 		//	$vendorNewPassword=($_POST['newPassword']);
@@ -96,11 +104,11 @@
 			if (isset($_POST['newPwd']) && $_POST['newPwd'] != '')
 			{
 				$newPassword=($_POST['newPwd']);
-				$updateQuery= "Update Vendor Set VendorCode='$vendorCode', VendorName='$vendorName', Address='$address', City='$city', State='$state', ZIP='$zip', Phone='$phone', ContactPersonName='$contactPersonName', Password='$newPassword' Where VendorId=$vendorId";
+				$updateQuery= "Update Vendor Set VendorCode='$vendorCode', VendorName='$vendorName', Address='$address', City='$city', State='$state', ZIP='$zip', Phone='$phone', ContactPersonName='$contactPersonName', Password='$newPassword', Status='$status' Where VendorId=$vendorId";
 			}
 			else
 			{
-				$updateQuery= "Update Vendor Set VendorCode='$vendorCode', VendorName='$vendorName', Address='$address', City='$city', State='$state', ZIP='$zip', Phone='$phone', ContactPersonName='$contactPersonName' Where VendorId=$vendorId";
+				$updateQuery= "Update Vendor Set VendorCode='$vendorCode', VendorName='$vendorName', Address='$address', City='$city', State='$state', ZIP='$zip', Phone='$phone', ContactPersonName='$contactPersonName', Status='$status' Where VendorId=$vendorId";
 			}
 
 			$db = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
@@ -137,6 +145,15 @@
 		function validateTheDatas()
 		{
 
+			setSelectedStatus();
+			return true;
+		}
+
+		function setSelectedStatus()
+		{
+			var selectedStatus=	document.getElementById('statusOptions');   
+
+			document.getElementById('vStatus').value = selectedStatus.options[selectedStatus.selectedIndex].value;
 		}
 
 		</script>
@@ -156,21 +173,48 @@
 							
 							<tr><td><label>Vendor Code:</label>												</td>	<td><input type='text' id='vendorCode' name='vendorCode' value=". "'$vendorCode'" . ">					</td></tr>
 							<tr><td><label>Vendor Name:</label>												</td>	<td><input type='text' id='vendorName' name='vendorName' value='$vendorName'>							</td></tr>
-							<tr><td><label>Address:</label>													</td>	<td><input type='text' id='address' name='address' value=$address>										</td></tr>
-							<tr><td><label>City:</label>													</td>	<td><input type='text' id='city' name='city' value=$city>												</td></tr>
-							<tr><td><label>State:</label>													</td>	<td><input type='text' id='state' name='state' value=$state>											</td></tr>
-							<tr><td><label>ZIP:</label>														</td>	<td><input type='text' id='zip' name='zip' value=$zip>													</td></tr>
-							<tr><td><label>Phone:</label>													</td>	<td><input type='text' id='phone' name='phone' value=$phone>											</td></tr>
-							<tr><td><label>Contact Person:</label>											</td>	<td><input type='text' id='contactPersonName' name='contactPersonName' value=$contactPersonName>		</td></tr>
-							<tr><td colspan='2'><hr>																																										</td></tr>
+							<tr><td><label>Address:</label>													</td>	<td><input type='text' id='address' name='address' value='$address'>										</td></tr>
+							<tr><td><label>City:</label>													</td>	<td><input type='text' id='city' name='city' value='$city'>												</td></tr>
+							<tr><td><label>State:</label>													</td>	<td><input type='text' id='state' name='state' value='$state'>											</td></tr>
+							<tr><td><label>ZIP:</label>														</td>	<td><input type='text' id='zip' name='zip' value='$zip'>													</td></tr>
+							<tr><td><label>Phone:</label>													</td>	<td><input type='text' id='phone' name='phone' value='$phone'>											</td></tr>
+							<tr><td><label>Contact Person:</label>											</td>	<td><input type='text' id='contactPersonName' name='contactPersonName' value='$contactPersonName'>		</td></tr>
+							<tr><td><label>Vendor Status:</label>											</td>	<td>
+
+
+
+							";
+							if($vendorStatus=='Inactive')
+							{
+								echo"
+
+								<select id='statusOptions'><option>Active</option><option selected='selected'>Inactive</option></select>		</td></tr>
+								<input type='hidden' name='vStatus' id='vStatus'>
+								<tr><td colspan='2'><hr>																																										</td></tr>
 							
+
+								";
+							}
+							else
+							{
+								echo"
+
+								<select id='statusOptions'><option>Active</option><option>Inactive</option></select>		</td></tr>
+								<input type='hidden' name='vStatus' id='vStatus'>
+								<tr><td colspan='2'><hr>																																										</td></tr>
+								}
+
+								";
+							}
+
+							echo"
 							<!-----Password Details----->
 							
 							<tr><tr><td><label><b>Update Password:</b></label>								</td>	<td>																									</td></tr>
 							<tr><td><label>Current Password:</label>										</td>	<td><input type='password' id='userPwd' name='userPwd'>												</td></tr>
 							<tr><td><label>New Password:</label>											</td>	<td><input type='password' id='newPwd' name='newPwd'>											</td></tr>
 							<tr><td><label>Confirm New Password:</label>									</td>	<td><input type='password' id='confirmNewPwd' name='confirmNewPwd'>							</td></tr>
-								<tr><td><center><br><input type='submit' value='Submit Changes'></center>		</td>	<td><center><br><input type='button' value='Undo Changes'></center>		</td></tr>
+							<tr><td><center><br><input type='submit' value='Submit Changes'></center>		</td>	<td><center><br><input type='button' value='Undo Changes'></center>		</td></tr>
 							</table>
 						<input name='SubmitChangesCheck' type='hidden' value='sent'>
 					</form>
