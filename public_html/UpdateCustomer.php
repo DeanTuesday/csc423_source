@@ -1,10 +1,7 @@
 <?php
 
 
-	if(isset($_POST['SubmitCheck']) || isset($_POST['SubmitChangesCheck']))
-	{
-		if (isset($_POST['SubmitCheck']))
-		{
+
 			$CustomerId=($_POST["CustomerId"]);
 			
 			
@@ -49,12 +46,15 @@
 
 			$db->close();
 
-		}
-
-		if (isset($_POST['SubmitChangesCheck'])||isset($_POST['SubmitCheck']))
+		
+	if(isset($_POST['SubmitCheck']) || isset($_POST['SubmitChangesCheck']))
+	{
+		if (isset($_POST['SubmitCheck']))
 		{
+		}
 			
-			
+				if (isset($_POST['SubmitChangesCheck']))
+		{	
 			
 			
 			$CustomerId=($_POST['CustomerId']);
