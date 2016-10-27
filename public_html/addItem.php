@@ -118,31 +118,10 @@
                     <tr>
                         <td align="right">Size:</td><td><input type="text" name="size" id="size"></td>
                     </tr>
-                    <tr>
-                        <td align="right">Division:</td><td>
-                        <td><select align="left" name="Division" id="Division"> 
-                                <option>Select a Division</option>
+                    
+                      
                                 <?php
-                                
-                                // TODO: THIS IS NOT A DATABASE YET
-                                $divquery = "Select ItemId, Division from InventoryItem";
-								$divresult = $db->query($divquery);
-
-								if($divresult->num_rows > 0)
-								{
-									while($divrow = $divresult->fetch_assoc())
-									{
-
-										$ItemId = $divrow["ItemId"];
-                                        $Division = $divrow["Division"];
-
-										echo"<option value='$ItemId'>$Division</option>";
-									}
-								}
-								else
-								{
-								    echo "0 results";
-								}
+                              
 										if(isset($_POST['submitCheck'])) {
 						$addr = 'localhost';
 						$user = 'wdean2';
