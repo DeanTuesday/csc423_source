@@ -62,6 +62,9 @@
 			$Phone=htmlspecialchars(($_POST['Phone']));
 			$Email=htmlspecialchars(($_POST['Email']));
 			
+			$updateQuery= "Update Customer Set Name='$$CustomerName', Address='$Address', City='$City', 
+			State='$State', ZIP='$Zip', Phone='$Phone', Email='$Email', Where VendorId=$vendorId";
+			
 		}
 
 			
