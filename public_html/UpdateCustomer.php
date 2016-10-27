@@ -81,7 +81,12 @@
 			$Phone=htmlspecialchars($Phone);
 			$Email=htmlspecialchars($Email);
 			
-			$updateQuery= "Update Customer Set Name='$$CustomerName', Address='$Address', City='$City', 
+			$addr = 'localhost';
+			$user = 'wdean2';
+			$pass = 'csc423?';
+			$db = 'fal16_csc423_wdean2';
+			
+			$updateQuery= "Update Customer Set Name='$CustomerName', Address='$Address', City='$City', 
 			State='$State', ZIP='$Zip', Phone='$Phone', Email='$Email', Where CustomerId LIKE '$CustomerId'";
 			
 		}
