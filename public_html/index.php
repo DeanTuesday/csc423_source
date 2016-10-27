@@ -5,7 +5,7 @@ echo "
 <html>
 <head>
 	<!-- Appropriate Title and meta tags -->
-	<title>Assignment 1</title>
+	<title>Nannos Foods</title>
 	<meta http-equiv='Content-Type' content='text/html charset=utf-8' />
 	<meta http-equiv='Content-Language' content='en-us' />
 	<meta name='description' content='CSC 423 Group Assignment' />
@@ -18,7 +18,7 @@ echo "
 </head>
 <body>
 	<div class='page-container'>
-		<h2>CSC 423 Team 2</h2>
+		<h2>CSC 423 Team 2 - Nanno's Foods</h2>
 		<hr/>
 		<p>This website should currently implement functionality to register vendors, modify/delete vendors, add/modify/delete store locations, add/modify/delete stocked items, and add/modify/delete customers.</p>
 		<table>
