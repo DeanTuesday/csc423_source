@@ -3,8 +3,8 @@
 
 	//if(isset($_POST['SubmitCheck']) || isset($_POST['SubmitChangesCheck']))
 	//{
-		//if (isset($_POST['SubmitCheck']))
-		//{
+		if (isset($_POST['SubmitCheck']))
+		{
 			$ItemId=($_POST['ItemId']);
 			
 			$addr = 'localhost';
@@ -40,7 +40,7 @@
 			}
 
 			$db->close();
-
+		}
 		
 		
 		if(isset($_POST['SubmitCheck']) || isset($_POST['SubmitChangesCheck']))
@@ -183,16 +183,3 @@ echo "
 	
 </body>
 </html>
-";
-
-		if(isset($_POST['SubmitChangesCheck']))
-		{
-			echo "Vendor Updated!";
-		};
-
-	}
-	else
-	{
-		echo "Sorry mate, that's an error!";
-	};
-?>
