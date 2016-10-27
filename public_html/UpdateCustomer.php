@@ -119,7 +119,7 @@
 		{
 
 			setSelectedStatus();
-			validateFunction();
+			
 			return true;
 		}
 
