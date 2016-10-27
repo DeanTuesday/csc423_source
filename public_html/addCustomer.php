@@ -108,7 +108,7 @@
 			}
 			else
 			{
-			    echo "Error updating record: " . $db->error;
+			    echo "Error updating record: " 
 			}
 				
 				$db->close();
