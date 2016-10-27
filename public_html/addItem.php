@@ -92,7 +92,7 @@
 				
 				
 				$sql = "insert into InventoryItem (ItemId, Description, Size, Division, Department, Category, itemCost, ItemRetail, ImageFileName, VendorId) ".
-						"values ('$ItemId', '$description', '$size', '$division', '$department', '$category', '$cost', '$retail', '$image', '$vendorid')";
+						"values ('$ItemId', '$description', '$size', '$Division', '$department', '$category', '$cost', '$retail', '$image', '$vendorid')";
 						
 				// mysql_select_db('fal16_csc423_wdean2');
 				$result = mysql_query($sql);
