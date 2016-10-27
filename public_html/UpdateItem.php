@@ -147,6 +147,35 @@ echo "
 <tr>
 			<td><b>Image File Name</b></td><td><input type='text' name='imgfn' id='imgfn'>
 			</td>
+			";
+			<?php
+  $dir = '/img/';
+  $imgs = glob($dir.'*.*');
+  if (empty($imgs)) :
+    die('this server has no images...this form will do nothing. ending output now.');
+  else :
+    ?>
+    <td><b>Image File Name</b></td>
+    <td>
+      <select name="imgfn">
+        <?php
+          foreach ($imgs as &$img) :
+            ?>
+              <option value="<?php echo str_replace('"', '\"', basename($img)); ?>"><?php echo basename($img); ?></option>
+            <?php
+          endforeach;
+        ?>
+      </select>
+      <?PHP
+        if (!empty($_POST['imgfn']) && in_array($dir.$_POST['imgfn'], $imgs)) {
+          echo "<img src='img/$imgfn' alt='$imgfn' style='width:200px;height:200px;'>";
+        }
+      ?>
+    </td>
+    <?php
+  endif;
+?>
+			echo"
 </tr>
 <tr>
 			<td><b>Vendor</b></td><td><select name='vendorid' id='vendorid'>
