@@ -80,8 +80,7 @@
 				$pass = 'csc423?';
 				$db = 'fal16_csc423_wdean2';
 				
-				//$conn = new mysqli($addr, $user, $pass, $db);
-				$conn = mysql_connect($addr, $user, $pass);
+			$db = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
                 
 				if (!$conn){
 					die('Could not connect: '.mysql_error());
@@ -90,7 +89,7 @@
 					echo("Connected to Database<br>");
 				}
                 //$db = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
-                mysql_select_db($db);
+              
                 
 				    $cId = $row["CustomerId"];
 				    $cName = $row["Name"];
@@ -101,11 +100,11 @@
 					$cPhone = $row["Phone"];
 					$cEmail = $row["Email"];
 				
-				$sql = "insert into Customer (CustomerId, Name, Address, City, State, ZIP, Phone, Email) ".
+				$query = "insert into Customer (CustomerId, Name, Address, City, State, ZIP, Phone, Email) ".
 						"values ('$cId', '$cName', '$cAddress', '$cCity', '$cState', '$cZip', '$cPhone', '$cEmail')";
 						
 				// mysql_select_db('fal16_csc423_wdean2');
-				$result = mysql_query($sql);
+				 $result = $db->query($query);
 				// $result = $db->query($sql);
 				
 				if(!$result ) {
@@ -114,7 +113,7 @@
 				
 				echo "Entered data successfully\n";
 				
-				mysql_close($conn);
+				$db->close();
 			}
 			else{
 		?>
