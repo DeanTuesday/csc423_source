@@ -75,7 +75,7 @@
     <body>
 		<?php
 			if(isset($_POST['submitCheck'])) {
-				$addr = 'localhost';
+				$addr = 'csdb.brockport.edu';
 				$user = 'wdean2';
 				$pass = 'csc423?';
 				$db = 'fal16_csc423_wdean2';
