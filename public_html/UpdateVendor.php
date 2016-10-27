@@ -1,54 +1,79 @@
 <?php
-	echo"<html>
-			<head>";
+
+
+	//Connect to the database and get the info
+
+	$vendorId=($_POST['vendorId']);
+	
+	$addr = 'localhost';
+	$user = 'wdean2';
+	$pass = 'csc423?';
+	$db = 'fal16_csc423_wdean2';
+
+	$db = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
+	echo("Connected to Database<br>");
+	$query = "Select VendorCode, VendorName, Address, City, State, ZIP, Phone, ContactPersonName, Password from Vendor Where VendorId=$vendorId";
+	$result = $db->query($query);
+
+	if($result->num_rows > 0)
+	{
+		while($row = $result->fetch_assoc())
+		{
+			$vCode = $row["VendorCode"];
+			$vName = $row["VendorName"];
+			$vAddress = $row["Address"];
+			$vCity = $row["City"];
+			$vState = $row["State"];
+			$vZip = $row["ZIP"];
+			$vPhone = $row["Phone"];
+			$vContact = $row["ContactPersonName"];
+			$vPass = $row["Password"];
+
+			$vendorCode=htmlspecialchars($vCode);
+			$vendorName=htmlspecialchars($vName);
+			$address=htmlspecialchars($vAddress);
+			$city=htmlspecialchars($vCity);
+			$state=htmlspecialchars($vState);
+			$zip=htmlspecialchars($vZip);
+			$phone=htmlspecialchars($vPhone);
+			$contactPersonName=htmlspecialchars($vContact);
+		}
+	}
+	else
+	{
+	    echo "0 results";
+	}
+
+	$db->close();
+
+	//Check to see if there was an attempt to change the password
+	if(isset($_POST['newPwd']) && $_POST['newPwd'] != '')
+	{
+		//validate the new password by checking current password and new password confirmation
+		//if the data is not valid, then echo password error then terminate
+		if($_POST['userPwd'] != $vPass)
+		{
+			echo('<br>Please enter a password to change your password<br>');
+			die;
+		}
+		else if($_POST['newPwd'] != $_POST['confirmNewPwd'])
+		{
+			echo('<br>Confirmation password does not match<br>');
+			die;
+		}
+	}
 
 	if(isset($_POST['SubmitCheck']) || isset($_POST['SubmitChangesCheck']))
 	{
 		if (isset($_POST['SubmitCheck']))
 		{
-			$vendorId=($_POST['vendorId']);
-			
-			$addr = 'localhost';
-			$user = 'wdean2';
-			$pass = 'csc423?';
-			$db = 'fal16_csc423_wdean2';
 
-			$db = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
-			echo("Connected to Database<br>");
-			$query = "Select VendorCode, VendorName, Address, City, State, ZIP, Phone, ContactPersonName, Password from Vendor Where VendorId=$vendorId";
-			$result = $db->query($query);
-			if($result->num_rows > 0)
-			{
-				while($row = $result->fetch_assoc())
-				{
-					$vCode = $row["VendorCode"];
-					$vName = $row["VendorName"];
-					$vAddress = $row["Address"];
-					$vCity = $row["City"];
-					$vState = $row["State"];
-					$vZip = $row["ZIP"];
-					$vPhone = $row["Phone"];
-					$vContact = $row["ContactPersonName"];
-
-					$vendorCode=htmlspecialchars($vCode);
-					$vendorName=htmlspecialchars($vName);
-					$address=htmlspecialchars($vAddress);
-					$city=htmlspecialchars($vCity);
-					$state=htmlspecialchars($vState);
-					$zip=htmlspecialchars($vZip);
-					$phone=htmlspecialchars($vPhone);
-					$contactPersonName=htmlspecialchars($vContact);
-				}
-			}
-			else
-			{
-			    echo "0 results";
-			}
-
-			$db->close();
 		}
 		if (isset($_POST['SubmitChangesCheck']))
 		{
+
+
+
 			$vendorId=($_POST['vendorId']);
 			$vendorCode=($_POST['vendorCode']);
 			$vendorName=($_POST['vendorName']);
@@ -68,9 +93,9 @@
 			$pass = 'csc423?';
 			$db = 'fal16_csc423_wdean2';
 			
-			if (isset($_POST['newPassword']) && !($_POST['newPassword'])=="")
+			if (isset($_POST['newPwd']) && $_POST['newPwd'] != '')
 			{
-				$newPassword=($_POST['newPassword']);
+				$newPassword=($_POST['newPwd']);
 				$updateQuery= "Update Vendor Set VendorCode='$vendorCode', VendorName='$vendorName', Address='$address', City='$city', State='$state', ZIP='$zip', Phone='$phone', ContactPersonName='$contactPersonName', Password='$newPassword' Where VendorId=$vendorId";
 			}
 			else
@@ -80,7 +105,7 @@
 
 			$db = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
 			
-			echo("Connected to Database<br>");
+		//	echo("Connected to Database<br>");
 
 			if ($db->query($updateQuery) === TRUE)
 			{
@@ -102,45 +127,28 @@
 		$newPassword=($_POST['newPassword']);
 		$confirmPassword=($_POST['confirmPassword']);
 		*/
-
 		echo "
-			<title>Update a Vendor</title>
+		<html>
+		<head>
+		<title>Update a Vendor</title>
 
-			<script type='text/javascript' language='javascript'>
+		<script type='text/javascript' language='javascript'>
 
-			function confirmNewPassword()
-			{
-				alert('hello');
-				var userPass = document.getElementById('userPwd').value;
-				var newPass = document.getElementById('newPwd').value;
-				var confirmNewPwd = document.getElementById('confirmNewPassword').value;
+		function validateTheDatas()
+		{
 
-				if(userPass=='' && newPass =='' && confirmNewPwd =='')
-				{
-					return true;
-				}
+		}
 
-				else if(userPass != 'teststring')
-				{
-					alert('Enter your current password to change your password.');
-					return false;
-				}
-				else if(newPass != confirmNewPwd)
-				{
-					alert('New password does not match confirmation field.');
-					return false;
-				}
-			}
-			</script>
-			</head>
-			";	
+		</script>
+
+		</head>";	
 
 
 		echo "
 			<body>
 				<h2 align='center'>Update a Vendor</h1>
 				<h3 align='center'>Update Vendor Information:</h2>
-					<form id='updateForm' name='updateForm' method='POST' action='UpdateVendor.php' onsubmit='confirmNewPassword();'>
+					<form id='updateForm' name='updateForm' method='POST' action='UpdateVendor.php' onsubmit='validateTheDatas();'>
 						<table align='center'>
 							<tr><td colspan='2'><center><label><b>Vendor ID: $vendorId <input type='hidden' name='vendorId' value=$vendorId></b></center></label>															</td></tr>
 
