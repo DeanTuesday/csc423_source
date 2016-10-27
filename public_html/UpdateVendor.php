@@ -184,30 +184,54 @@
 
 
 							";
-							if($vendorStatus=='Inactive')
+
+							if(isset($status))
+							{
+								if($status=='Inactive')
+								{
+
+								echo"
+
+								<select id='statusOptions'><option>Active</option><option selected='selected'>Inactive</option></select>		</td></tr>
+																																									
+							
+
+								";
+								}
+								else
+								{
+									echo"
+
+								<select id='statusOptions'><option>Active</option><option>Inactive</option></select>		</td></tr>
+								
+								";									
+								}
+							}
+
+							else if($vendorStatus=='Inactive')
 							{
 								echo"
 
 								<select id='statusOptions'><option>Active</option><option selected='selected'>Inactive</option></select>		</td></tr>
-								<input type='hidden' name='vStatus' id='vStatus'>
-								<tr><td colspan='2'><hr>																																										</td></tr>
+																																									
 							
 
 								";
 							}
+
 							else
 							{
 								echo"
 
 								<select id='statusOptions'><option>Active</option><option>Inactive</option></select>		</td></tr>
-								<input type='hidden' name='vStatus' id='vStatus'>
-								<tr><td colspan='2'><hr>																																										</td></tr>
-								}
-
+								
 								";
 							}
 
 							echo"
+							<input type='hidden' name='vStatus' id='vStatus'>
+								<tr><td colspan='2'><hr>																																										</td></tr>
+								
 							<!-----Password Details----->
 							
 							<tr><tr><td><label><b>Update Password:</b></label>								</td>	<td>																									</td></tr>
