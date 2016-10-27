@@ -52,10 +52,10 @@
 		if (isset($_POST['SubmitChangesCheck']))
 		{
 			$ItemId=htmlspecialchars(($_POST['ItemId']));
-			$description=htmlspecialchars(($_POST['Description']));
-			$size=htmlspecialchars(($_POST['Size']));
-			$itemc=htmlspecialchars(($_POST['ItemCost']));
-			$itemr=htmlspecialchars(($_POST['ItemRetail']));
+			$description=htmlspecialchars(($_POST['description']));
+			$size=htmlspecialchars(($_POST['size']));
+			$itemc=htmlspecialchars(($_POST['itemcost']));
+			$itemr=htmlspecialchars(($_POST['itemretail']));
 			
 			$addr = 'localhost';
 			$user = 'wdean2';
@@ -129,7 +129,7 @@ echo "
 			</td>
 </tr>
 <tr>
-			<td><b>Item Retail</b></td><td><input type='text' name='Itemretail' id='itemretail' value=$itemr>
+			<td><b>Item Retail</b></td><td><input type='text' name='itemretail' id='itemretail' value=$itemr>
 			</td>
 </tr>
 <tr>
