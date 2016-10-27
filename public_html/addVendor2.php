@@ -75,7 +75,7 @@
     <body>
 		<?php
 			if(isset($_POST['submitCheck'])) {
-				$addr = '127.0.0.2';
+				$addr = 'localhost';
 				$user = 'wdean2';
 				$pass = 'csc423?';
 				$db = 'fal16_csc423_wdean2';
