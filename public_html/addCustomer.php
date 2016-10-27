@@ -93,7 +93,7 @@
 			}
 			else
 			{
-			    echo "Customer Record added successfully" ;
+			    echo "Customer Record a successfully" ;
 			}
 				
 				$db->close();
