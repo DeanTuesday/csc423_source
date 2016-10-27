@@ -86,8 +86,7 @@
 			$pass = 'csc423?';
 			$db = 'fal16_csc423_wdean2';
 			
-			$updateQuery= "Update Customer Set Name='$CustomerName', Address='$Address', City='$City', 
-			State='$State', ZIP='$Zip', Phone='$Phone', Email='$Email', Where CustomerId LIKE '$CustomerId'";
+			$updateQuery= "Update Customer Set Name='$CustomerName', Address='$Address', City='$City',State='$State', ZIP='$Zip', Phone='$Phone', Email='$Email', Where CustomerId LIKE '$CustomerId'";
 			
 			$db = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
 				if ($db->query($updateQuery) === TRUE)
@@ -109,22 +108,37 @@
 		$confirmPassword=($_POST['confirmPassword']);
 		*/
 
-		echo"
-			<html>
-			<head>
-			<title>Update a Customer</title>
+			echo "
+		<html>
+		<head>
+		<title>Update a Vendor</title>
 
+		<script type='text/javascript' language='javascript'>
 
-			
-			</head>
-			";	
+		function validateTheDatas()
+		{
+
+			setSelectedStatus();
+			return true;
+		}
+
+		function setSelectedStatus()
+		{
+			var selectedStatus=	document.getElementById('statusOptions');   
+
+			document.getElementById('vStatus').value = selectedStatus.options[selectedStatus.selectedIndex].value;
+		}
+
+		</script>
+
+		</head>";	
 
 
 		echo "
 			<body>
 				<h2 align='center'>Update a Customer</h1>
 				<h3 align='center'>Update Customer Information:</h2>
-					<form id='updateForm' name='updateForm' method='POST' action='UpdateCustomer.php'>
+					<form id='updateForm' name='updateForm' method='POST' action='UpdateCustomer.php' onsubmit='validateTheDatas();'>
 						<table align='center'>
 							<tr><td colspan='2'><center><label><b>Customer ID: $CustomerId <input type='hidden' name='customerId' value=$CustomerId></b></center></label>															</td></tr>
 							<!-----Customer Details----->
