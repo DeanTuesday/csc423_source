@@ -14,7 +14,7 @@
 
 			$db = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
 			echo("Connected to Database<br>");
-			$query = "Select Description, Size, ItemCost, ItemRetail from InventoryItem Where ItemId=$ItemId";
+			$query = "Select Description, Size, ItemCost, ItemRetail, Division, Category, ImageFileName, VendorId from InventoryItem Where ItemId=$ItemId";
 			$result = $db->query($query);
 			if($result->num_rows > 0)
 			{
