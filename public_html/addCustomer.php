@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Add Vendor</title>
+        <title>Add Customer</title>
         <link rel="stylesheet" type="text/css" href="./css/styles.css" />
         <script type="text/javascript">
 			function validateFunction(){
@@ -80,8 +80,8 @@
 				$pass = 'csc423?';
 				$db = 'fal16_csc423_wdean2';
 				
-				$conn = new mysqli($addr, $user, $pass, $db);
-				//$conn = mysql_connect($addr, $user, $pass);
+				//$conn = new mysqli($addr, $user, $pass, $db);
+				$conn = mysql_connect($addr, $user, $pass);
                 
 				if (!$conn){
 					die('Could not connect: '.mysql_error());
@@ -89,7 +89,7 @@
 				else{
 					echo("Connected to Database<br>");
 				}
-                
+                //$db = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
                 mysql_select_db($db);
                 
 				    $cId = $row["CustomerId"];
