@@ -51,7 +51,7 @@
 
 		}
 
-		if (isset($_POST['SubmitChangesCheck'])||$_POST['SubmitCheck']))
+		if (isset($_POST['SubmitChangesCheck'])||isset($_POST['SubmitCheck']))
 		{
 			
 			
