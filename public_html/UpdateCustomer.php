@@ -89,6 +89,17 @@
 			$updateQuery= "Update Customer Set Name='$CustomerName', Address='$Address', City='$City', 
 			State='$State', ZIP='$Zip', Phone='$Phone', Email='$Email', Where CustomerId LIKE '$CustomerId'";
 			
+			$db = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
+				if ($db->query($updateQuery) === TRUE)
+			{
+			    echo "Record updated successfully";
+			}
+			else
+			{
+			    echo "Error updating record: " . $db->error;
+			}
+
+			$db->close();
 		}
 
 			
