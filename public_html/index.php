@@ -29,7 +29,8 @@ echo "
 				<td><a href='SelectLocationToUpdate.php' class='button'>Update A Location</a></td>
 				<td><a href='addCustomer.php' class='button'>Add A Customer</a></td>
 				<td><a href='SelectCustomerToUpdate.php' class='button'>Update A Customer</a></td>
-				<td><a href='additem.php' class='button'>Add Item</a></td>
+				<td><a href='additem2.php' class='button'>Add Item</a></td>
+							
 			</tr>
 		</table>
 	    <hr/>
