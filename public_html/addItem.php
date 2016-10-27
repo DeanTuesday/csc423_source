@@ -119,63 +119,20 @@
                         <td align="right">Size:</td><td><input type="text" name="size" id="size"></td>
                     </tr>
                     <tr>
-                        <td align="right">Division:</td><td>
-                        <td><select align="left" name="Division" id="Division"> 
-                                <option>Select a Division</option>
-                                <?php
-                                
-                                // TODO: THIS IS NOT A DATABASE YET
-                                $divquery = "Select ItemId, Division from InventoryItem";
-								$divresult = $db->query($divquery);
-
-								if($divresult->num_rows > 0)
-								{
-									while($divrow = $divresult->fetch_assoc())
-									{
-
-										$ItemId = $divrow["ItemId"];
-                                        $Division = $divrow["Division"];
-
-										echo"<option value='$ItemId'>$Division</option>";
-									}
-								}
-								else
-								{
-								    echo "0 results";
-								}
-                                ?>
-                            </select></td>
+                        	<td><b>Division</b></td><td><select name='division' id='division'>
+				<option value='FoodConvenience'>Food Convenience</option>
+				<option value='GeneralMerchandise'>General Merchandise</option>
+			</td>
                     </tr>
                     <tr>
                         <td align="right">Department:</td><td><input type="text" name="department" id="department"></td>
                     </tr>
                     <tr>
-                    	<td align="right">Category:</td><td>
-                        <td><select align="left" name="category" id="category"> 
-                                <option>Select a Category</option>
-                                <?php
-                                
-                                // TODO: THIS IS NOT A DATABASE YET
-                                $catquery = "Select CategoryId, CategoryName from InventoryItemCategory";
-								$catresult = $db->query($catquery);
-
-								if($catresult->num_rows > 0)
-								{
-									while($catrow = $catresult->fetch_assoc())
-									{
-
-										$categoryid = $catrow["CategoryId"];
-                                        $category = $catrow["CategoryName"];
-
-										echo"<option value='$categoryid'>$category</option>";
-									}
-								}
-								else
-								{
-								    echo "0 results";
-								}
-                                ?>
-                            </select></td>
+                    	<td><b>Category</b></td><td><select name='category' id='category'>
+				<option value='CandyFood'>Candy & Food Items</option>
+				<option value='BeverageAlcohol'>Beverage Alcohol</option>
+				<option value='HealthAids'>Health Aids</option>
+			</td>
                     </tr>
                     <tr>
                         <td align="right">Item Cost:</td><td><input type="text" name="cost" id="cost"></td>
