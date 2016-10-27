@@ -86,9 +86,13 @@
 				$cost = $_POST['cost'];
 				$retail = $_POST['retail'];
 				$image = $_POST['image'];
+				$category = $_POST['category'];
+				$department = $_POST['department'];
+				$vendorid = $_POST['vendorid'];
+				
 				
 				$sql = "insert into InventoryItem (ItemId, Description, Size, Division, Department, Category, itemCost, ItemRetail, ImageFileName, VendorId) ".
-						"values ('$ItemId', '$description', '$size', '$division', '$department', '$category', '$cost', '$retail', '$image', '$vid')";
+						"values ('$ItemId', '$description', '$size', '$division', '$department', '$category', '$cost', '$retail', '$image', '$vendorid')";
 						
 				// mysql_select_db('fal16_csc423_wdean2');
 				$result = mysql_query($sql);
@@ -110,7 +114,7 @@
                 <h3>Add an Item</h3>
                 <table>
                     <tr>
-                        <td align="right">Item Id:</td><td><input type="text" name="itemid" id="ItemId"></td>
+                        <td align="right">Item Id:</td><td><input type="text" name="ItemId" id="ItemId"></td>
                     </tr>
                     <tr>
                         <td align="right">Description:</td><td align="left"><input type="text" size="45" name="description" id="description"></td>
@@ -119,7 +123,7 @@
                         <td align="right">Size:</td><td><input type="text" name="size" id="size"></td>
                     </tr>
                     <tr>
-                        	<td><b>Division</b></td><td><select name='division' id='division'>
+                        	<td><b>Division</b></td><td><select name='Division' id='division'>
 				<option value='FoodConvenience'>Food Convenience</option>
 				<option value='GeneralMerchandise'>General Merchandise</option>
 			</td>
