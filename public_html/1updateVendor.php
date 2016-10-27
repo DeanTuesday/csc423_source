@@ -96,7 +96,7 @@
 		//	$vendorNewPassword=($_POST['newPassword']);
 		//	$vendorConfirmNewPassword=($_POST['confirmNewPassword']);
 			
-			$addr = 'localhost';
+			$addr = 'csdb.brockport.edu';
 			$user = 'wdean2';
 			$pass = 'csc423?';
 			$db = 'fal16_csc423_wdean2';
@@ -166,7 +166,7 @@
 			<body>
 				<h2 align='center'>Update a Vendor</h1>
 				<h3 align='center'>Update Vendor Information:</h2>
-					<form id='updateForm' name='updateForm' method='POST' action='UpdateVendor.php' onsubmit='validateTheDatas();'>
+					<form id='updateForm' name='updateForm' method='POST' action='updateVendor.php' onsubmit='validateTheDatas();'>
 						<table align='center'>
 							<tr><td colspan='2'><center><label><b>Vendor ID: $vendorId <input type='hidden' name='vendorId' value=$vendorId></b></center></label>															</td></tr>
 

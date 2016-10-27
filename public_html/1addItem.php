@@ -62,7 +62,7 @@
     <body>
 		<?php
 			if(isset($_POST['submitCheck'])) {
-				$addr = 'localhost';
+				$addr = 'csdb.brockport.edu';
 				$user = 'wdean2';
 				$pass = 'csc423?';
 				$db = 'fal16_csc423_wdean2';
@@ -110,7 +110,7 @@
 		?>
         
     	<div>
-        	<form method="POST" action="additem.php" name="addItem">
+        	<form method="POST" action="addItem.php" name="addItem">
                 <h3>Add an Item</h3>
                 <table>
                     <tr>

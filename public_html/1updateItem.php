@@ -7,7 +7,7 @@
 		//{
 			$ItemId=($_POST['ItemId']);
 			
-			$addr = 'localhost';
+			$addr = 'csdb.brockport.edu';
 			$user = 'wdean2';
 			$pass = 'csc423?';
 			$db = 'fal16_csc423_wdean2';
@@ -69,7 +69,7 @@
 			$imgfn=htmlspecialchars(($_POST['imgfn']));
 			$vendorid=htmlspecialchars(($_POST['vendorid']));
 			
-			$addr = 'localhost';
+			$addr = 'csdb.brockport.edu';
 			$user = 'wdean2';
 			$pass = 'csc423?';
 			$db = 'fal16_csc423_wdean2';
@@ -106,7 +106,7 @@ echo "
 <center>
 	<h1>Add Item</h1>
 </center>
-		<form id='updateForm' name='updateForm' method='POST' action='UpdateItem.php'>
+		<form id='updateForm' name='updateForm' method='POST' action='updateItem.php'>
 			<table align='center'>
 <tr>
 			<td><b>Item id</b></td><td><input type='text' name='ItemId' id='ItemId' value=$ItemId>

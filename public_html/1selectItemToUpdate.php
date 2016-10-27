@@ -2,18 +2,18 @@
 echo "
 <html>
 	<head>
-	<title>Update a Location</title>
+	<title>Update a Item</title>
 		<script type='text/javascript' language='javascript'>
-		function setSelectedStore()
+		function setSelectedItem()
 		{
-			var selectedStore = document.getElementById('storeOptions');   
+			var selectedItem=	document.getElementById('itemOptions');   
 
-			document.getElementById('storeId').value = selectedStore.options[selectedStore.selectedIndex].value;
+			document.getElementById('ItemId').value = selectedItem.options[selectedItem.selectedIndex].value;
 		}
 
-		function addOptionToStore(text, value)
+		function addOptionToItems(text, value)
 		{
-			ddl = document.getELementById('StoreOptions');
+			ddl = document.getELementById('ItemOptions');
 			var option = document.createElement('option');
 			option.value = value;
 			option.text = text;
@@ -23,18 +23,18 @@ echo "
 		</script>
 	</head>
 	<body>
-		<h2 align='center'>Update a Location</h1>
+		<h2 align='center'>Update a Item</h1>
 
-		<h3 align='center'>Select a Location to Update:</h2>
-			<form id='selectStoreForm' name='selectStoreForm' method='POST' action='UpdateLocation.php' onsubmit='setSelectedStore();'>
+		<h3 align='center'>Select a Item to Update:</h2>
+			<form id='selectItemForm' name='selectItemForm' method='POST' action='updateItem.php' onsubmit='setSelectedItem();'>
 				<table align='center'>
 					<tr>
 						<td>
-							<select id='storeOptions'>
-								<option>Select a Location</option>
+							<select id='itemOptions'>
+								<option>Select a Item</option>
 								";
 
-								$addr = 'localhost';
+								$addr = 'csdb.brockport.edu';
 								$user = 'wdean2';
 								$pass = 'csc423?';
 								$db = 'fal16_csc423_wdean2';
@@ -42,19 +42,19 @@ echo "
 								$db = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
 								echo("Connected to Database<br>");
 
-								$query = "Select StoreId, StoreCode, StoreName from RetailStore";
+								$query = "Select ItemId, Description, ItemCost, ItemRetail from InventoryItem";
 								$result = $db->query($query);
 
 								if($result->num_rows > 0)
 								{
 									while($row = $result->fetch_assoc())
 									{
+										$vId = $row["ItemId"];
+										$vd = $row["Description"];
+										$iCost = $row["ItemCost"];
+										$iRetail = $row["ItemRetail"];
 
-										$sId = $row["StoreId"];
-										$sCode = $row["StoreCode"];
-										$sName = $row["StoreName"];
-
-										echo"<option value='$sId'>$sCode - $sName</option>";
+										echo"<option value='$vId'>$vd</option>";
 									}
 								}
 								else
@@ -70,7 +70,7 @@ echo "
 						<td>
 							<input type='submit' value='Go'>
 							<input name='SubmitCheck' type='hidden' value='sent'>
-							<input name='storeId' id='storeId' type='hidden'>
+							<input name='ItemId' id='ItemId' type='hidden'>
 						</td>
 					</tr>
 				</table>

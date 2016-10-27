@@ -123,7 +123,7 @@
 		?>
         
     	<div>
-        	<form method="POST" action="addVendor2.php" name="addVendor2">
+        	<form method="POST" action="addVendor.php" name="addVendor2">
                 <h3>Register a Vendor</h3>
                 <table>
                     <tr>

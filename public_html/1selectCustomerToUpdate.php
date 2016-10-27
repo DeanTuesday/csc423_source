@@ -26,7 +26,7 @@ echo "
 		<h2 align='center'>Update a Customer</h1>
 
 		<h3 align='center'>Select a Customer to Update:</h2>
-			<form id='selectCustomerForm' name='selectCustomerForm' method='POST' action='UpdateCustomer.php' onsubmit='setSelectedCustomer();'>
+			<form id='selectCustomerForm' name='selectCustomerForm' method='POST' action='updateCustomer.php' onsubmit='setSelectedCustomer();'>
 				<table align='center'>
 					<tr>
 						<td>
@@ -34,7 +34,7 @@ echo "
 								<option>Select a Customer</option>
 								";
 
-								$addr = 'localhost';
+								$addr = 'csdb.brockport.edu';
 								$user = 'wdean2';
 								$pass = 'csc423?';
 								$db = 'fal16_csc423_wdean2';

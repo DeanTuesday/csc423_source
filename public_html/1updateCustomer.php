@@ -5,7 +5,7 @@
 			$CustomerId=($_POST["CustomerId"]);
 			
 			
-			$addr = 'localhost';
+			$addr = 'csdb.brockport.edu';
 			$user = 'wdean2';
 			$pass = 'csc423?';
 			$db = 'fal16_csc423_wdean2';
@@ -81,7 +81,7 @@
 			$Phone=htmlspecialchars($Phone);
 			$Email=htmlspecialchars($Email);
 			
-			$addr = 'localhost';
+			$addr = 'csdb.brockport.edu';
 			$user = 'wdean2';
 			$pass = 'csc423?';
 			$db = 'fal16_csc423_wdean2';
@@ -139,7 +139,7 @@
 			<body>
 				<h2 align='center'>Update a Customer</h1>
 				<h3 align='center'>Update Customer Information:</h2>
-					<form id='updateForm' name='updateForm' method='POST' action='UpdateCustomer.php' onsubmit='validateTheDatas();'>
+					<form id='updateForm' name='updateForm' method='POST' action='updateCustomer.php' onsubmit='validateTheDatas();'>
 						<table align='center'>
 							<tr><td colspan='2'><center><label><b>Customer ID: $CustomerId <input type='hidden' name='customerId' value=$CustomerId></b></center></label>															</td></tr>
 							<!-----Customer Details----->

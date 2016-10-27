@@ -6,7 +6,7 @@
 		{
 			$storeId=($_POST['storeId']);
 			
-			$addr = 'localhost';
+			$addr = 'csdb.brockport.edu';
 			$user = 'wdean2';
 			$pass = 'csc423?';
 			$db = 'fal16_csc423_wdean2';
@@ -81,7 +81,7 @@
 			<body>
 				<h2 align='center'>Update Store Location</h1>
 				<h3 align='center'>Update Store Location Information:</h2>
-					<form id='updateForm' name='updateForm' method='POST' action='UpdateLocation.php'>
+					<form id='updateForm' name='updateForm' method='POST' action='updateLocation.php'>
 						<table align='center'>
 							<tr><td colspan='2'><center><label><b>Store ID: $storeId <input type='hidden' name='storeId' value=$storeId></b></center></label> </td></tr>
 							<!-----Store Details----->
