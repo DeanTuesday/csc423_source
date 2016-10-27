@@ -6,68 +6,53 @@
         <link rel="stylesheet" type="text/css" href="./css/styles.css" />
         <script type="text/javascript">
 			function validateFunction(){
-				//validateVCode();
-				//validateVName();
-				//validateAddress();
-				//validateCity();
-				//validateState();
-				//validateZip();
-				//validatePhone();
-				//validateContactName();
+				
+				validateVName();
+				validateAddress();
+				validateCity();
+				validateState();
+				validateZip();
+				validatePhone();
+				
 			}
-			function validateVCode(){
-				var vc = document.getElementById("vcode").value;
-				if (!/^[a-zA-Z0-9]*$/.test(vc)||/^$/.test(vc)){
-                    alert("Vendor Code was not valid.");
-				}
-			}
+	
 			function validateVName(){
-				var vn = document.getElementById("vname").value;
+				var vn = document.getElementById("cName").value;
 				if (!/^[a-zA-Z]+-? ?[a-zA-Z]*$/.test(vn)){
                     alert("Vendor name was not valid.");
 				}
 			}
 			function validateAddress(){
-				var a = document.getElementById("address").value;
+				var a = document.getElementById("cAddress").value;
 				if (!/^[\d]+ [a-zA-Z]+ [a-zA-Z]+\.?$/.test(a)){
 					alert("Address was not valid.");
 				}
 			}
 			function validateCity(){
-				var city = document.getElementById("city").value;
+				var city = document.getElementById("cCity").value;
 				if (!/^[a-zA-Z]+[a-zA-Z -]*$/.test(city)){
 					alert("City was not valid.");
 				}
 			}
 			function validateState(){
-				var state = document.getElementById("state").value;
+				var state = document.getElementById("cState").value;
 				if (!/^[a-zA-Z]+[- ]*[a-zA-Z]*$/.test(state)){
 					alert("State was not valid.");
 				}
 			}
 			function validateZip(){
-				var zip = document.getElementById("zip").value;
+				var zip = document.getElementById("cZip").value;
 				if (!/[0-9]{5}/.test(zip)){
                     alert("Zip code was not valid.");
 				}
 			}
 			function validatePhone(){
-				var phone = document.getElementById("phone").value;
+				var phone = document.getElementById("cPhone").value;
 				if (!/^[0-9]{3}[ -]?[0-9]{3}[ -]?[0-9]{4}$/.test(phone)){
                     alert("Phone Number was not valid.");
 				}
 			}
-			function validateContactName(){
-				var cn = document.getElementById("contact").value;
-				if (!/^[a-zA-Z]+[a-zA-Z -]*$/.test(cn)){
-                    alert("Contact Name was not valid.");
-				}
-			}
-			function validatePassword(){
-				var pwd = document.getElementById("pwd").value;
-				if (!/^[a-zA-Z0-9]+[a-zA-Z -]*$/.test(pwd)){
-                    alert("Contact Name was not valid.");
-				}
+		
 			}
 		</script>
     </head>
@@ -108,7 +93,7 @@
 			}
 			else
 			{
-			    echo "Record updated successfully" ;
+			    echo "Customer Record added successfully" ;
 			}
 				
 				$db->close();

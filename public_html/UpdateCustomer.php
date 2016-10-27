@@ -18,7 +18,7 @@
 			{
 				while($row = $result->fetch_assoc())
 				{
-				
+				    
 					$cName = $row["Name"];
 					$cAddress = $row["Address"];
 					$cCity = $row["City"];
@@ -119,6 +119,7 @@
 		{
 
 			setSelectedStatus();
+			validateFunction();
 			return true;
 		}
 
@@ -128,7 +129,53 @@
 
 			document.getElementById('vStatus').value = selectedStatus.options[selectedStatus.selectedIndex].value;
 		}
-
+function validateFunction(){
+				
+				validateVName();
+				validateAddress();
+				validateCity();
+				validateState();
+				validateZip();
+				validatePhone();
+				
+			}
+	
+			function validateVName(){
+				var vn = document.getElementById("cName").value;
+				if (!/^[a-zA-Z]+-? ?[a-zA-Z]*$/.test(vn)){
+                    alert("Vendor name was not valid.");
+				}
+			}
+			function validateAddress(){
+				var a = document.getElementById("cAddress").value;
+				if (!/^[\d]+ [a-zA-Z]+ [a-zA-Z]+\.?$/.test(a)){
+					alert("Address was not valid.");
+				}
+			}
+			function validateCity(){
+				var city = document.getElementById("cCity").value;
+				if (!/^[a-zA-Z]+[a-zA-Z -]*$/.test(city)){
+					alert("City was not valid.");
+				}
+			}
+			function validateState(){
+				var state = document.getElementById("cState").value;
+				if (!/^[a-zA-Z]+[- ]*[a-zA-Z]*$/.test(state)){
+					alert("State was not valid.");
+				}
+			}
+			function validateZip(){
+				var zip = document.getElementById("cZip").value;
+				if (!/[0-9]{5}/.test(zip)){
+                    alert("Zip code was not valid.");
+				}
+			}
+			function validatePhone(){
+				var phone = document.getElementById("cPhone").value;
+				if (!/^[0-9]{3}[ -]?[0-9]{3}[ -]?[0-9]{4}$/.test(phone)){
+                    alert("Phone Number was not valid.");
+				}
+			}
 		</script>
 
 		</head>";	

@@ -146,6 +146,7 @@
 		{
 
 			setSelectedStatus();
+			
 			return true;
 		}
 
@@ -155,7 +156,7 @@
 
 			document.getElementById('vStatus').value = selectedStatus.options[selectedStatus.selectedIndex].value;
 		}
-
+			
 		</script>
 
 		</head>";	
