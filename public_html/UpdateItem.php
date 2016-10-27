@@ -42,7 +42,7 @@
 			$db->close();
 
 		
-		}
+		
 		if(isset($_POST['SubmitCheck']) || isset($_POST['SubmitChangesCheck']))
 	{
 		if (isset($_POST['SubmitCheck']))
