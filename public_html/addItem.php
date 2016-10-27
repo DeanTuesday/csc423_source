@@ -143,6 +143,24 @@
 								{
 								    echo "0 results";
 								}
+										if(isset($_POST['submitCheck'])) {
+						$addr = 'localhost';
+						$user = 'wdean2';
+						$pass = 'csc423?';
+						$db = 'fal16_csc423_wdean2';
+				
+									$conn = mysql_connect($addr, $user, $pass);
+							mysql_select_db('$db');
+
+			$sql = "SELECT Division FROM InventoryItem";
+$result = mysql_query($sql);
+
+echo "<select name='Division'>";
+while ($row = mysql_fetch_array($result)) {
+    echo "<option value='" . $row['Division'] ."'>" . $row['Division'] ."</option>";
+}
+echo "</select>";
+
                                 ?>
                             </select></td>
                     </tr>
@@ -174,6 +192,7 @@
 								{
 								    echo "0 results";
 								}
+								
                                 ?>
                             </select></td>
                     </tr>
