@@ -184,38 +184,7 @@ echo "
 </body>
 </html>
 ";
-                 <?php
-                              
-							if(isset($_POST['submitCheck'])) {
-				$addr = 'localhost';
-				$user = 'wdean2';
-				$pass = 'csc423?';
-				$db = 'fal16_csc423_wdean2';
-				
-				//$conn = new mysqli($addr, $user, $pass, $db);
-				$conn = mysql_connect($addr, $user, $pass);
-                
-				if (!$conn){
-					die('Could not connect: '.mysql_error());
-				}
-				else{
-					echo("Connected to Database<br>");
-				}
-                
-                mysql_select_db($db);
-                
 
-			$sql = "SELECT Division FROM InventoryItem";
-$result = mysql_query($sql);
-
-echo "<select name='Division'>";
-while ($row = mysql_fetch_array($result)) {
-    echo "<option value='" . $row['Division'] ."'>" . $row['Division'] ."</option>";
-}
-echo "</select>";
-mysql_close($conn);
-			}
-                                ?>
 		if(isset($_POST['SubmitChangesCheck']))
 		{
 			echo "Vendor Updated!";
