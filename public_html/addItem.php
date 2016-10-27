@@ -87,7 +87,7 @@
 				$image = $_POST['image'];
 				
 				$sql = "insert into Vendor (ItemId, Description, Size, Division, Department, Category, itemCost, ItemRetail, ImageFileName, VendorId) ".
-						"values ('$itemid', '$description', '$size', '$division', '$department', '$category', '$cost', '$retail', '$image', '$vid')";
+						"values ('$ItemId', '$description', '$size', '$division', '$department', '$category', '$cost', '$retail', '$image', '$vid')";
 						
 				// mysql_select_db('fal16_csc423_wdean2');
 				$result = mysql_query($sql);
@@ -109,7 +109,7 @@
                 <h3>Add an Item</h3>
                 <table>
                     <tr>
-                        <td align="right">Item Id:</td><td><input type="text" name="itemid" id="itemid"></td>
+                        <td align="right">Item Id:</td><td><input type="text" name="itemid" id="ItemId"></td>
                     </tr>
                     <tr>
                         <td align="right">Description:</td><td align="left"><input type="text" size="45" name="description" id="description"></td>
@@ -119,12 +119,12 @@
                     </tr>
                     <tr>
                         <td align="right">Division:</td><td>
-                        <td><select align="left" name="division" id="division"> 
+                        <td><select align="left" name="Division" id="division"> 
                                 <option>Select a Division</option>
                                 <?php
                                 
                                 // TODO: THIS IS NOT A DATABASE YET
-                                $divquery = "Select DivisionId, DivisionName from ItemDivision";
+                                $divquery = "Select ItemId, Division from InventoryItem";
 								$divresult = $db->query($divquery);
 
 								if($divresult->num_rows > 0)
@@ -132,10 +132,10 @@
 									while($divrow = $divresult->fetch_assoc())
 									{
 
-										$divisionid = $divrow["DivisionId"];
-                                        $division = $divrow["DivisionName"];
+										$ItemId = $divrow["ItemId"];
+                                        $Division = $divrow["Division"];
 
-										echo"<option value='$divisionid'>$division</option>";
+										echo"<option value='$ItemId'>$Division</option>";
 									}
 								}
 								else
