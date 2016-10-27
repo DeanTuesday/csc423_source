@@ -1,14 +1,75 @@
 @charset "utf-8";
 /* CSS Document */
-div{
-	width: 65%;
-	height: 720px;
-	margin-top: 1%;
-	margin-left: auto;
-	margin-right: auto;
-	text-align: center;
-	}
-	
-table{
+html, body
+{
+	margin: 0;
+	padding: 0;
+}
+
+p
+{
+	font-size: 12pt;
+}
+
+table
+{
+	text-align: left;
+	width: auto;
+	border-collapse: collapse;
+}
+
+th, tr, td
+{
+	padding-left: 0px;
+	padding-top: 0px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+}
+
+tr:nth-child(even)
+{
+	background-color: #f2f2f2
+}
+
+.bold
+{
+	font-weight: bold;
+}
+
+footer
+{
+	font-style: italic;
+}
+
+.page-container
+{
+	padding: 20px;
 	margin: auto;
+	max-width: 800px;
+
+}
+
+.centered
+{
+	text-align: center;
+}
+
+.centered table 
+{
+    margin: 0 auto; 
+    text-align: left;
+}
+
+.button{
+    background-color: #555555;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
 }

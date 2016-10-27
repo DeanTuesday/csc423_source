@@ -1,15 +1,41 @@
 <?php
-	echo 'Hello World<br>';
-	echo 'My name is Will Dean, this is my contribution:<br>';
-	echo '<a href="SelectVendorToUpdate.php">Update A Vendor</a><br>';
-	echo 'My name is Corey Easton, this is my contribution:<br>';
-	echo '<a href="selectItemToUpdate.php">Update A Item</a><br>';
-	echo 'My name is Mason Mascle, this is my contribution:<br>';
-	echo '<a href="SelectCustomerToUpdate.php">Update A Customer</a><br>';
-	echo 'My name is Brian Scarbrough, this is my contribution:<br>';
-	echo '<a href="SelectLocationToUpdate.php">Update A Location</a><br>';
-	echo 'My name is Marlin, this is my contribution:<br>';
-	echo '<a href="addvendor2.php">Add Vendor</a><br>';
+
+echo "
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Appropriate Title and meta tags -->
+	<title>Assignment 1</title>
+	<meta http-equiv='Content-Type' content='text/html charset=utf-8' />
+	<meta http-equiv='Content-Language' content='en-us' />
+	<meta name='description' content='CSC 423 Group Assignment' />
+	<meta name='keywords' content='dean mondy, will dean, brian scarbrough, cory easton, mason mascle, marlin mei, csc 423, group project' />
+	<meta name='author' content='Dean Mondy, William Dean, Cory Easton, Marlin Mei, Mason Mascle, Brian Scarbrough' />
+	<meta name='copyright' content='SUNY Brockport CSC423 2016' />
+
+	<!-- Custom CSS -->
+	<link rel='stylesheet' href='./css/styles.css' />
+</head>
+<body>
+	<div class='page-container'>
+		<h2>CSC 423 Team 2</h2>
+		<hr/>
+		<p>This website should currently implement functionality to register vendors, modify/delete vendors, add/modify/delete store locations, add/modify/delete stocked items, and add/modify/delete customers.</p>
+		<table>
+			<tr>
+				<td><a href='addvendor2.php' class='button'>Add A Vendor</a></td>
+				<td><a href='SelectVendorToUpdate.php' class='button'>Update A Vendor</a></td>
+				<td><a href='selectItemToUpdate.php' class='button'>Update An Item</a></td>
+				<td><a href='SelectLocationToUpdate.php' class='button'>Update A Location</a></td>
+				<td><a href='SelectCustomerToUpdate.php' class='button'>Update A Customer</a></td>
+			</tr>
+		</table>
+	    <hr/>
+	    <footer>Last updated: October 27, 2016</footer>
+	</div>
+</body>
+</html>
+";
 	
 ?>
 
