@@ -53,14 +53,33 @@
 
 		if (isset($_POST['SubmitChangesCheck']))
 		{
-			$CustomerId=htmlspecialchars(($_POST['CustomerId']));
-			$CustomerName=htmlspecialchars(($_POST['CustomerName']));
-			$Address=htmlspecialchars(($_POST['Address']));
-			$City=htmlspecialchars(($_POST['City']));
-			$State=htmlspecialchars(($_POST['State']));
-			$Zip=htmlspecialchars(($_POST['Zip']));
-			$Phone=htmlspecialchars(($_POST['Phone']));
-			$Email=htmlspecialchars(($_POST['Email']));
+			
+			
+			
+			
+			$CustomerId=($_POST['CustomerId']);
+			$CustomerName=($_POST['CustomerName']);
+			$Address=($_POST['Address']);
+			$City=($_POST['City']);
+			$State=($_POST['State']);
+			$Zip=($_POST['Zip']);
+			$Phone=($_POST['Phone']);
+			$Email=($_POST['Email']);
+			
+			
+			
+			
+			
+			
+			
+			$CustomerId=htmlspecialchars($CustomerId);
+			$CustomerName=htmlspecialchars($CustomerName);
+			$Address=htmlspecialchars($Address);
+			$City=htmlspecialchars($City);
+			$State=htmlspecialchars($State);
+			$Zip=htmlspecialchars($Zip);
+			$Phone=htmlspecialchars($Phone);
+			$Email=htmlspecialchars($Email);
 			
 			$updateQuery= "Update Customer Set Name='$$CustomerName', Address='$Address', City='$City', 
 			State='$State', ZIP='$Zip', Phone='$Phone', Email='$Email', Where CustomerId LIKE '$CustomerId'";
