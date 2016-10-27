@@ -80,8 +80,8 @@
 				$pass = 'csc423?';
 				$db = 'fal16_csc423_wdean2';
 				
-				//$conn = new mysqli($addr, $user, $pass, $db);
-				$conn = mysql_connect($addr, $user, $pass);
+				$conn = new mysqli($addr, $user, $pass, $db);
+				//$conn = mysql_connect($addr, $user, $pass);
                 
 				if (!$conn){
 					die('Could not connect: '.mysql_error());
