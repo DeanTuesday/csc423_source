@@ -102,13 +102,13 @@
 				 $result = $db->query($query);
 				// $result = $db->query($sql);
 				
-					if ($db->query($query) === TRUE)
+					if (!$result)
 			{
-			    echo "Record updated successfully";
+			    echo "Error updating record ";
 			}
 			else
 			{
-			    echo "Error updating record: " ;
+			    echo "Record updated successfully" ;
 			}
 				
 				$db->close();
