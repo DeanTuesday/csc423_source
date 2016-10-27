@@ -105,7 +105,7 @@
 				$pwdc = $_POST['pwdc'];
 				
 				$sql = "insert into Vendor (VendorCode, VendorName, Address, City, State, ZIP, Phone, ContactPersonName, Password) ".
-						"values ('$vcode', '$vname', '$address, '$city', '$state', '$zip', '$phone', '$contact', '$pwd')";
+						"values ('$vcode', '$vname', '$address', '$city', '$state', '$zip', '$phone', '$contact', '$pwd')";
 						
 				// mysql_select_db('fal16_csc423_wdean2');
 				$result = mysql_query($sql);
