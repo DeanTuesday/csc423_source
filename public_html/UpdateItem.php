@@ -145,7 +145,7 @@ echo "
 				</tr>
 				<tr>
 				<td>
-				<td align ='center'><input type='submit' value='Submit Changes'</td><td align ='center'><input type='button' value='Undo Changes'></td>
+				<td align ='center'><input type='submit' value='Submit Changes'<input type='button' value='Undo Changes'></td>
 							
 							<input name='SubmitChangesCheck' type='hidden' value='sent'>
 				</tr>
