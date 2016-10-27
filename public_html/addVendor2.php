@@ -74,21 +74,24 @@
     
     <body>
 		<?php
-			echo $_POST["submitCheck"];
 			if(isset($_POST['submitCheck'])) {
 				$addr = 'csdb.brockport.edu';
 				$user = 'wdean2';
 				$pass = 'csc423?';
 				$db = 'fal16_csc423_wdean2';
 				
-				$conn = new mysqli($addr, $user, $pass, $db);
-				
+				//$conn = new mysqli($addr, $user, $pass, $db);
+				$conn = mysql_connect($addr, $user, $pass);
+                
 				if (!$conn){
 					die('Could not connect: '.mysql_error());
 				}
 				else{
 					echo("Connected to Database<br>");
 				}
+                
+                mysql_select_db($db);
+                
 				$vid = null;
 				$vcode = $_POST['vcode'];
 				$vname = $_POST['vname'];
@@ -105,7 +108,7 @@
 						"values ('$vcode', '$vname', '$address, '$city', '$state', '$zip', '$phone', '$contact', '$pwd')";
 						
 				// mysql_select_db('fal16_csc423_wdean2');
-				$result = mysql_query( $sql );
+				$result = mysql_query($sql);
 				// $result = $db->query($sql);
 				
 				if(!$result ) {
