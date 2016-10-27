@@ -1,10 +1,10 @@
 <?php
 
 
-	if(isset($_POST['SubmitCheck']) || isset($_POST['SubmitChangesCheck']))
-	{
-		if (isset($_POST['SubmitCheck']))
-		{
+	//if(isset($_POST['SubmitCheck']) || isset($_POST['SubmitChangesCheck']))
+	//{
+		//if (isset($_POST['SubmitCheck']))
+		//{
 			$ItemId=($_POST['ItemId']);
 			
 			$addr = 'localhost';
@@ -43,7 +43,12 @@
 
 		
 		}
+		if(isset($_POST['SubmitCheck']) || isset($_POST['SubmitChangesCheck']))
+	{
+		if (isset($_POST['SubmitCheck']))
+		{
 
+		}
 		if (isset($_POST['SubmitChangesCheck']))
 		{
 			$ItemId=htmlspecialchars(($_POST['ItemId']));
@@ -52,6 +57,27 @@
 			$itemc=htmlspecialchars(($_POST['ItemCost']));
 			$itemr=htmlspecialchars(($_POST['ItemRetail']));
 			
+			$addr = 'localhost';
+			$user = 'wdean2';
+			$pass = 'csc423?';
+			$db = 'fal16_csc423_wdean2';
+			
+			$updateQuery= "Update InventoryItem Set ItemId='$ItemId', Description='$description', Size='$size', ItemCost='$itemc', ItemRetail='$itemr' Where ItemId=$ItemId";
+		
+		$db = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
+			
+		//	echo("Connected to Database<br>");
+
+			if ($db->query($updateQuery) === TRUE)
+			{
+			    echo "Record updated successfully";
+			}
+			else
+			{
+			    echo "Error updating record: " . $db->error;
+			}
+
+			$db->close();
 		}
 
 			
