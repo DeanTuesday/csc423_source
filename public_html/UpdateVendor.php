@@ -1,5 +1,6 @@
 <?php
-
+	echo"<html>
+			<head>";
 
 	if(isset($_POST['SubmitCheck']) || isset($_POST['SubmitChangesCheck']))
 	{
@@ -28,7 +29,6 @@
 					$vZip = $row["ZIP"];
 					$vPhone = $row["Phone"];
 					$vContact = $row["ContactPersonName"];
-					$vPassword = $row["Password"];
 
 					$vendorCode=htmlspecialchars($vCode);
 					$vendorName=htmlspecialchars($vName);
@@ -38,7 +38,6 @@
 					$zip=htmlspecialchars($vZip);
 					$phone=htmlspecialchars($vPhone);
 					$contactPersonName=htmlspecialchars($vContact);
-					$vendorPassword=htmlspecialchars($vPassword);
 				}
 			}
 			else
@@ -47,38 +46,54 @@
 			}
 
 			$db->close();
-
-			//$vendorId=htmlspecialchars(($_POST['vendorId']));
-			
-			/*
-			$vendorCode="";
-			$vendorName="";
-			$address="";
-			$city="";
-			$state="";
-			$zip="";
-			$phone="";
-			$contactPersonName="";
-			*/
-
 		}
-
 		if (isset($_POST['SubmitChangesCheck']))
 		{
-			$vendorId=htmlspecialchars(($_POST['vendorId']));
-			$vendorCode=htmlspecialchars(($_POST['vendorCode']));
-			$vendorName=htmlspecialchars(($_POST['vendorName']));
-			$address=htmlspecialchars(($_POST['address']));
-			$city=htmlspecialchars(($_POST['city']));
-			$state=htmlspecialchars(($_POST['state']));
-			$zip=htmlspecialchars(($_POST['zip']));
-			$phone=htmlspecialchars(($_POST['phone']));
-			$contactPersonName=htmlspecialchars(($_POST['contactPersonName']));
-			$vendorPassword=htmlspecialchars(($_POST['password']));
-			$vendorNewPassword=htmlspecialchars(($_POST['newPassword']));
-			$vendorConfirmNewPassword=htmlspecialchars(($_POST['confirmNewPassword']));
+			$vendorId=($_POST['vendorId']);
+			$vendorCode=($_POST['vendorCode']);
+			$vendorName=($_POST['vendorName']);
+			$address=($_POST['address']);
+			$city=($_POST['city']);
+			$state=($_POST['state']);
+			$zip=($_POST['zip']);
+			$phone=($_POST['phone']);
+			$contactPersonName=($_POST['contactPersonName']);
 
-			$vPassword = ($_POST['password']);
+		//	$vendorPassword=($_POST['password']);
+		//	$vendorNewPassword=($_POST['newPassword']);
+		//	$vendorConfirmNewPassword=($_POST['confirmNewPassword']);
+			
+			$addr = 'localhost';
+			$user = 'wdean2';
+			$pass = 'csc423?';
+			$db = 'fal16_csc423_wdean2';
+			
+			if (isset($_POST['newPassword']) && !($_POST['newPassword'])=="")
+			{
+				$newPassword=($_POST['newPassword']);
+				$updateQuery= "Update Vendor Set VendorCode='$vendorCode', VendorName='$vendorName', Address='$address', City='$city', State='$state', ZIP='$zip', Phone='$phone', ContactPersonName='$contactPersonName', Password='$newPassword' Where VendorId=$vendorId";
+			}
+			else
+			{
+				$updateQuery= "Update Vendor Set VendorCode='$vendorCode', VendorName='$vendorName', Address='$address', City='$city', State='$state', ZIP='$zip', Phone='$phone', ContactPersonName='$contactPersonName' Where VendorId=$vendorId";
+			}
+
+			$db = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
+			
+			echo("Connected to Database<br>");
+
+			if ($db->query($updateQuery) === TRUE)
+			{
+			    echo "Record updated successfully";
+			}
+			else
+			{
+			    echo "Error updating record: " . $db->error;
+			}
+
+			$db->close();
+
+
 		}
 
 			
@@ -88,32 +103,32 @@
 		$confirmPassword=($_POST['confirmPassword']);
 		*/
 
-		echo"
-			<html>
-			<head>
+		echo "
 			<title>Update a Vendor</title>
 
 			<script type='text/javascript' language='javascript'>
 
 			function confirmNewPassword()
 			{
-				var userPass = document.getElementById('password').value;
-				var newPass = document.getElementById('newPassword').value;
-				var confirmNewPass = document.getElementById('confirmNewPassword').value;
+				alert('hello');
+				var userPass = document.getElementById('userPwd').value;
+				var newPass = document.getElementById('newPwd').value;
+				var confirmNewPwd = document.getElementById('confirmNewPassword').value;
 
-				if(userPass== '' && newPass == '' && confirmNewPass == '')
+				if(userPass=='' && newPass =='' && confirmNewPwd =='')
 				{
 					return true;
 				}
 
-				else if(userPass != $vPassword)
+				else if(userPass != 'teststring')
 				{
 					alert('Enter your current password to change your password.');
 					return false;
 				}
-				else if(newPass != confirmNewPass)
+				else if(newPass != confirmNewPwd)
 				{
 					alert('New password does not match confirmation field.');
+					return false;
 				}
 			}
 			</script>
@@ -125,10 +140,12 @@
 			<body>
 				<h2 align='center'>Update a Vendor</h1>
 				<h3 align='center'>Update Vendor Information:</h2>
-					<form id='updateForm' name='updateForm' method='POST' action='UpdateVendor.php'>
+					<form id='updateForm' name='updateForm' method='POST' action='UpdateVendor.php' onsubmit='confirmNewPassword();'>
 						<table align='center'>
 							<tr><td colspan='2'><center><label><b>Vendor ID: $vendorId <input type='hidden' name='vendorId' value=$vendorId></b></center></label>															</td></tr>
+
 							<!-----Vendor Details----->
+							
 							<tr><td><label>Vendor Code:</label>												</td>	<td><input type='text' id='vendorCode' name='vendorCode' value=". "'$vendorCode'" . ">					</td></tr>
 							<tr><td><label>Vendor Name:</label>												</td>	<td><input type='text' id='vendorName' name='vendorName' value='$vendorName'>							</td></tr>
 							<tr><td><label>Address:</label>													</td>	<td><input type='text' id='address' name='address' value=$address>										</td></tr>
@@ -138,15 +155,17 @@
 							<tr><td><label>Phone:</label>													</td>	<td><input type='text' id='phone' name='phone' value=$phone>											</td></tr>
 							<tr><td><label>Contact Person:</label>											</td>	<td><input type='text' id='contactPersonName' name='contactPersonName' value=$contactPersonName>		</td></tr>
 							<tr><td colspan='2'><hr>																																										</td></tr>
+							
 							<!-----Password Details----->
+							
 							<tr><tr><td><label><b>Update Password:</b></label>								</td>	<td>																									</td></tr>
-							<tr><td><label>Current Password:</label>										</td>	<td><input type='password' id='password' name='password' value=$vendorPassword>												</td></tr>
-							<tr><td><label>New Password:</label>											</td>	<td><input type='password' id='newPassword' name='newPassword'>											</td></tr>
-							<tr><td><label>Confirm New Password:</label>									</td>	<td><input type='password' id='confirmNewPassword' name='confirmNewPassword'>							</td></tr>
-								<tr><td><center><br><input type='submit' value='Submit Changes' onsubmit='confirmNewPassword();'></center>		</td>	<td><center><br><input type='button' value='Undo Changes'></center>		</td></tr>
+							<tr><td><label>Current Password:</label>										</td>	<td><input type='password' id='userPwd' name='userPwd'>												</td></tr>
+							<tr><td><label>New Password:</label>											</td>	<td><input type='password' id='newPwd' name='newPwd'>											</td></tr>
+							<tr><td><label>Confirm New Password:</label>									</td>	<td><input type='password' id='confirmNewPwd' name='confirmNewPwd'>							</td></tr>
+								<tr><td><center><br><input type='submit' value='Submit Changes'></center>		</td>	<td><center><br><input type='button' value='Undo Changes'></center>		</td></tr>
 							</table>
-							<input name='SubmitChangesCheck' type='hidden' value='sent'>
-						</form>
+						<input name='SubmitChangesCheck' type='hidden' value='sent'>
+					</form>
 				</body>
 			</html>
 			";
