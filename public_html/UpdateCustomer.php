@@ -86,7 +86,7 @@
 			$pass = 'csc423?';
 			$db = 'fal16_csc423_wdean2';
 			
-			$updateQuery= "Update Customer Set Name='$CustomerName', Address='$Address', City='$City',State='$State', ZIP='$Zip', Phone='$Phone', Email='$Email', Where CustomerId = '$CustomerId'";
+			$updateQuery= "Update Customer Set Name='$CustomerName', Address='$Address', City='$City',State='$State', ZIP='$Zip', Phone='$Phone', Email='$Email' Where CustomerId LIKE '$CustomerId'";
 			
 			$db = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
 				if ($db->query($updateQuery) === TRUE)
