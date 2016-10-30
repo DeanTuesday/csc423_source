@@ -1,12 +1,17 @@
 <?php
 
+// Header file will use this to set the page title
 $PageTitle="Nanno's Foods";
 
+// Header file will use this function to link your page to other css or js files
 function customPageHeader(){
 ?>
-	<!-- Add any CSS or JS files here -->
+<!-- Add any CSS or JS files here -->
+	<link rel="stylesheet" href="./css/styles.css" />
 <?php }
-include_once('./inc/header.php');
+
+// Header
+include_once('./templates/header.php');
 ?>
 
 <!-- Body Content Goes Here -->
@@ -29,5 +34,6 @@ include_once('./inc/header.php');
 </table>
 
 <?php
-include_once('./inc/footer.php');
+// Footer
+include_once('./templates/footer.php');
 ?>

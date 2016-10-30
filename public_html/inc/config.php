@@ -1,9 +1,10 @@
 <?php
 
 return array(
-	'host' => 'http://csdb.brockport.edu/phpmyadmin',
-	'username' => 'wdean2',
+	'addr' => 'csdb.brockport.edu',
+	'user' => 'wdean2',
 	'pass' => 'csc423?',
+	'db' => 'fal16_csc423_wdean2',
 	);
 
 ?>
