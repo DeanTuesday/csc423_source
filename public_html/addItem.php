@@ -66,7 +66,7 @@ include_once('./templates/header.php');
         <tr>
             <td align="right"><b>Vendor</b></td>
             <td>
-            	<select name='vendorid' id='vendorid'>
+            	<select name='vendorId' id='vendorId'>
 				<option value='1'>FDS-MERCHANDISE</option>
 				<option value='2'>STEFANELLI DISTRIBUTING (DSD)</option>
 				<option value='3'>GLAZER'S INC (TX-WINE) DSD</option>

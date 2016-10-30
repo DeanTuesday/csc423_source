@@ -18,30 +18,42 @@ include_once('./templates/header.php');
 if(isset($_POST['addCustomer'])) {
     $config = include('./inc/config.php');
 
-    $db = new mysqli($config['addr'], $config['user'], $config['pass'], $config['db']) or die ("Unable to Connect");
+    $conn = new mysqli($config['addr'], $config['user'], $config['pass'], $config['db']);
+    
+    if($conn->connect_errno){
+        echo "Error: Failed to make a MySQL connection, here is why: \n";
+        echo "Errno: " . $mysqli->connect_errno . "\n";
+        echo "Error: " . $mysqli->connect_error . "\n";
+        exit;
+    }
+
                 
     $cId = $_POST['cId'];
-    $cName = $_POST['cName'];
-    $cAddress = $_POST['cAddress'];
-    $cCity = $_POST['cCity'];
-    $cState = $_POST['cState'];
-    $cZip = $_POST['cZip'];
-    $cPhone = $_POST['cPhone'];
-    $cEmail = $_POST['cEmail'];
+    $name = $_POST['name'];
+    $address = $_POST['address'];
+    $city = $_POST['city'];
+    $state = $_POST['state'];
+    $zip = $_POST['zip'];
+    $phone = $_POST['phone'];
+    $email = $_POST['email'];
     
     $query = "insert into Customer (CustomerId, Name, Address, City, State, ZIP, Phone, Email) ".
-            "values ('$cId', '$cName', '$cAddress', '$cCity', '$cState', '$cZip', '$cPhone', '$cEmail')";
+            "values ('$cId', '$name', '$address', '$city', '$state', '$zip', '$phone', '$email')";
    
-    $result = $db->query($query);
+    $result = $conn->query($query);
     
     if(!$result) {
-        echo "Error updating record ";
+        echo "Error: Our query failed to execute and here is why: \n";
+        echo "Query: " . $sql . "\n";
+        echo "Errno: " . $mysqli->errno . "\n";
+        echo "Error: " . $mysqli->error . "\n";
+        exit;
     }
     else {
-        echo "Customer Record a successfully" ;
+        echo "Customer created successfully" ;
     }
     
-    $db->close();
+    $conn->close();
 }
 
 if(isset($_POST['updateCustomer'])) {
