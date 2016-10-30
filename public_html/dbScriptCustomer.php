@@ -1,7 +1,7 @@
 <?php
 
 // Header file will use this to set the page title
-$PageTitle="Add Customer to DB";
+$PageTitle="Customer Sent to DB";
 
 // Header file will use this function to link your page to other css or js files
 function customPageHeader(){
@@ -10,16 +10,11 @@ function customPageHeader(){
     <link rel="stylesheet" href="./css/styles.css" />
 <?php }
 
-// Header
-include_once('./templates/header.php');
-
-
-// Run the DB script and echo any errors to the screen so we can debug
-if(isset($_POST['addCustomer'])) {
+// Run the DB Script and output any errors for debugging
+if(isset($_POST['submit'])){
+    // Always connect to DB
     $config = include('./inc/config.php');
-
     $conn = new mysqli($config['addr'], $config['user'], $config['pass'], $config['db']);
-    
     if($conn->connect_errno){
         echo "Error: Failed to make a MySQL connection, here is why: \n";
         echo "Errno: " . $mysqli->connect_errno . "\n";
@@ -27,7 +22,7 @@ if(isset($_POST['addCustomer'])) {
         exit;
     }
 
-                
+    // Always grab customer info from the form
     $cId = $_POST['cId'];
     $name = $_POST['name'];
     $address = $_POST['address'];
@@ -36,29 +31,53 @@ if(isset($_POST['addCustomer'])) {
     $zip = $_POST['zip'];
     $phone = $_POST['phone'];
     $email = $_POST['email'];
-    
-    $query = "insert into Customer (CustomerId, Name, Address, City, State, ZIP, Phone, Email) ".
-            "values ('$cId', '$name', '$address', '$city', '$state', '$zip', '$phone', '$email')";
+
+    // Only run the following query if we are inserting
+    if(isset($_POST['addCustomer'])){
+        $query =    "insert into Customer (CustomerId, Name, Address, City, State, ZIP, Phone, Email) ".
+                    "values ('$cId', '$name', '$address', '$city', '$state', '$zip', '$phone', '$email')";
    
-    $result = $conn->query($query);
-    
-    if(!$result) {
-        echo "Error: Our query failed to execute and here is why: \n";
-        echo "Query: " . $sql . "\n";
-        echo "Errno: " . $mysqli->errno . "\n";
-        echo "Error: " . $mysqli->error . "\n";
-        exit;
+        $result = $conn->query($query);
+        if(!$result) {
+            echo "Error: Our query failed to execute and here is why: \n";
+            echo "Query: " . $query . "\n";
+            echo "Errno: " . $mysqli->errno . "\n";
+            echo "Error: " . $mysqli->error . "\n";
+            exit;
+        }
+        else {
+            echo "Customer created successfully" ;
+        }
     }
-    else {
-        echo "Customer created successfully" ;
+
+    // Only run the following query if we are updating
+    if(isset($_POST['updateCustomer'])){
+        $query= "update Customer ".
+                "set Name='$name', Address='$address', City='$city',State='$state', ZIP='$zip', Phone='$phone', Email='$email' ".
+                "where CustomerId='$cId'";
+
+        $result = $conn->query($query);
+        if(!$result) {
+            echo "Error: Our query failed to execute and here is why: \n";
+            echo "Query: " . $query . "\n";
+            echo "Errno: " . $mysqli->errno . "\n";
+            echo "Error: " . $mysqli->error . "\n";
+            exit;
+        }
+        else {
+            echo "Customer updateded successfully" ;
+        }
     }
-    
+
+    // Always close the connection
     $conn->close();
 }
-
-if(isset($_POST['updateCustomer'])) {
-    //TODO
+else{
+    echo "submitCheck failed.";
 }
+
+// Header
+include_once('./templates/header.php');
 ?>
 
 <!-- Body Content Goes Here -->

@@ -1,174 +1,120 @@
 <?php
 
+// Script for getting the existing customer out of the database
+//------------------------------------------------------------------------------------------
+if(isset($_POST['submit'])){
+// connect to the db
+$config = include('./inc/config.php');
+$conn = new mysqli($config['addr'], $config['user'], $config['pass'], $config['db']);
+if($conn->connect_errno){
+    echo "Error: Failed to make a MySQL connection, here is why: \n";
+    echo "Errno: " . $mysqli->connect_errno . "\n";
+    echo "Error: " . $mysqli->connect_error . "\n";
+    exit;
+}
 
+// get the selected customer from previous page
+$customerId = $_POST['chooseCustomer'];
+$query = "select Name, Address, City, State, ZIP, Phone, Email from Customer Where CustomerId LIKE '$customerId'";
+$result = $conn->query($query);
+if(!$result) {
+    echo "Error: Our query failed to execute and here is why: \n";
+    echo "Query: " . $query . "\n";
+    echo "Errno: " . $mysqli->errno . "\n";
+    echo "Error: " . $mysqli->error . "\n";
+    exit;
+}
 
-			$CustomerId=($_POST["CustomerId"]);
-			
-			
-			$addr = 'csdb.brockport.edu';
-			$user = 'wdean2';
-			$pass = 'csc423?';
-			$db = 'fal16_csc423_wdean2';
+if($result->num_rows > 0)
+{
+    while($row = $result->fetch_assoc())
+    {
+        $name = htmlspecialchars($row["Name"]);
+        $address = htmlspecialchars($row["Address"]);
+        $city = htmlspecialchars($row["City"]);
+        $state = htmlspecialchars($row["State"]);
+        $zip = htmlspecialchars($row["ZIP"]);
+        $phone = htmlspecialchars($row["Phone"]);
+        $email = htmlspecialchars($row["Email"]);
+    }
+}
+else{
+    echo "0 results";
+}
+$conn->close();
+}
+else{
+// TODO The selection page was skipped so kill the process
+echo "Error - Page was accessed illegally <br>";
+echo "<a href='./selectCustomerToUpdate.php'>Back</a>";
+exit;
+}
+//------------------------------------------------------------------------------------------
 
-			$db = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
-			echo("Connected to Database<br>");
-			$query = "Select Name, Address, City, State, ZIP, Phone, Email from Customer Where CustomerId LIKE '$CustomerId'";
-            $result = $db->query($query);
-			if($result->num_rows > 0)
-			{
-				while($row = $result->fetch_assoc())
-				{
-				    
-					$cName = $row["Name"];
-					$cAddress = $row["Address"];
-					$cCity = $row["City"];
-					$cState = $row["State"];
-					$cZip = $row["ZIP"];
-					$cPhone = $row["Phone"];
-					$cEmail = $row["Email"];
-					
+// Header file will use this to set the page title
+$PageTitle="Update Existing Customer";
 
-				
-					$CustomerName=htmlspecialchars($cName);
-					$Address=htmlspecialchars($cAddress);
-					$City=htmlspecialchars($cCity);
-					$State=htmlspecialchars($cState);
-					$Zip=htmlspecialchars($cZip);
-					$Phone=htmlspecialchars($cPhone);
-					$Email=htmlspecialchars($cEmail);
-					
-				}
-			}
-			else
-			{
-			    echo "0 results";
-			}
+// Header file will use this function to link your page to other css or js files
+function customPageHeader(){
+?>
+<!-- Add any CSS or JS files here -->
+    <script src="./js/customerFormValidator.js" type="text/javascript"></script>
+<?php }
 
-			$db->close();
+// Header
+include_once('./templates/header.php');
+?>
 
-		
-	if(isset($_POST['SubmitCheck']) || isset($_POST['SubmitChangesCheck']))
-	{
-		if (isset($_POST['SubmitCheck']))
-		{
-		}
-			
-				if (isset($_POST['SubmitChangesCheck']))
-		{	
-			
-			
-			$CustomerId=($_POST['CustomerId']);
-			$CustomerName=($_POST['CustomerName']);
-			$Address=($_POST['Address']);
-			$City=($_POST['City']);
-			$State=($_POST['State']);
-			$Zip=($_POST['Zip']);
-			$Phone=($_POST['Phone']);
-			$Email=($_POST['Email']);
-			
-			
-			
-			
-			
-			
-			
-			$CustomerId=htmlspecialchars($CustomerId);
-			$CustomerName=htmlspecialchars($CustomerName);
-			$Address=htmlspecialchars($Address);
-			$City=htmlspecialchars($City);
-			$State=htmlspecialchars($State);
-			$Zip=htmlspecialchars($Zip);
-			$Phone=htmlspecialchars($Phone);
-			$Email=htmlspecialchars($Email);
-			
-			$addr = 'csdb.brockport.edu';
-			$user = 'wdean2';
-			$pass = 'csc423?';
-			$db = 'fal16_csc423_wdean2';
-			
-			$updateQuery= "Update Customer Set Name='$CustomerName', Address='$Address', City='$City',State='$State', ZIP='$Zip', Phone='$Phone', Email='$Email' Where CustomerId LIKE '$CustomerId'";
-			
-			$db = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
-				if ($db->query($updateQuery) === TRUE)
-			{
-			    echo "Record updated successfully";
-			}
-			else
-			{
-			    echo "Error updating record: " . $db->error;
-			}
+<!-- Body Content goes here -->
+<h2>Update a Customer</h1>
+<h3>Customer Information:</h2>
+<form method='POST' action='dbScriptCustomer.php' name='customerForm' id='customerForm'  onsubmit='return validate();'>
+	<table>
+		<!-- Customer Details -->
+		<tr>
+			<td align="right">Customer Id:</td>
+			<td><input type='text' id='cId' name='cId' value=<?= $customerId ?> readonly></td>
+		</tr>		
+		<tr>
+			<td align="right">Name:</td>
+			<td><input type='text' id='name' name='name' value=<?= $name ?>></td>
+		</tr>
+		<tr>
+			<td align="right">Address:</td>
+			<td><input type='text' id='address' name='address' value=<?= $address ?>></td>
+		</tr>
+		<tr>
+			<td align="right">City:</td>
+			<td><input type='text' id='city' name='city' value=<?= $city ?>></td>
+		</tr>
+		<tr>
+			<td align="right">State:</td>
+			<td><input type='text' id='state' name='state' value=<?= $state ?>></td>
+		</tr>
+		<tr>
+			<td align="right">Zip:</td>
+			<td><input type='text' id='zip' name='zip' value=<?= $zip ?>></td>
+		</tr>
+		<tr>
+			<td align="right">Phone:</td>
+			<td><input type='text' id='phone' name='phone' value=<?= $phone ?>></td>
+		</tr>
+		<tr>
+			<td align="right">Email:</td>
+			<td><input type='text' id='email' name='email' value=<?= $email ?>></td>
+		</tr>
+    </table>
+    <hr/>
+	<table>
+        <tr>
+            <td><button type="submit" name="submit">Update Customer</button></td>
+            <td><input type="reset"></td>
+        </tr>
+    </table>
+    <input type="hidden" name="updateCustomer">
+</form>
 
-			$db->close();
-		}
-
-			
-		/*
-		$password=($_POST['password']);
-		$newPassword=($_POST['newPassword']);
-		$confirmPassword=($_POST['confirmPassword']);
-		*/
-
-			echo "
-		<html>
-		<head>
-		<title>Update a Vendor</title>
-
-		<script type='text/javascript' language='javascript'>
-
-		function validateTheDatas()
-		{
-
-			setSelectedStatus();
-			
-			return true;
-		}
-
-		function setSelectedStatus()
-		{
-			var selectedStatus=	document.getElementById('statusOptions');   
-
-			document.getElementById('vStatus').value = selectedStatus.options[selectedStatus.selectedIndex].value;
-		}
-
-		</script>
-
-		</head>";	
-
-
-		echo "
-			<body>
-				<h2 align='center'>Update a Customer</h1>
-				<h3 align='center'>Update Customer Information:</h2>
-					<form id='updateForm' name='updateForm' method='POST' action='updateCustomer.php' onsubmit='validateTheDatas();'>
-						<table align='center'>
-							<tr><td colspan='2'><center><label><b>Customer ID: $CustomerId <input type='hidden' name='customerId' value=$CustomerId></b></center></label>															</td></tr>
-							<!-----Customer Details----->
-							<tr><td><label>Customer Id:</label>												</td>	<td><input type='text' id='customerId' name='CustomerId' value= $CustomerId>					</td></tr>		
-							<tr><td><label>Customer Name:</label>												</td>	<td><input type='text' id='customerName' name='CustomerName' value='$CustomerName'>							</td></tr>
-							<tr><td><label>Address:</label>													</td>	<td><input type='text' id='Address' name='Address' value='$Address'>										</td></tr>
-							<tr><td><label>City:</label>													</td>	<td><input type='text' id='City' name='City' value=$City>												</td></tr>
-							<tr><td><label>State:</label>													</td>	<td><input type='text' id='State' name='State' value=$State>											</td></tr>
-							<tr><td><label>ZIP:</label>														</td>	<td><input type='text' id='Zip' name='Zip' value=$Zip>													</td></tr>
-							<tr><td><label>Phone:</label>													</td>	<td><input type='text' id='Phone' name='Phone' value=$Phone>											</td></tr>
-							<tr><td><label>Email:</label>											</td>	<td><input type='text' id='email' name='Email' value=$Email>		</td></tr>
-																																																	</td></tr>
-
-								<tr><td><center><br><input type='submit' value='Submit Changes' ></center>		</td>	<td><center><br><input type='button' value='Undo Changes'></center>		</td></tr>
-							</table>
-							<input name='SubmitChangesCheck' type='hidden' value='sent'>
-						</form>
-				</body>
-			</html>
-			";
-
-		if(isset($_POST['SubmitChangesCheck']))
-		{
-			echo "Vendor Updated!";
-		};
-
-	}
-	else
-	{
-		echo "Sorry mate, that's an error!";
-	};
+<?php
+// Footer
+include_once('./templates/footer.php');
 ?>

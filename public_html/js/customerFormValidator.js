@@ -17,7 +17,7 @@ function validate(){
 }
 
 function validName(){
-    var vn = document.forms["addCustomer"]["name"].value;
+    var vn = document.forms["customerForm"]["name"].value;
     var re = /^[a-zA-Z]+-? ?[a-zA-Z]*$/;
     if (!re.test(vn)){
         alert("Vendor name was not valid.");
@@ -27,7 +27,7 @@ function validName(){
 }
 
 function validAddress(){
-    var a = document.forms["addCustomer"]["address"].value;
+    var a = document.forms["customerForm"]["address"].value;
     var re = /^[\d]+ [a-zA-Z]+ [a-zA-Z]+\.?$/;
     if (!re.test(a)){
         alert("Address was not valid.");
@@ -37,7 +37,7 @@ function validAddress(){
 }
 
 function validCity(){
-    var city = document.forms["addCustomer"]["city"].value;
+    var city = document.forms["customerForm"]["city"].value;
     var re = /^[a-zA-Z]+[a-zA-Z -]*$/;
     if (!re.test(city)){
         alert("City was not valid.");
@@ -47,7 +47,7 @@ function validCity(){
 }
 
 function validState(){
-    var state = document.forms["addCustomer"]["state"].value;
+    var state = document.forms["customerForm"]["state"].value;
     var re = /^[a-zA-Z]+[- ]*[a-zA-Z]*$/;
     if (!re.test(state)){
         alert("State was not valid.");
@@ -57,7 +57,7 @@ function validState(){
 }
 
 function validZip(){
-    var zip = document.forms["addCustomer"]["zip"].value;
+    var zip = document.forms["customerForm"]["zip"].value;
     var re = /[0-9]{5}/;
     if (!re.test(zip)){
         alert("Zip code was not valid.");
@@ -67,7 +67,7 @@ function validZip(){
 }
 
 function validPhone(){
-    var phone = document.forms["addCustomer"]["phone"].value;
+    var phone = document.forms["customerForm"]["phone"].value;
     var re = /^[0-9]{3}[ -]?[0-9]{3}[ -]?[0-9]{4}$/;
     if (!re.test(phone)){
         alert("Phone Number was not valid.");

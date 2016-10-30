@@ -14,13 +14,17 @@ function customPageHeader(){
 include_once('./templates/header.php');
 ?>
 
-<!-- Body Content Goes Here -->
-<form method="POST" action="dbScriptCustomer.php" name="addCustomer" onsubmit="return validate()">
+<!-- Body Content goes here -->
+<h2>Add a Customer</h1>
+<h3>Customer Information:</h2>
+<form method="POST" action="dbScriptCustomer.php" name="customerForm" id="customerForm" onsubmit="return validate()">
     <h3>Register a Customer</h3>
     <table>
         <tr>
-            <td align="right">CustomerId:</td>
+            <td align="right">Customer Id:</td>
             <td><input type="text" name="cId" id="cId"></td>
+        </tr>
+        <tr>
             <td align="right">Name:</td>
             <td><input type="text" name="name" id="name"></td>
         </tr>
@@ -31,12 +35,16 @@ include_once('./templates/header.php');
         <tr>
             <td align="right">City:</td>
             <td><input type="text" name="city" id="city"></td>
+        </tr>
+        <tr>
             <td align="right">State:</td>
             <td><input type="text" name="state" id="state"></td>
         </tr>
         <tr>
             <td align="right">Zip:</td>
             <td><input type="text" name="zip" id="zip"></td>
+        </tr>
+        <tr>
             <td align="right">Phone:</td>
             <td><input type="text" name="phone" id="phone"></td>
         </tr>
@@ -48,7 +56,7 @@ include_once('./templates/header.php');
     <hr/>
     <table>
         <tr>
-            <td><button type="submit">Submit Information</button></td>
+            <td><button type="submit" name="submit">Submit Information</button></td>
             <td><input type="reset"></td>
         </tr>
     </table>

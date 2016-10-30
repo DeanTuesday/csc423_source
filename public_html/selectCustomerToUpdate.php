@@ -1,87 +1,82 @@
 <?php
-echo "
-<html>
-	<head>
-	<title>Update a Customer</title>
-		<script type='text/javascript' language='javascript'>
-		function setSelectedCustomer()
-		{
-			var selectedCustomer =	document.getElementById('customerOptions');   
 
-			document.getElementById('CustomerId').value = selectedCustomer.options[selectedCustomer.selectedIndex].value;
-		}
+// Header file will use this to set the page title
+$PageTitle="Select Customer";
 
-		function addOptionToCustomers(text, value)
-		{
-			ddl = document.getELementById('CustomerOptions');
-			var option = document.createElement('option');
-			option.value = value;
-			option.text = text;
-			ddl.options.add(option);	
-		}
+// Header file will use this function to link your page to other css or js files
+function customPageHeader(){
+?>
+<!-- Add any CSS or JS files here -->
+<?php }
 
-		</script>
-	</head>
-	<body>
-		<h2 align='center'>Update a Customer</h1>
+// Header
+include_once('./templates/header.php');
+?>
 
-		<h3 align='center'>Select a Customer to Update:</h2>
-			<form id='selectCustomerForm' name='selectCustomerForm' method='POST' action='updateCustomer.php' onsubmit='setSelectedCustomer();'>
-				<table align='center'>
-					<tr>
-						<td>
-							<select id='customerOptions'>
-								<option>Select a Customer</option>
-								";
+<!-- Body Content goes here -->
+<h2 align='center'>Update a Customer</h1>
+<h3 align='center'>Select a Customer to Update:</h2>
+<form id='selectCustomerForm' name='selectCustomerForm' method='POST' action='updateCustomer.php'>
+    <table align='center'>
+        <tr>
+            <td>
+                <select name="chooseCustomer" id='chooseCustomer'>
+                    <option>Select a Customer</option>
+                    <?php fillDropdownMenu(); ?>
+                </select>
+            </td>
+            <td>
+                <input type='submit' name='submit' value='Go'>
+            </td>
+        </tr>
+    </table>
+</form>
 
-								$addr = 'csdb.brockport.edu';
-								$user = 'wdean2';
-								$pass = 'csc423?';
-								$db = 'fal16_csc423_wdean2';
+<?php
+// Footer
+include_once('./templates/footer.php');
+?>
 
-								$db = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
-								echo("Connected to Database<br>");
+<?php
+// Function for filling out the select-customer drop down menu
+function fillDropdownMenu(){
+    $config = include('./inc/config.php');
+    $conn = new mysqli($config['addr'], $config['user'], $config['pass'], $config['db']);
+    if($conn->connect_errno){
+        echo "Error: Failed to make a MySQL connection, here is why: \n";
+        echo "Errno: " . $mysqli->connect_errno . "\n";
+        echo "Error: " . $mysqli->connect_error . "\n";
+        exit;
+    }
 
-								$query = "Select * from Customer";
-								$result = $db->query($query);
+    $query = "Select * from Customer";
+    $result = $conn->query($query);
+    
+    if(!$result) {
+        echo "Error: Our query failed to execute and here is why: \n";
+        echo "Query: " . $sql . "\n";
+        echo "Errno: " . $mysqli->errno . "\n";
+        echo "Error: " . $mysqli->error . "\n";
+        exit;
+    }
 
-								if($result->num_rows > 0)
-								{
-									while($row = $result->fetch_assoc())
-									{
+    if($result->num_rows > 0)
+    {
+        while($row = $result->fetch_assoc())
+        {
 
-									$cId = $row["CustomerId"];
-									$cName = $row["Name"];
-					                $cAddress = $row["Address"];
-					                $cCity = $row["City"];
-					                $cState = $row["State"];
-					                $cZip = $row["ZIP"];
-					                $cPhone = $row["Phone"];
-					                $cEmail = $row["Email"];
+        $cId = $row["CustomerId"];
+        $cName = $row["Name"];
+        $cPhone = $row["Phone"];
 
-										echo"<option value='$cId'> $cName -$cPhone</option>";
-									}
-								}
-								else
-								{
-								    echo "0 results";
-								}
+            echo"<option value='$cId'> $cName - $cPhone</option>";
+        }
+    }
+    else
+    {
+        echo "0 results";
+    }
 
-								$db->close();
-							echo
-								"
-							</select>
-						</td>
-						<td>
-							<input type='submit' value='Go'>
-							<input name='SubmitCheck' type='hidden' value='sent'>
-							<input name='CustomerId' id='CustomerId' type='hidden'>
-							<input name='CustomerName' id='CustomerName' type='hidden'>
-						</td>
-					</tr>
-				</table>
-			</form>
-		<body>
-</html>
-";
+    $conn->close();
+}
 ?>
