@@ -1,260 +1,147 @@
 <?php
 
+// Header file will use this to set the page title
+$PageTitle="Select Vendor To Update";
 
-	//Connect to the database and get the info
+// Header file will use this function to link your page to other css or js files
+function customPageHeader(){
+?>
+<!-- Add any CSS or JS files here -->
+	<script src="./js/vendorFormValidator.js" type="text/javascript"></script>
+	<script src="./js/pwdConfPwd.js" type="text/javascript"></script>
+<?php }
 
-	$vendorId=($_POST['vendorId']);
-	
-	$addr = 'localhost';
-	$user = 'wdean2';
-	$pass = 'csc423?';
-	$db = 'fal16_csc423_wdean2';
+// Header
+include_once('./templates/header.php');
 
-	$db = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
-	echo("Connected to Database<br>");
-	$query = "Select VendorCode, VendorName, Address, City, State, ZIP, Phone, ContactPersonName, Status, Password from Vendor Where VendorId=$vendorId";
-	$result = $db->query($query);
-
-	if($result->num_rows > 0)
-	{
-		while($row = $result->fetch_assoc())
-		{
-			$vCode = $row["VendorCode"];
-			$vName = $row["VendorName"];
-			$vAddress = $row["Address"];
-			$vCity = $row["City"];
-			$vState = $row["State"];
-			$vZip = $row["ZIP"];
-			$vPhone = $row["Phone"];
-			$vContact = $row["ContactPersonName"];
-			$vendorStatus = $row["Status"];
-			$vPass = $row["Password"];
-
-			$vendorCode=htmlspecialchars($vCode);
-			$vendorName=htmlspecialchars($vName);
-			$address=htmlspecialchars($vAddress);
-			$city=htmlspecialchars($vCity);
-			$state=htmlspecialchars($vState);
-			$zip=htmlspecialchars($vZip);
-			$phone=htmlspecialchars($vPhone);
-			$contactPersonName=htmlspecialchars($vContact);
-		}
-	}
-	else
-	{
-	    echo "0 results";
-	}
-
-	$db->close();
-
-	//Check to see if there was an attempt to change the password
-	if(isset($_POST['newPwd']) && $_POST['newPwd'] != '')
-	{
-		//validate the new password by checking current password and new password confirmation
-		//if the data is not valid, then echo password error then terminate
-		if($_POST['userPwd'] != $vPass)
-		{
-			echo('<br>Please enter a password to change your password<br>');
-			die;
-		}
-		else if($_POST['newPwd'] != $_POST['confirmNewPwd'])
-		{
-			echo('<br>Confirmation password does not match<br>');
-			die;
-		}
-	}
-
-	if(isset($_POST['SubmitCheck']) || isset($_POST['SubmitChangesCheck']))
-	{
-		if (isset($_POST['SubmitCheck']))
-		{
-
-		}
-		if (isset($_POST['SubmitChangesCheck']))
-		{
-			$vendorId=($_POST['vendorId']);
-			$vendorCode=($_POST['vendorCode']);
-			$vendorName=($_POST['vendorName']);
-			$address=($_POST['address']);
-			$city=($_POST['city']);
-			$state=($_POST['state']);
-			$zip=($_POST['zip']);
-			$phone=($_POST['phone']);
-			$contactPersonName=($_POST['contactPersonName']);
-			$status=($_POST['vStatus']);
-
-			$vendorCode=htmlspecialchars($vendorCode);
-			$vendorName=htmlspecialchars($vendorName);
-			$address=htmlspecialchars($address);
-			$city=htmlspecialchars($city);
-			$state=htmlspecialchars($state);
-			$zip=htmlspecialchars($zip);
-			$phone=htmlspecialchars($phone);
-			$contactPersonName=htmlspecialchars($contactPersonName);
-
-		//	$vendorPassword=($_POST['password']);
-		//	$vendorNewPassword=($_POST['newPassword']);
-		//	$vendorConfirmNewPassword=($_POST['confirmNewPassword']);
-			
-			$addr = 'localhost';
-			$user = 'wdean2';
-			$pass = 'csc423?';
-			$db = 'fal16_csc423_wdean2';
-			
-			if (isset($_POST['newPwd']) && $_POST['newPwd'] != '')
-			{
-				$newPassword=($_POST['newPwd']);
-				$updateQuery= "Update Vendor Set VendorCode='$vendorCode', VendorName='$vendorName', Address='$address', City='$city', State='$state', ZIP='$zip', Phone='$phone', ContactPersonName='$contactPersonName', Password='$newPassword', Status='$status' Where VendorId=$vendorId";
-			}
-			else
-			{
-				$updateQuery= "Update Vendor Set VendorCode='$vendorCode', VendorName='$vendorName', Address='$address', City='$city', State='$state', ZIP='$zip', Phone='$phone', ContactPersonName='$contactPersonName', Status='$status' Where VendorId=$vendorId";
-			}
-
-			$db = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
-			
-		//	echo("Connected to Database<br>");
-
-			if ($db->query($updateQuery) === TRUE)
-			{
-			    echo "Record updated successfully";
-			}
-			else
-			{
-			    echo "Error updating record: " . $db->error;
-			}
-
-			$db->close();
+if(isset($_POST['vendorId']))
+{
+?>
+	<?php
+	// Run the database script to get the current values
+	$vendorId = "test id";
+	$vcode = "558443";
+	$vname = "Grifters, Inc";
+	$address = "555 Shady Ave";
+	$city = "Cityopolis";
+	$state = "NY";
+	$zip = "55555";
+	$phone = "555-555-5555";
+	$contact = "Jimmy Slick";
+	$vendorStatus = "Inactive";
+	?>
 
 
-		}
+	<h2 align='center'>Update a Vendor</h1>
+	<h3 align='center'>Update Vendor Information:</h2>
+		<form id='updateForm' name='updateForm' method='POST' action='dbScriptVendor.php' onsubmit='return validate();'>
+			<table align='center'>
+				<tr>
+					<td colspan='2'>
+					<center><label><b>
+					Vendor ID: 
+					<?php $disp=htmlspecialchars($vendorId); echo"$disp"; ?>
+					<input type='hidden' name='vendorId' value=
+						<?php $disp=htmlspecialchars($vendorId); echo"'$disp'"; ?>>
+					</b></center></label>
+					</td>
+				</tr>
+				<tr>
+					<td><label>Vendor Code:</label></td>
+					<td><input type='text' id='vcode' name='vendorCode' value=
+						<?php $disp=htmlspecialchars($vcode); echo"'$disp'"; ?>></td>
+				</tr>
+				<tr>
+					<td><label>Vendor Name:</label></td>
+					<td><input type='text' id='vname' name='vendorName' value=
+						<?php $disp=htmlspecialchars($vname); echo"'$disp'"; ?>></td>
+				</tr>
+				<tr>
+					<td><label>Address:</label></td>
+					<td><input type='text' id='address' name='address' value=
+						<?php $disp=htmlspecialchars($address); echo"'$disp'"; ?>></td>
+				</tr>
+				<tr>
+					<td><label>City:</label></td>
+					<td><input type='text' id='city' name='city' value=
+						<?php $disp=htmlspecialchars($city); echo"'$disp'"; ?>></td>
+				</tr>
+				<tr>
+					<td><label>State:</label></td>
+					<td><input type='text' id='state' name='state' value=
+						<?php $disp=htmlspecialchars($state); echo"'$disp'"; ?>></td>
+				</tr>
+				<tr>
+					<td><label>ZIP:</label></td>
+					<td><input type='text' id='zip' name='zip' value=
+						<?php $disp=htmlspecialchars($zip); echo"'$disp'"; ?>></td>
+				</tr>
+				<tr>
+					<td><label>Phone:</label></td>
+					<td><input type='text' id='phone' name='phone' value=
+						<?php $disp=htmlspecialchars($phone); echo"'$disp'"; ?>></td>
+				</tr>
+				<tr>
+					<td><label>Contact Person:</label></td>
+					<td><input type='text' id='contactPersonName' name='contactPersonName' value=
+							<?php $disp=htmlspecialchars($contact); echo"'$disp'"; ?>></td>
+				</tr>
+				<tr>
+					<td><label>Vendor Status:</label></td>
+					<td><?php include_once('./inc/setVendorStatusOption.php'); ?></td>
+				</tr>
+				<input type='hidden' name='vStatus' id='vStatus'>
+				<tr>
+					<td colspan='2'><hr></td></tr>
+				<tr>
+					
+				<tr>
+					<td><label><b>Update Password:</b></label></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><label>Current Password:</label></td>
+					<td><input type='password' id='userPwd' name='userPwd'></td>
+				</tr>
+				<tr>
+					<td><label>New Password:</label></td>
+					<td><input type='password' id='newPwd' name='newPwd'></td>
+				</tr>
+				<tr>
+					<td><label>Confirm New Password:</label></td>
+					<td><input type='password' id='confirmNewPwd' name='confirmNewPwd'></td>
+				</tr>
+				<tr>
+					<td><center><br><input type='submit' value='Submit Changes'></center></td>
+					<td><center><br><input type='button' value='Undo Changes'></center></td>
+				</tr>
+			</table>
+			<input name='SubmitChangesCheck' type='hidden' value='sent'>
+		</form>
+	<?php
+	// Footer
+	include_once('./templates/footer.php');
+	?>
+<?php
+}
 
-			
-		/*
-		$password=($_POST['password']);
-		$newPassword=($_POST['newPassword']);
-		$confirmPassword=($_POST['confirmPassword']);
-		*/
-		echo "
-		<html>
-		<head>
-		<title>Update a Vendor</title>
+else
+{
+	?>
 
-		<script type='text/javascript' language='javascript'>
+	    <link rel="stylesheet" href="./css/styles.css" />
+	<?php
 
-		function validateTheDatas()
-		{
-
-			setSelectedStatus();
-			
-			return true;
-		}
-
-		function setSelectedStatus()
-		{
-			var selectedStatus=	document.getElementById('statusOptions');   
-
-			document.getElementById('vStatus').value = selectedStatus.options[selectedStatus.selectedIndex].value;
-		}
-			
-		</script>
-
-		</head>";	
-
-
-		echo "
-			<body>
-				<h2 align='center'>Update a Vendor</h1>
-				<h3 align='center'>Update Vendor Information:</h2>
-					<form id='updateForm' name='updateForm' method='POST' action='updateVendor.php' onsubmit='validateTheDatas();'>
-						<table align='center'>
-							<tr><td colspan='2'><center><label><b>Vendor ID: $vendorId <input type='hidden' name='vendorId' value=$vendorId></b></center></label>															</td></tr>
-
-							<!-----Vendor Details----->
-							
-							<tr><td><label>Vendor Code:</label>												</td>	<td><input type='text' id='vendorCode' name='vendorCode' value=". "'$vendorCode'" . ">					</td></tr>
-							<tr><td><label>Vendor Name:</label>												</td>	<td><input type='text' id='vendorName' name='vendorName' value='$vendorName'>							</td></tr>
-							<tr><td><label>Address:</label>													</td>	<td><input type='text' id='address' name='address' value='$address'>										</td></tr>
-							<tr><td><label>City:</label>													</td>	<td><input type='text' id='city' name='city' value='$city'>												</td></tr>
-							<tr><td><label>State:</label>													</td>	<td><input type='text' id='state' name='state' value='$state'>											</td></tr>
-							<tr><td><label>ZIP:</label>														</td>	<td><input type='text' id='zip' name='zip' value='$zip'>													</td></tr>
-							<tr><td><label>Phone:</label>													</td>	<td><input type='text' id='phone' name='phone' value='$phone'>											</td></tr>
-							<tr><td><label>Contact Person:</label>											</td>	<td><input type='text' id='contactPersonName' name='contactPersonName' value='$contactPersonName'>		</td></tr>
-							<tr><td><label>Vendor Status:</label>											</td>	<td>
-
-
-
-							";
-
-							if(isset($status))
-							{
-								if($status=='Inactive')
-								{
-
-								echo"
-
-								<select id='statusOptions'><option>Active</option><option selected='selected'>Inactive</option></select>		</td></tr>
-																																									
-							
-
-								";
-								}
-								else
-								{
-									echo"
-
-								<select id='statusOptions'><option>Active</option><option>Inactive</option></select>		</td></tr>
-								
-								";									
-								}
-							}
-
-							else if($vendorStatus=='Inactive')
-							{
-								echo"
-
-								<select id='statusOptions'><option>Active</option><option selected='selected'>Inactive</option></select>		</td></tr>
-																																									
-							
-
-								";
-							}
-
-							else
-							{
-								echo"
-
-								<select id='statusOptions'><option>Active</option><option>Inactive</option></select>		</td></tr>
-								
-								";
-							}
-
-							echo"
-							<input type='hidden' name='vStatus' id='vStatus'>
-								<tr><td colspan='2'><hr>																																										</td></tr>
-								
-							<!-----Password Details----->
-							
-							<tr><tr><td><label><b>Update Password:</b></label>								</td>	<td>																									</td></tr>
-							<tr><td><label>Current Password:</label>										</td>	<td><input type='password' id='userPwd' name='userPwd'>												</td></tr>
-							<tr><td><label>New Password:</label>											</td>	<td><input type='password' id='newPwd' name='newPwd'>											</td></tr>
-							<tr><td><label>Confirm New Password:</label>									</td>	<td><input type='password' id='confirmNewPwd' name='confirmNewPwd'>							</td></tr>
-							<tr><td><center><br><input type='submit' value='Submit Changes'></center>		</td>	<td><center><br><input type='button' value='Undo Changes'></center>		</td></tr>
-							</table>
-						<input name='SubmitChangesCheck' type='hidden' value='sent'>
-					</form>
-				</body>
-			</html>
-			";
-
-		if(isset($_POST['SubmitChangesCheck']))
-		{
-			echo "Vendor Updated!";
-		};
-
-	}
-	else
-	{
-		echo "Sorry mate, that's an error!";
-	};
+		echo "<b>Must select a vendor to update first.</b>";
+	?>
+		<table align="center">
+	    <tr>
+	        <td><a href='./index.php' class='button'>Home</a></td>
+	        <td><a href='./addVendor.php' class='button'>Add A Vendor</a></td>
+	        <td><a href='./selectVendorToUpdate.php' class='button'>Update A Vendor</a></td>
+	    </tr>
+	</table>
+	<?php
+	include_once('./templates/footer.php');
+}
 ?>

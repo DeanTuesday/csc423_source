@@ -20,7 +20,7 @@ include_once('./templates/header.php');
 <h2 align='center'>Update a Vendor</h1>
 
 <h3 align='center'>Select a Vendor to Update:</h2>
-<form id='selectVendorForm' name='updateVendor' method='POST' action='dbScriptVendor.php' onsubmit='setSelectedVendor();'>
+<form id='selectVendorForm' name='updateVendor' method='POST' action='updateVendor.php' onsubmit='setSelectedVendor();'>
 	<table align='center'>
 		<tr>
 			<td>
