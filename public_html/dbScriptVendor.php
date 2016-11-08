@@ -8,6 +8,7 @@ function customPageHeader(){
 ?>
 <!-- Add any CSS or JS files here -->
     <link rel="stylesheet" href="./css/styles.css" />
+    <script src="./js/vendorFormValidator.js" type="text/javascript" language="javascript"></script>
 <?php }
 
 // Header
@@ -54,14 +55,51 @@ if(isset($_POST['addVendor'])) {
     
     mysql_close($conn);
 }
-
+    
 if(isset($_POST['updateVendor'])) {
     //TODO
+    $config = include('./inc/config.php');
+
+    $conn = mysql_connect($config['addr'], $config['user'], $config['pass']);
+    
+    $vendorId = $_POST['vendorId'];
+
+    echo "<input type='hidden' name='vendorId' value='vendorId'>";
+
+    if (!$conn){
+        die('Could not connect: '.mysql_error());
+    }
+    
+    mysql_select_db($config['db']);
+
+    $sql = "Select VendorCode, VendorName, Address, City, State, ZIP, Phone, ContactPersonName, Status, Password from Vendor Where VendorId=$vendorId"
+            
+    $result = mysql_query($sql);
+    
+    if(!$result ) {
+       die('No results for ID: ' . mysql_error());
+    }
+
+    while($row = mysql_fetch_assoc($result))
+    {
+        $vid = null;
+        $vcode = $row['vcode'];
+        $vname = $row['vname'];
+        $address = $row['address'];
+        $city = $row['city'];
+        $state = $row['state'];
+        $zip = $row['zip'];
+        $phone = $row['phone'];
+        $contact = $row['contact'];
+        $pwd = $row['pwd'];
+    }
+    mysql_close($conn);
+
 }
 ?>
 
 <!-- Body Content Goes Here -->
-<table>
+<table align="center">
     <tr>
         <td><a href='./index.php' class='button'>Home</a></td>
         <td><a href='./addVendor.php' class='button'>Add A Vendor</a></td>

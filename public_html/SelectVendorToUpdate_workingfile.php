@@ -8,27 +8,25 @@ function customPageHeader(){
 ?>
 <!-- Add any CSS or JS files here -->
 	<script src="./js/vendorFormValidator.js" type="text/javascript"></script>
-	<script src="./js/setSelectedVendor.js" type="text/javascript"></script>
 <?php }
-
 
 // Header
 include_once('./templates/header.php');
 ?>
 
 <!-- Body Content Goes Here -->
-<h2 align='center'>Update a Vendor</h1>
-
-<h3 align='center'>Select a Vendor to Update:</h2>
 <form id='selectVendorForm' name='updateVendor' method='POST' action='dbScriptVendor.php' onsubmit='setSelectedVendor();'>
 	<table align='center'>
 		<tr>
 			<td>
-				<select id='vendorOptions'>";
-	        		<option>Select a Vendor</option>";
+				<select id='vendorOptions'>
+					<option>Select a Vendor</option>
+
+					<input type="hidden" name="selectVendor">
 					<?php
-					include_once('./dbScriptPopulateVendors.php');
+					include_once('./dbScriptVendor.php');
 					?>
+
 				</select>
 			</td>
 			<td>
