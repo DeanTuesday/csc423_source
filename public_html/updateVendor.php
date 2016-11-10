@@ -7,7 +7,7 @@ $PageTitle="Select Vendor To Update";
 function customPageHeader(){
 ?>
 <!-- Add any CSS or JS files here -->
-	<script src="./js/vendorFormValidator.js" type="text/javascript"></script>
+	<!--<script src="./js/vendorFormValidator.js" type="text/javascript"></script>-->
 	<script src="./js/pwdConfPwd.js" type="text/javascript"></script>
 <?php }
 
@@ -18,17 +18,10 @@ if(isset($_POST['vendorId']))
 {
 ?>
 	<?php
-	// Run the database script to get the current values
-	$vendorId = "test id";
-	$vcode = "558443";
-	$vname = "Grifters, Inc";
-	$address = "555 Shady Ave";
-	$city = "Cityopolis";
-	$state = "NY";
-	$zip = "55555";
-	$phone = "555-555-5555";
-	$contact = "Jimmy Slick";
-	$vendorStatus = "Inactive";
+	// Get the vendor Id to search for database row
+	$vendorId = $_POST['vendorId'];
+	// Run the database script with the vendor ID to get the current values
+	include_once('./dbScriptGetVendor.php');
 	?>
 
 
@@ -48,12 +41,12 @@ if(isset($_POST['vendorId']))
 				</tr>
 				<tr>
 					<td><label>Vendor Code:</label></td>
-					<td><input type='text' id='vcode' name='vendorCode' value=
+					<td><input type='text' id='vcode' name='vcode' value=
 						<?php $disp=htmlspecialchars($vcode); echo"'$disp'"; ?>></td>
 				</tr>
 				<tr>
 					<td><label>Vendor Name:</label></td>
-					<td><input type='text' id='vname' name='vendorName' value=
+					<td><input type='text' id='vname' name='vName' value=
 						<?php $disp=htmlspecialchars($vname); echo"'$disp'"; ?>></td>
 				</tr>
 				<tr>
@@ -83,7 +76,7 @@ if(isset($_POST['vendorId']))
 				</tr>
 				<tr>
 					<td><label>Contact Person:</label></td>
-					<td><input type='text' id='contactPersonName' name='contactPersonName' value=
+					<td><input type='text' id='contactPersonName' name='contact' value=
 							<?php $disp=htmlspecialchars($contact); echo"'$disp'"; ?>></td>
 				</tr>
 				<tr>
@@ -113,14 +106,13 @@ if(isset($_POST['vendorId']))
 				</tr>
 				<tr>
 					<td><center><br><input type='submit' value='Submit Changes'></center></td>
-					<td><center><br><input type='button' value='Undo Changes'></center></td>
+					<td><center><br><input type='button' value='Go Back (no changes)' onclick='goHome();'></center></td>
 				</tr>
 			</table>
-			<input name='SubmitChangesCheck' type='hidden' value='sent'>
+			<input name='updateVendorFlag' type='hidden' value='sent'>
 		</form>
 	<?php
-	// Footer
-	include_once('./templates/footer.php');
+
 	?>
 <?php
 }
@@ -142,6 +134,8 @@ else
 	    </tr>
 	</table>
 	<?php
-	include_once('./templates/footer.php');
+
 }
+	// Footer
+	include_once('./templates/footer.php');
 ?>

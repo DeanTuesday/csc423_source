@@ -20,6 +20,9 @@ include_once('./templates/header.php');
 <p>This website should currently implement functionality to register vendors, modify/delete vendors, add/modify/delete store locations, add/modify/delete stocked items, and add/modify/delete customers.</p>
 <table>
 	<tr>
+		<td><a href='./createNewOrder.php' class='button'>Create An Order</a></td>
+	</tr>	
+	<tr>
 		<td><a href='./addVendor.php' class='button'>Add A Vendor</a></td>
 		<td><a href='./addItem.php' class='button'>Add An Item</a></td>
 		<td><a href='./addLocation.php' class='button'>Add A Location</a></td>

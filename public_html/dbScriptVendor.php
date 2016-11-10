@@ -56,14 +56,34 @@ if(isset($_POST['addVendor'])) {
     mysql_close($conn);
 }
     
-if(isset($_POST['updateVendor'])) {
+if(isset($_POST['updateVendorFlag'])) {
     //TODO
     $config = include('./inc/config.php');
 
     $conn = mysql_connect($config['addr'], $config['user'], $config['pass']);
-    
+  
+    //Get new values from previous page:    
     $vendorId = $_POST['vendorId'];
+    $vcode = $_POST["vcode"];
+    $vname = $_POST["vName"];
+    $address = $_POST["address"];
+    $city = $_POST["city"];
+    $state = $_POST["state"];
+    $zip = $_POST["zip"];
+    $phone = $_POST["phone"];
+    $contact = $_POST["contact"];
+    $vendorStatus = $_POST["vStatus"];
+    
+    // Do the stuff to update these values
+    echo 'Vendor updated sucessfully!';
 
+
+    // if(updatePasswordFlag) then validate password and give message updated, or else pwd didnt update
+    // $vendorPwd = $_POST["vendorPwd"];
+    echo '<br>Vendor password updated successfully!';
+
+
+    /*
     echo "<input type='hidden' name='vendorId' value='vendorId'>";
 
     if (!$conn){
@@ -93,8 +113,9 @@ if(isset($_POST['updateVendor'])) {
         $contact = $row['contact'];
         $pwd = $row['pwd'];
     }
-    mysql_close($conn);
 
+    mysql_close($conn);
+    */
 }
 ?>
 
