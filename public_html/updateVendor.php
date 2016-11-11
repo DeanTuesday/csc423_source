@@ -106,7 +106,7 @@ if(isset($_POST['vendorId']))
 				</tr>
 				<tr>
 					<td><center><br><input type='submit' value='Submit Changes'></center></td>
-					<td><center><br><input type='button' value='Go Back (no changes)' onclick='goHome();'></center></td>
+					<td><center><br><a href='./index.php' class='button'>Go Back (no changes)</a></center></td>
 				</tr>
 			</table>
 			<input name='updateVendorFlag' type='hidden' value='sent'>
