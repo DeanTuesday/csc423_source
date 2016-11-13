@@ -8,45 +8,52 @@ function customPageHeader(){
 ?>
 <!-- Add any CSS or JS files here -->
 	<script src="./js/itemFormValidator.js" type="text/javascript"></script>
+
 <?php }
-
-
-// Run the DB Script and output any errors for debugging
-if(isset($_POST['submit'])){
-    // Always connect to DB
-    $config = include('./inc/config.php');
-    $conn = new mysqli($config['addr'], $config['user'], $config['pass'], $config['db']);
-    if($conn->connect_errno){
-        echo "Error: Failed to make a MySQL connection, here is why: \n";
-        echo "Errno: " . $mysqli->connect_errno . "\n";
-        echo "Error: " . $mysqli->connect_error . "\n";
-        exit;
-
-$username=$_POST['username']; 
-$password=md5($_POST['pass']);
-
-// To protect MySQL injection 
-$username = stripslashes($username);
-$password = stripslashes($password);
-$username = mysql_real_escape_string($username);
-$password = mysql_real_escape_string($password);
-
-$sql="SELECT * FROM Vendor WHERE VendorId='$username' and Password='$password'";
-$result=mysql_query($sql);
 
 // Header
 include_once('./templates/header.php');
 ?>
-	
+
 <!-- Body Content Goes Here -->
- <form action="viewOrder.php" method="POST">
-      <h3>Please Login</h3>
+<h1>Login<h1>
+<form action='#' method='post'>
+<table cellspacing='5' align='center'>
+<tr><td>User name:</td><td><input type='text' name='name'/></td></tr>
+<tr><td>Password:</td><td><input type='password' name='pwd'/></td></tr>
+<tr><td></td><td><input type='submit' name='submit' value='Submit'/></td></tr>
+</table>
 
-      User Name: <input type="text" name="username"><br>
-      Password: <input type="password" name="password">
+</form>
+<?php
+session_start();
+if(isset($_POST['submit']))
+{
 
-      <input type="submit" name="submit" value="login">
-	  </form>
+$addr = 'csdb.brockport.edu';
+$user = 'wdean2';
+$pass = 'csc423?';
+$db = 'fal16_csc423_wdean2';
+$db = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
+echo("Connected to Database<br>");
+ {
+   $query=mysql_query("Select * From Vendor Where VendorId='".$name."' And Password='".$pwd."'") or die(mysql_error());
+   $res=mysql_fetch_row($query);
+   if($res)
+   {
+    $_SESSION['name']=$name;
+    header('location:index.php');
+   }
+   else
+   {
+    echo'You entered username or password is incorrect';
+   }
+ }
+  echo'Enter both username and password';
+ }
+
+?>
+
 <?php
 // Footer
 include_once('./templates/footer.php');
