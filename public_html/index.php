@@ -27,7 +27,7 @@ include_once('./templates/header.php');
 		<td><a href='./addItem.php' class='button'>Add An Item</a></td>
 		<td><a href='./addLocation.php' class='button'>Add A Location</a></td>
 		<td><a href='./addCustomer.php' class='button'>Add A Customer</a></td>
-		<td><a href='./viewOrderLogin.php' class='button'>View a Order</a></td>
+		<td><a href='./viewOrder.php' class='button'>View a Order</a></td>
 	</tr>
 	<tr>
 		<td><a href='./selectVendorToUpdate.php' class='button'>Update A Vendor</a></td>
