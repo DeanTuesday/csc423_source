@@ -26,7 +26,6 @@ if(isset($_POST['submit'])){
 $username=$_POST['username']; 
 $password=md5($_POST['pass']);
 
-
 // To protect MySQL injection 
 $username = stripslashes($username);
 $password = stripslashes($password);
@@ -46,18 +45,19 @@ if ($count==1) {
 }
 
 
-
-
 // Header
 include_once('./templates/header.php');
 ?>
-	 <form action="viewOrder.php" method="POST">
+	
+<!-- Body Content Goes Here -->
+ <form action="viewOrder.php" method="POST">
       <h3>Please Login</h3>
 
       User Name: <input type="text" name="username"><br>
       Password: <input type="password" name="password">
 
       <input type="submit" name="submit" value="login">
+	  
 <?php
 // Footer
 include_once('./templates/footer.php');
