@@ -127,9 +127,10 @@ else{
   }
   }
 }
-}
 $conn->close();
 }
+
+
 
 // Header
 include_once('./templates/header.php');
