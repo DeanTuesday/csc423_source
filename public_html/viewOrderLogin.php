@@ -8,7 +8,6 @@ function customPageHeader(){
 ?>
 <!-- Add any CSS or JS files here -->
 	<script src="./js/itemFormValidator.js" type="text/javascript"></script>
-	 <form action="check_user-pass.php" method="POST">
 <?php }
 
 
