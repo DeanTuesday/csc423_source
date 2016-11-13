@@ -48,11 +48,9 @@ echo("Connected to Database<br>");
     echo'You entered username or password is incorrect';
    }
  }
- else
- {
   echo'Enter both username and password';
  }
-}
+
 ?>
 
 <?php
