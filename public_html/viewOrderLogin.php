@@ -46,7 +46,7 @@ if ($count==1) {
 }
 
 
-?>
+
 
 // Header
 include_once('./templates/header.php');
