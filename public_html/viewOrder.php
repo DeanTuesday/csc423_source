@@ -41,7 +41,7 @@ echo("Connected to Database<br>");
    if($res)
    {
     $_SESSION['name']=$name;
-    header('location:welcome.php');
+    header('location:index.php');
    }
    else
    {
