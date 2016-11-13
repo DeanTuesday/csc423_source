@@ -29,12 +29,17 @@ include_once('./templates/header.php');
 session_start();
 if(isset($_POST['submit']))
 {
-$addr = 'csdb.brockport.edu';
-$user = 'wdean2';
-$pass = 'csc423?';
-$db = 'fal16_csc423_wdean2';
-$db = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
-echo("Connected to Database<br>");
+ mysql_connect('localhost','root','') or die(mysql_error());
+ mysql_select_db('new') or die(mysql_error());
+ $name=$_POST['name'];
+ $pwd=$_POST['pwd'];
+ if($name!=''&&$pwd!='')
+//$addr = 'csdb.brockport.edu';
+//$user = 'wdean2';
+//$pass = 'csc423?';
+//$db = 'fal16_csc423_wdean2';
+//$db = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
+//echo("Connected to Database<br>");
  {
    $query=mysql_query("Select * From Vendor Where VendorId='".$name."' And Password='".$pwd."'") or die(mysql_error());
    $res=mysql_fetch_row($query);
