@@ -34,20 +34,10 @@ $password = mysql_real_escape_string($password);
 $sql="SELECT * FROM Vendor WHERE VendorId='$username' and Password='$password'";
 $result=mysql_query($sql);
 
-// Mysql_num_row is counting table row
-$count=mysql_num_rows($result);
-// If result matched $username and $password, table row must be 1 row
-if ($count==1) {
-    echo "Success! $count";
-} else {
-    echo "Unsuccessful! $count";
-}
-
-
 // Header
 include_once('./templates/header.php');
 ?>
-	<html>
+	
 <!-- Body Content Goes Here -->
  <form action="viewOrder.php" method="POST">
       <h3>Please Login</h3>
@@ -57,4 +47,7 @@ include_once('./templates/header.php');
 
       <input type="submit" name="submit" value="login">
 	  </form>
-</html>
+<?php
+// Footer
+include_once('./templates/footer.php');
+?>
