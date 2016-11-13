@@ -47,7 +47,7 @@ if ($count==1) {
 // Header
 include_once('./templates/header.php');
 ?>
-	
+	<html>
 <!-- Body Content Goes Here -->
  <form action="viewOrder.php" method="POST">
       <h3>Please Login</h3>
@@ -57,7 +57,4 @@ include_once('./templates/header.php');
 
       <input type="submit" name="submit" value="login">
 	  </form>
-<?php
-// Footer
-include_once('./templates/footer.php');
-?>
+</html>
