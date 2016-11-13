@@ -15,9 +15,9 @@ if(isset($_POST['submit'])){
     // Always connect to DB
     $config = include('./inc/config.php');
     $conn = new mysqli($config['addr'], $config['user'], $config['pass'], $config['db']);
-    if($conn->connect_errno){
+    if($conn->connect_error){
         echo "Error: Failed to make a MySQL connection, here is why: \n";
-        echo "Errno: " . $mysqli->connect_errno . "\n";
+        echo "Error: " . $mysqli->connect_errno . "\n";
         echo "Error: " . $mysqli->connect_error . "\n";
         exit;
     }
