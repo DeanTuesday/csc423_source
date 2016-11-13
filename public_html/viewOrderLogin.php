@@ -57,7 +57,7 @@ include_once('./templates/header.php');
       Password: <input type="password" name="password">
 
       <input type="submit" name="submit" value="login">
-	  
+	  </form>
 <?php
 // Footer
 include_once('./templates/footer.php');
