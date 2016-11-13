@@ -9,21 +9,12 @@ function customPageHeader(){
 <!-- Add any CSS or JS files here -->
 	<script src="./js/itemFormValidator.js" type="text/javascript"></script>
 
-<?php
-
-
 <?php }
 
 // Header
 include_once('./templates/header.php');
 ?>
 
-<!-- Body Content Goes Here -->
-
-<?php
-// Footer
-include_once('./templates/footer.php');
-?>
 <!-- Body Content Goes Here -->
 <h1>Login<h1>
 <form action='#' method='post'>
@@ -62,4 +53,9 @@ echo("Connected to Database<br>");
   echo'Enter both username and password';
  }
 }
+?>
+
+<?php
+// Footer
+include_once('./templates/footer.php');
 ?>
