@@ -16,7 +16,7 @@ if(isset($_POST['submit'])){
     //$config = include('./inc/config.php');
     //$conn = new mysqli($config['addr'], $config['user'], $config['pass'], $config['db']);
 	
-		$addr = 'csdb.brockport.edu';
+		$addr = 'localhost';
 								$user = 'wdean2';
 								$pass = 'csc423?';
 								$db = 'fal16_csc423_wdean2';
@@ -26,8 +26,8 @@ if(isset($_POST['submit'])){
 	
 	
     if($conn->connect_error){
-        echo "Error: Failed to make a MySQL connection, here is why: \n";
-        echo "Error: " . $mysqli->connect_errno . "\n";
+        echo "Error: Failed to make a MySQL connection, here is why:" $mysqli->connect_error  \n;
+       
         
         exit;
     }
