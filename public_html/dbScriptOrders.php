@@ -26,7 +26,7 @@ if(isset($_POST['submit'])){
 	
 	
     if($conn->connect_error){
-        echo "Error: Failed to make a MySQL connection, here is why:" \n;
+        echo "Error: Failed to make a MySQL connection, here is why:" ;
        
         
         exit;
