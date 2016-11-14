@@ -105,7 +105,7 @@ if(isset($_POST['submit'])){
         $orders = $conn->query($sql);
 	
         if(!$orders) {
-            echo "Error: Our query failed to execute and here is why: \n";
+           printf("Errormessage: %s\n", $mysqli->error);
            
            exit;
         }
