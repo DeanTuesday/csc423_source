@@ -4,6 +4,7 @@
 $PageTitle="Vendor Orders";
 
 // Header file will use this function to link your page to other css or js files
+
 function customPageHeader(){
 ?>
 <!-- Add any CSS or JS files here -->
@@ -84,6 +85,7 @@ if(isset($_POST['submit'])){
 		// check to see if vendor id and password are valid
 		$vquery= "SELECT * FROM Vendor WHERE VendorId='$vendorId' AND Password='$password'";
 		
+}
 		$result = $conn->query($vquery);
 		if ($result->num_rows === 0) { 
 		
@@ -100,6 +102,15 @@ if(isset($_POST['submit'])){
 		else{
 		// if valid proceed to get vendors orders
 		
+		$conn->close();
+		
+		$addr = 'localhost';
+								$user = 'wdean2';
+								$pass = 'csc423?';
+								$db = 'fal16_csc423_wdean2';
+
+								$conn = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
+								echo("Connected to Database<br>");
 		
 	
 		
