@@ -103,17 +103,17 @@ if(isset($_POST['submit'])){
 
         $orders = $conn->query($sql);
 	
-        if(!$orders) {
-            echo "Error: Our query failed to execute and here is why: \n";
-           echo  $mysqli->error;
-            exit;
-        }
+       // if(!$orders) {
+        ///    echo "Error: Our query failed to execute and here is why: \n";
+           
+       ///     exit;
+       /// }
 	
     
     // Always close the connection
     
 
-else{
+//else{
       ?>
     
 <table border="2">
@@ -137,7 +137,7 @@ else{
         }
       }
     }
-  }
+ // }
   
   }
 }

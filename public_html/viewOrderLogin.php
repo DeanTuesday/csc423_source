@@ -23,13 +23,7 @@ include_once('./templates/header.php');
 <tr><td>Password:</td><td><input type="password" name="Password"/></td></tr>
 <tr><td></td><td><input type='submit' name="submit" value="Submit"/></td></tr>
 </table>
-   <table>
-        <tr> 
-<td><button type="submit">Submit Information</button></td>
-        
-			<td><input type="reset"></td>
-        </tr>
-    </table>
+   
     <input type="hidden" name="viewOrders">
 </form>
 
