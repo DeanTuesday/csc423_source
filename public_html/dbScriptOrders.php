@@ -85,7 +85,7 @@ if(isset($_POST['submit'])){
 		$vquery= "SELECT * FROM Vendor WHERE VendorId='$vendorId' AND Password='$password'";
 		
 		$result = $conn->query($vquery);
-		if (empty($result)) { 
+		if (results->num_rows === 0) { 
 		
 			echo "please type in valid VendorId and Password";
 
