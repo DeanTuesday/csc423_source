@@ -90,7 +90,7 @@ if(isset($_POST['submit'])){
 			echo "please type in valid VendorId and Password";
 
 		}
-		
+		else{
 		  if(!$result) {
             echo "Error: Our query failed to execute and here is why: \n";
             echo "Query: " . $query . "\n";
@@ -105,9 +105,7 @@ if(isset($_POST['submit'])){
         $result = $conn->query($query);
         if(!$result) {
             echo "Error: Our query failed to execute and here is why: \n";
-            echo "Query: " . $query . "\n";
-            echo "Errno: " . $mysqli->errno . "\n";
-            echo "Error: " . $mysqli->error . "\n";
+           
             exit;
         }
      
@@ -138,7 +136,7 @@ else{
           echo "<tr><td>{$row['OrderId']}</td><td>{$row['VendorId']}</td><td>{$row['StoreId']}</td><td>{$row['DateTimeOfOrder']}</td><td>{$row['Status']}</td><td>{$row['DateTimeOfFullfilment']}</td></tr>\n";
         }
       }
-    
+    }
   }
   }
 }
