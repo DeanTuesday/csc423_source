@@ -106,7 +106,7 @@ if(isset($_POST['submit'])){
 		
 		$VendorId = $_POST['VendorId'];
         $query= "SELECT *  FROM Order  WHERE VendorId = '$VendorId'";
-        $result = $conn->query($sql);
+        $result = $conn->query($query);
 	
         if(!$result) {
            printf("Errormessage: %s\n", $mysqli->error);
