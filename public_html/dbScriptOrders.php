@@ -99,11 +99,11 @@ if(isset($_POST['submit'])){
         }
 		else{
 		// if valid proceed to get vendors orders
-		$query= "SELECT * FROM Order WHERE VendorId='$vendorId'";
+		$sql= "SELECT * FROM Order WHERE VendorId='$vendorId'";
 
-        $result = $conn->query($query);
+        $orders = $conn->query($sql);
 	
-        if(!$result) {
+        if(!$orders) {
             echo "Error: Our query failed to execute and here is why: \n";
            echo  $mysqli->error;
             exit;
@@ -129,10 +129,10 @@ else{
   </thead>
   <tbody>
     <?php 
-      if( $result->num_rows==0 ){
+      if( $orders->num_rows==0 ){
         echo '<tr><td colspan="4">No Rows Returned</td></tr>';
       }else{
-        while( $row = $result->fetch_row() ){
+        while( $row = $orders->fetch_row() ){
           echo "<tr><td>{$row['OrderId']}</td><td>{$row['VendorId']}</td><td>{$row['StoreId']}</td><td>{$row['DateTimeOfOrder']}</td><td>{$row['Status']}</td><td>{$row['DateTimeOfFullfilment']}</td></tr>\n";
         }
       }
