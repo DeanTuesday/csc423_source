@@ -83,7 +83,7 @@ if(isset($_POST['submit'])){
 		$password = $_POST['Password'];
 		// check to see if vendor id and password are valid
 		$vquery= "SELECT * FROM Vendor WHERE VendorId='$vendorId' AND Password='$password'";
-		$sql= "SELECT OrderId, VendorId, StoreId, `Date TimeOfOrder`, Status, `Date TimeOfFullfilment`  FROM Order WHERE VendorId = '$vendorId'";
+		
 		$result = $conn->query($vquery);
 		if ($result->num_rows === 0) { 
 		
@@ -99,10 +99,19 @@ if(isset($_POST['submit'])){
         }
 		else{
 		// if valid proceed to get vendors orders
+		$conn->close();
 		
-		
+		$addr = 'localhost';
+								$user = 'wdean2';
+								$pass = 'csc423?';
+								$db = 'fal16_csc423_wdean2';
 
-        $orders = $conn->query($sql);
+								$conn1 = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
+		
+		
+		
+        $sql= "SELECT *  FROM Order WHERE VendorId = '$vendorId'";
+        $orders = $conn1->query($sql);
 	
         if(!$orders) {
            printf("Errormessage: %s\n", $mysqli->error);
