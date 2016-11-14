@@ -105,7 +105,7 @@ if(isset($_POST['submit'])){
 	
         if(!$result) {
             echo "Error: Our query failed to execute and here is why: \n";
-           echo "Error: " . $mysqli->error . "\n";
+           echo  $mysqli->error;
             exit;
         }
 	
