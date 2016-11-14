@@ -104,11 +104,11 @@ if(isset($_POST['submit'])){
 	
 		
 		
-		
-        $sql= "SELECT *  FROM Order Left Join ON VENDOR WHERE VendorId = '$vendorId'";
-        $orders = $conn->query($sql);
+		$VendorId = $_POST['VendorId'];
+        $query= "SELECT *  FROM Order  WHERE VendorId = '$VendorId'";
+        $result = $conn->query($sql);
 	
-        if(!$orders) {
+        if(!$result) {
            printf("Errormessage: %s\n", $mysqli->error);
            
            exit;
@@ -134,10 +134,10 @@ else{
   </thead>
   <tbody>
     <?php 
-      if( $orders->num_rows==0 ){
+      if( $result->num_rows==0 ){
         echo '<tr><td colspan="4">No Rows Returned</td></tr>';
       }else{
-        while( $row = $orders->fetch_row() ){
+        while( $row = $result->fetch_row() ){
           echo "<tr><td>{$row['OrderId']}</td><td>{$row['VendorId']}</td><td>{$row['StoreId']}</td><td>{$row['DateTimeOfOrder']}</td><td>{$row['Status']}</td><td>{$row['DateTimeOfFullfilment']}</td></tr>\n";
         }
       }
