@@ -34,7 +34,7 @@ if(isset($_POST['submit'])){
 
     // Always grab customer info from the form
     //$orderId = $_POST['orderId'];
-    $vendorId = $_POST['VendorId'];
+    //$vendorId = $_POST['VendorId'];
     //$storeId = $_POST['storeId'];
     //$datetimeOrder = $_POST['datetimeOrder'];
     //$status = $_POST['status'];
@@ -79,13 +79,14 @@ if(isset($_POST['submit'])){
     }
 	// Only run the following query if we are viewing vendors orders
     if(isset($_POST['viewOrders'])){
-        
+        $vendorId = $_POST['VendorId'];
 		$password = $_POST['Password'];
 		// check to see if vendor id and password are valid
 		$vquery= "SELECT * FROM Vendor WHERE VendorId='$vendorId' AND Password='$password'";
 		
 		$result = $conn->query($vquery);
-		if (mysql_num_rows($result)==0) { 
+		if (empty($result)) { 
+		
 			echo "please type in valid VendorId and Password";
 
 		}
