@@ -83,7 +83,7 @@ if(isset($_POST['submit'])){
 		$password = $_POST['Password'];
 		// check to see if vendor id and password are valid
 		$vquery= "SELECT * FROM Vendor WHERE VendorCode='$vendorId' AND Password='$password'";
-		
+		$sql= "SELECT * FROM Order WHERE VendorId='$vendorId'";
 		$result = $conn->query($vquery);
 		if ($result->num_rows === 0) { 
 		
@@ -99,7 +99,8 @@ if(isset($_POST['submit'])){
         }
 		else{
 		// if valid proceed to get vendors orders
-		$sql= "SELECT * FROM Order WHERE VendorId='$vendorId'";
+		
+		
 
         $orders = $conn->query($sql);
 	
