@@ -102,12 +102,13 @@ if(isset($_POST['submit'])){
 		$query= "SELECT * FROM Order WHERE VendorId='$vendorId'";
 
         $result = $conn->query($query);
+	
         if(!$result) {
             echo "Error: Our query failed to execute and here is why: \n";
-           
+           echo "Error: " . $mysqli->error . "\n";
             exit;
         }
-     
+	
     
     // Always close the connection
     
@@ -128,15 +129,16 @@ else{
   </thead>
   <tbody>
     <?php 
-      if( mysql_num_rows( $selectRes )==0 ){
+      if( $result->num_rows==0 ){
         echo '<tr><td colspan="4">No Rows Returned</td></tr>';
       }else{
-        while( $row = mysql_fetch_assoc( $selectRes ) ){
+        while( $row = $result->fetch_row() ){
           echo "<tr><td>{$row['OrderId']}</td><td>{$row['VendorId']}</td><td>{$row['StoreId']}</td><td>{$row['DateTimeOfOrder']}</td><td>{$row['Status']}</td><td>{$row['DateTimeOfFullfilment']}</td></tr>\n";
         }
       }
     }
   }
+  
   }
 }
 $conn->close();
