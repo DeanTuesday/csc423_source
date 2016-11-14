@@ -79,8 +79,8 @@ if(isset($_POST['submit'])){
     }
 	// Only run the following query if we are viewing vendors orders
     if(isset($_POST['viewOrders'])){
-        $vendorId = $_POST['VendorId'];
-		$password = $_POST['Password'];
+        $vendorId = $_POST['vendorId'];
+		$password = $_POST['password'];
 		// check to see if vendor id and password are valid
 		$vquery= "SELECT * FROM Vendor WHERE VendorId='$vendorId' AND Password='$password'";
 		
@@ -104,8 +104,8 @@ if(isset($_POST['submit'])){
 	
 		
 		
-		$VendorId = $_POST['VendorId'];
-        $query= "SELECT *  FROM Order  WHERE VendorId = '$VendorId'";
+		
+        $query= "SELECT *  FROM Order  WHERE VendorId = '$vendorId'";
         $result = $conn->query($query);
 	
         if(!$result) {
