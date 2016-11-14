@@ -99,19 +99,14 @@ if(isset($_POST['submit'])){
         }
 		else{
 		// if valid proceed to get vendors orders
-		$conn->close();
 		
-		$addr = 'localhost';
-								$user = 'wdean2';
-								$pass = 'csc423?';
-								$db = 'fal16_csc423_wdean2';
-
-								$conn1 = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
+		
+	
 		
 		
 		
-        $sql= "SELECT *  FROM Order WHERE VendorId = '$vendorId'";
-        $orders = $conn1->query($sql);
+        $sql= "SELECT *  FROM Order Left Join ON VENDOR WHERE VendorId = '$vendorId'";
+        $orders = $conn->query($sql);
 	
         if(!$orders) {
            printf("Errormessage: %s\n", $mysqli->error);
