@@ -17,7 +17,7 @@ include_once('./templates/header.php');
 
 <!-- Body Content Goes Here -->
 <h1>Login<h1>
-<form  action="dbScriptOrders.php" name="viewOrders" id="viewOrders" method='post'>
+<form  method="POST" action="dbScriptOrders.php" name="viewOrders" id="viewOrders" >
 <table cellspacing='5' align='center'>
 <tr><td>VendorId:</td><td><input type='text' name='VendorId'/></td></tr>
 <tr><td>Password:</td><td><input type='password' name='Password'/></td></tr>
