@@ -33,12 +33,12 @@ if(isset($_POST['submit'])){
     }
 
     // Always grab customer info from the form
-    $orderId = $_POST['orderId'];
+    //$orderId = $_POST['orderId'];
     $vendorId = $_POST['VendorId'];
-    $storeId = $_POST['storeId'];
-    $datetimeOrder = $_POST['datetimeOrder'];
-    $status = $_POST['status'];
-    $datetimeFullfillment = $_POST['datetimeFullfillment'];
+    //$storeId = $_POST['storeId'];
+    //$datetimeOrder = $_POST['datetimeOrder'];
+    //$status = $_POST['status'];
+    //$datetimeFullfillment = $_POST['datetimeFullfillment'];
     
 
     // Only run the following query if we are inserting
