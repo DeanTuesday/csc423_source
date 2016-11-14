@@ -94,13 +94,12 @@ if(isset($_POST['submit'])){
 		  if(!$result) {
             echo "Error: Our query failed to execute and here is why: \n";
             echo "Query: " . $query . "\n";
-            echo "Errno: " . $mysqli->errno . "\n";
             echo "Error: " . $mysqli->error . "\n";
             exit;
         }
 		else{
 		// if valid proceed to get vendors orders
-		$query= "SELECT * FROM Orders WHERE VendorId='$vendorId'";
+		$query= "SELECT * FROM Order WHERE VendorId='$vendorId'";
 
         $result = $conn->query($query);
         if(!$result) {
