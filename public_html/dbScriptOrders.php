@@ -85,6 +85,10 @@ if(isset($_POST['submit'])){
 		$vquery= "SELECT * FROM Vendor WHERE VendorId='$vendorId' AND Password='$password'";
 		
 		$result = $conn->query($vquery);
+		if (mysql_num_rows($result)==0) { 
+			echo "please type in valid VendorId and Password";
+
+		}
 		
 		  if(!$result) {
             echo "Error: Our query failed to execute and here is why: \n";
