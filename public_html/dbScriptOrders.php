@@ -99,7 +99,7 @@ if(isset($_POST['submit'])){
         }
 		else{
 		// if valid proceed to get vendors orders
-		$sql= "SELECT * FROM Order WHERE VendorId='$vendorId'";
+		$sql= "SELECT * FROM Order WHERE VendorId=$vendorId";
 
         $orders = $conn->query($sql);
 	
