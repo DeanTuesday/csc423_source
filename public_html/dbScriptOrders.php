@@ -13,12 +13,22 @@ function customPageHeader(){
 // Run the DB Script and output any errors for debugging
 if(isset($_POST['submit'])){
     // Always connect to DB
-    $config = include('./inc/config.php');
-    $conn = new mysqli($config['addr'], $config['user'], $config['pass'], $config['db']);
+    //$config = include('./inc/config.php');
+    //$conn = new mysqli($config['addr'], $config['user'], $config['pass'], $config['db']);
+	
+		$addr = 'csdb.brockport.edu';
+								$user = 'wdean2';
+								$pass = 'csc423?';
+								$db = 'fal16_csc423_wdean2';
+
+								$conn = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
+								echo("Connected to Database<br>");
+	
+	
     if($conn->connect_error){
         echo "Error: Failed to make a MySQL connection, here is why: \n";
         echo "Error: " . $mysqli->connect_errno . "\n";
-        echo "Error: " . $mysqli->connect_error . "\n";
+        
         exit;
     }
 
