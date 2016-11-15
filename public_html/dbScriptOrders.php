@@ -108,20 +108,18 @@ if(isset($_POST['submit'])){
 		
 		
 		
-        $query= "SELECT *  FROM Order  WHERE VendorId = '$vendorId'";
+        $query= "SELECT *  FROM `Order`  WHERE VendorId = '$vendorId' ";
         $result = $conn->query($query);
 	
-        if(!$result) {
-           printf("Errormessage: %s\n", $mysqli->error);
-           
-           exit;
-        }
-	
+ 
+	if (!$result) {
+    trigger_error('Invalid query: ' . $conn->error);
+}
     
     // Always close the connection
     
 
-else{
+
       ?>
     
 <table border="2">
@@ -140,16 +138,25 @@ else{
       if( $result->num_rows==0 ){
         echo '<tr><td colspan="4">No Rows Returned</td></tr>';
       }else{
-        while( $row = $result->fetch_row() ){
-          echo "<tr><td>{$row['OrderId']}</td><td>{$row['VendorId']}</td><td>{$row['StoreId']}</td><td>{$row['DateTimeOfOrder']}</td><td>{$row['Status']}</td><td>{$row['DateTimeOfFullfilment']}</td></tr>\n";
+        while( $row = mysqli_fetch_array($result) ){
+			
+			$OrderId = $row['OrderId'];
+			
+			$StoreId = $row['StoreId'];
+			$DateTimeOfOrder = $row['DateTimeOfOrder'];
+			$Status = $row['Status'];
+			$DateTimeOfFulfillment  = $row['DateTimeOfFulfillment'];
+			
+          echo "<tr><td>$OrderId</td><td>$vendorId</td><td>$StoreId</td><td>$DateTimeOfOrder</td><td>$Status</td><td>$DateTimeOfFulfillment </td></tr>\n";
         }
       }
     }
   }
   
-  }
+  
   $conn->close();
-}
+  }
+
 
 
 
