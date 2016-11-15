@@ -42,79 +42,16 @@ if(isset($_POST['submit'])){
     //$datetimeFullfillment = $_POST['datetimeFullfillment'];
     
 
-    // Only run the following query if we are inserting
-    if(isset($_POST['addOrder'])){
-        $query =    "insert into Customer (CustomerId, Name, Address, City, State, ZIP, Phone, Email) ".
-                    "values ('$cId', '$name', '$address', '$city', '$state', '$zip', '$phone', '$email')";
-   
-        $result = $conn->query($query);
-        if(!$result) {
-            echo "Error: Our query failed to execute and here is why: \n";
-            echo "Query: " . $query . "\n";
-            echo "Errno: " . $mysqli->errno . "\n";
-            echo "Error: " . $mysqli->error . "\n";
-            exit;
-        }
-        else {
-            echo "Customer created successfully" ;
-        }
-    }
-
-    // Only run the following query if we are updating
-    if(isset($_POST['updateOrder'])){
-        $query= "update Customer ".
-                "set Name='$name', Address='$address', City='$city',State='$state', ZIP='$zip', Phone='$phone', Email='$email' ".
-                "where CustomerId='$cId'";
-
-        $result = $conn->query($query);
-        if(!$result) {
-            echo "Error: Our query failed to execute and here is why: \n";
-            echo "Query: " . $query . "\n";
-            echo "Errno: " . $mysqli->errno . "\n";
-            echo "Error: " . $mysqli->error . "\n";
-            exit;
-        }
-        else {
-            echo "Customer updateded successfully" ;
-        }
-    }
+    
 	// Only run the following query if we are viewing vendors orders
-    if(isset($_POST['viewOrders'])){
-        $vendorId = $_POST['vendorId'];
-		$password = $_POST['password'];
+    if(isset($_POST['viewOrderDetails'])){
+        $OrderId = $_POST['OrderId'];
+		
 		// check to see if vendor id and password are valid
-		$vquery= "SELECT * FROM Vendor WHERE VendorId='$vendorId' AND Password='$password'";
 		
-}
-		$result = $conn->query($vquery);
-		if ($result->num_rows === 0) { 
 		
-			echo "please type in valid VendorId and Password";
 
-		}
-		else{
-		  if(!$result) {
-            echo "Error: Our query failed to execute and here is why: \n";
-            echo "Query: " . $query . "\n";
-            echo "Error: " . $mysqli->error . "\n";
-            exit;
-        }
-		else{
-		// if valid proceed to get vendors orders
 		
-		$result->free();
-		
-	
-		
-		
-		
-        $query= "SELECT *  FROM `Order`  WHERE VendorId = '$vendorId' ORDER BY CASE WHEN Status = 'Pending' THEN Status ='Delivered' ELSE Status ='Canceled' END, DateTimeOfOrder  ";
-        $result = $conn->query($query);
-	
- 
-	if (!$result) {
-    trigger_error('Invalid query: ' . $conn->error);
-}
     
     // Always close the connection
     
@@ -164,11 +101,12 @@ if(isset($_POST['submit'])){
 		echo "</form>";
       }
     }
+	$conn->close();
   }
   
   
-  $conn->close();
-  }
+  
+  
 
 
 
