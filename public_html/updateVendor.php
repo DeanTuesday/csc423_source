@@ -7,8 +7,9 @@ $PageTitle="Select Vendor To Update";
 function customPageHeader(){
 ?>
 <!-- Add any CSS or JS files here -->
-	<!--<script src="./js/vendorFormValidator.js" type="text/javascript"></script>-->
-	<script src="./js/pwdConfPwd.js" type="text/javascript"></script>
+	<script src="./js/vendorFormValidator.js" type="text/javascript"></script>
+	<script src="./js/setUpdatePasswordFlag.js" type="text/javascript"></script>
+	
 <?php }
 
 // Header
@@ -30,23 +31,21 @@ if(isset($_POST['vendorId']))
 		<form id='updateForm' name='updateForm' method='POST' action='dbScriptVendor.php' onsubmit='return validate();'>
 			<table align='center'>
 				<tr>
-					<td colspan='2'>
-					<center><label><b>
-					Vendor ID: 
-					<?php $disp=htmlspecialchars($vendorId); echo"$disp"; ?>
-					<input type='hidden' name='vendorId' value=
-						<?php $disp=htmlspecialchars($vendorId); echo"'$disp'"; ?>>
-					</b></center></label>
+					<td>
+						<input type='hidden' name='vendorId' value=
+							<?php $disp=htmlspecialchars($vendorId); echo"'$disp'"; ?>>
 					</td>
+
 				</tr>
 				<tr>
 					<td><label>Vendor Code:</label></td>
-					<td><input type='text' id='vcode' name='vcode' value=
+					<td><?php $disp=htmlspecialchars($vcode); echo"$disp"; ?>
+						<input type='hidden' id='vcode' name='vcode' value=
 						<?php $disp=htmlspecialchars($vcode); echo"'$disp'"; ?>></td>
 				</tr>
 				<tr>
 					<td><label>Vendor Name:</label></td>
-					<td><input type='text' id='vname' name='vName' value=
+					<td><input type='text' id='vname' name='vname' value=
 						<?php $disp=htmlspecialchars($vname); echo"'$disp'"; ?>></td>
 				</tr>
 				<tr>
@@ -76,14 +75,17 @@ if(isset($_POST['vendorId']))
 				</tr>
 				<tr>
 					<td><label>Contact Person:</label></td>
-					<td><input type='text' id='contactPersonName' name='contact' value=
+					<td><input type='text' id='contact' name='contact' value=
 							<?php $disp=htmlspecialchars($contact); echo"'$disp'"; ?>></td>
 				</tr>
 				<tr>
 					<td><label>Vendor Status:</label></td>
-					<td><?php include_once('./inc/setVendorStatusOption.php'); ?></td>
+					<td><?php include_once('./inc/setVendorStatusOption.php'); ?>
+					<input type='hidden' name='vstatus' id='vstatus'>
+					</td>
+
 				</tr>
-				<input type='hidden' name='vStatus' id='vStatus'>
+
 				<tr>
 					<td colspan='2'><hr></td></tr>
 				<tr>
@@ -94,7 +96,10 @@ if(isset($_POST['vendorId']))
 				</tr>
 				<tr>
 					<td><label>Current Password:</label></td>
-					<td><input type='password' id='userPwd' name='userPwd'></td>
+					<td>
+						<input type='password' id='userPwd' name='userPwd' onchange="setUpdatePasswordFlag();">
+						<input type='hidden' id='updatePasswordFlag' name='updatePasswordFlag' value='false'>
+					</td>
 				</tr>
 				<tr>
 					<td><label>New Password:</label></td>
@@ -121,7 +126,7 @@ else
 {
 	?>
 
-	    <link rel="stylesheet" href="./css/styles.css" />
+	<link rel="stylesheet" href="./css/styles.css" />
 	<?php
 
 		echo "<b>Must select a vendor to update first.</b>";

@@ -18,9 +18,9 @@
         while($row = mysql_fetch_assoc($result))
         {
             $vId = $row["VendorId"];
-            $vCode = $row["VendorCode"];
-            $vName = $row["VendorName"];
-            echo"<option value='$vId'>$vCode - $vName</option>";
+            $vcode = $row["VendorCode"];
+            $vname = $row["VendorName"];
+            echo"<option value='$vId'>$vcode - $vname</option>";
         }
         echo "</select>";
     mysql_close($conn);

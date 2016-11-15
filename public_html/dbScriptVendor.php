@@ -56,69 +56,105 @@ if(isset($_POST['addVendor'])) {
     mysql_close($conn);
 }
     
-if(isset($_POST['updateVendorFlag'])) {
-    //TODO
-    $config = include('./inc/config.php');
 
-    $conn = mysql_connect($config['addr'], $config['user'], $config['pass']);
+if(isset($_POST['updateVendorFlag'])) 
+{
+    $config = include('./inc/config.php');
+    $conn = new mysqli($config['addr'], $config['user'], $config['pass'], $config['db']);
+    if($conn->connect_errno){
+        echo "Error: Failed to make a MySQL connection, here is why: \n";
+        echo "Errno: " . $conn->connect_errno . "\n";
+        echo "Error: " . $conn->connect_error . "\n";
+        exit;
+    }
   
     //Get new values from previous page:    
     $vendorId = $_POST['vendorId'];
     $vcode = $_POST["vcode"];
-    $vname = $_POST["vName"];
+    $vname = $_POST["vname"];
     $address = $_POST["address"];
     $city = $_POST["city"];
     $state = $_POST["state"];
     $zip = $_POST["zip"];
     $phone = $_POST["phone"];
     $contact = $_POST["contact"];
-    $vendorStatus = $_POST["vStatus"];
-    
-    // Do the stuff to update these values
-    echo 'Vendor updated sucessfully!';
+    $vendorStatus = $_POST["vstatus"];
 
+    $query= "update Vendor ".
+            "set VendorName='$vname', Address='$address', City='$city', State='$state', ZIP='$zip', Phone='$phone', ContactPersonName='$contact', Status='$vendorStatus'".
+            "where VendorId=$vendorId";
 
-    // if(updatePasswordFlag) then validate password and give message updated, or else pwd didnt update
-    // $vendorPwd = $_POST["vendorPwd"];
-    echo '<br>Vendor password updated successfully!';
+    $result = $conn->query($query);
 
-
-    /*
-    echo "<input type='hidden' name='vendorId' value='vendorId'>";
-
-    if (!$conn){
-        die('Could not connect: '.mysql_error());
-    }
-    
-    mysql_select_db($config['db']);
-
-    $sql = "Select VendorCode, VendorName, Address, City, State, ZIP, Phone, ContactPersonName, Status, Password from Vendor Where VendorId=$vendorId"
-            
-    $result = mysql_query($sql);
-    
-    if(!$result ) {
-       die('No results for ID: ' . mysql_error());
-    }
-
-    while($row = mysql_fetch_assoc($result))
+    if(!$result)
     {
-        $vid = null;
-        $vcode = $row['vcode'];
-        $vname = $row['vname'];
-        $address = $row['address'];
-        $city = $row['city'];
-        $state = $row['state'];
-        $zip = $row['zip'];
-        $phone = $row['phone'];
-        $contact = $row['contact'];
-        $pwd = $row['pwd'];
+        echo "Error: Our query failed to execute and here is why: \n";
+        echo "Query: " . $query . "\n";
+        echo "Errno: " . $conn->errno . "\n";
+        echo "Error: " . $conn->error . "\n";
+        exit;
+    }
+    else
+    {
+        echo 'Vendor information updated successfully!';
     }
 
-    mysql_close($conn);
-    */
+
+    // Always close the connection
+    $conn->close();
+
+    if($_POST['updatePasswordFlag']=='true')
+    {
+        // Do a DB Query to get the real PWD
+        include('./dbScriptGetVendor.php');
+        
+        // If correct update the PWD and echo success 
+        if($_POST['userPwd']==$vendorPwd)
+        {
+            $vendorPwd = $_POST['newPwd'];
+            $config = include('./inc/config.php');
+            $conn = new mysqli($config['addr'], $config['user'], $config['pass'], $config['db']);
+            if($conn->connect_errno){
+                echo "Error: Failed to make a MySQL connection, here is why: \n";
+                echo "Errno: " . $conn->connect_errno . "\n";
+                echo "Error: " . $conn->connect_error . "\n";
+                exit;
+            }
+        
+            $query= "update Vendor ".
+            "set Password='$vendorPwd'".
+            "where VendorId=$vendorId";
+
+            $result = $conn->query($query);
+
+            if(!$result)
+            {
+                echo "Error: Our query failed to execute and here is why: \n";
+                echo "Query: " . $query . "\n";
+                echo "Errno: " . $conn->errno . "\n";
+                echo "Error: " . $conn->error . "\n";
+                exit;
+            }
+            else
+            {
+                echo '<br>Vendor password updated successfully!';
+            }
+            
+            // Always close the connection
+            $conn->close();
+        }
+        // If incorrect don't update the PWD and echo statement saying correct pwd needed
+        else
+        {
+            echo '<br>Vendor password not updated! Original password was incorrect.';
+        }
+    }
+    else if($_POST['updatePasswordFlag']=='false')
+    {
+
+    }
 }
 ?>
-
 <!-- Body Content Goes Here -->
 <table align="center">
     <tr>

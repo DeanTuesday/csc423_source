@@ -7,7 +7,13 @@ function validate(){
 		if( !validateState() ){ return false; }
 		if( !validateZip() ){ return false; }
 		if( !validatePhone() ){ return false; }
-		if( !validateContactName() ){ return false; } 
+		if( !validateContactName() ){ return false; }
+
+		if(document.getElementById("updatePasswordFlag").value=="true")
+		{
+			if( !validatePassword() ){ return false; }
+		}
+
 	}
 	catch(err) {
 		alert("JAVASCRIPT ERROR NEEDS TO BE RESOLVED: " + err.message);
@@ -26,20 +32,24 @@ function validateVCode(){
 }
 
 function validateVName(){
-	var vn = document.getElementById("vname").value;
-	if (!/^[a-zA-Z]+-? ?[a-zA-Z]*$/.test(vn)){
-        alert("Vendor name was not valid.");
-        return false;
-	}
+	/*
+		var vn = document.getElementById("vname").value;
+		if (!/^[a-zA-Z]+-? ?[a-zA-Z]*$/.test(vn)){
+	        alert("Vendor name was not valid.");
+	        return false;
+		}
+	*/
 	return true;
 }
 
 function validateAddress(){
-	var a = document.getElementById("address").value;
-	if (!/^[\d]+ [a-zA-Z]+ [a-zA-Z]+\.?$/.test(a)){
-		alert("Address was not valid.");
-        return false;
-	}
+	/*
+		var a = document.getElementById("address").value;
+		if (!/^[\d]+ [a-zA-Z]+ [a-zA-Z]+\.?$/.test(a)){
+			alert("Address was not valid.");
+	        return false;
+		}
+	*/
 	return true;
 }
 
@@ -89,10 +99,16 @@ function validateContactName(){
 }
 
 function validatePassword(){
-	var pwd = document.getElementById("pwd").value;
-	if (!/^[a-zA-Z0-9]+[a-zA-Z -]*$/.test(pwd)){
-        alert("Contact Name was not valid.");
+	var newPwd = document.getElementById("newPwd").value;
+	var confirmNewPwd = document.getElementById("confirmNewPwd").value;
+	if (newPwd.length < 8){
+        alert("Password must be at least 8 characters in length.");
         return false;
+	}
+	if (newPwd != confirmNewPwd){
+		alert("New Password does not match confirmation field.");
+		return false;
 	}
 	return true;
 }
+
