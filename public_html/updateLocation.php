@@ -26,7 +26,7 @@
 					$sState = $row["State"];
 					$sZip = $row["ZIP"];
 					$sPhone = $row["Phone"];
-					$sContact = $row["ManagerName"];
+					$sManager = $row["ManagerName"];
 
 					$storeCode=htmlspecialchars($sCode);
 					$storeName=htmlspecialchars($sName);
@@ -44,19 +44,6 @@
 			}
 
 			$db->close();
-
-			//$vendorId=htmlspecialchars(($_POST['storeId']));
-			
-			/*
-			$storeCode="";
-			$storeName="";
-			$address="";
-			$city="";
-			$state="";
-			$zip="";
-			$phone="";
-			$managerName="";
-			*/
 
 		}
 
@@ -92,7 +79,7 @@
 							<tr><td><label>State:</label>		</td>	<td><input type='text' id='state' name='state' value=$state>							</td></tr>
 							<tr><td><label>ZIP:</label>			</td>	<td><input type='text' id='zip' name='zip' value=$zip>									</td></tr>
 							<tr><td><label>Phone:</label>				</td>	<td><input type='text' id='phone' name='phone' value=$phone>					    </td></tr>
-							<tr><td><label>Managers Name:</label>		</td>	<td><input type='text' id='managerName' name='managerName' value=$managerName>		</td></tr>
+							<tr><td><label>Managers Name:</label>		</td>	<td><input type='text' id='managerName' name='managerName' value='$managerName'>		</td></tr>
 							<tr><td colspan='2'><hr>																										        </td></tr>
 							<tr><td><center><br><input type='submit' value='Submit Changes' </center>	</td>	<td><center><br><input type='button' value='Undo Changes'></center>	</td></tr>
 							</table>

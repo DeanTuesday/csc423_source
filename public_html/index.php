@@ -21,20 +21,25 @@ include_once('./templates/header.php');
 <table>
 	<tr>
 		<td><a href='./selectOrderVendor.php' class='button'>Create An Order</a></td>
+		<td><a href='./viewOrderLogin.php' class='button'>View a Order</a></td>
 	</tr>	
 	<tr>
 		<td><a href='./addVendor.php' class='button'>Add A Vendor</a></td>
 		<td><a href='./addItem.php' class='button'>Add An Item</a></td>
 		<td><a href='./addLocation.php' class='button'>Add A Location</a></td>
 		<td><a href='./addCustomer.php' class='button'>Add A Customer</a></td>
-		<td><a href='./viewOrderLogin.php' class='button'>View a Order</a></td>
 	</tr>
 	<tr>
 		<td><a href='./selectVendorToUpdate.php' class='button'>Update A Vendor</a></td>
 		<td><a href='./selectItemToUpdate.php' class='button'>Update An Item</a></td>
 		<td><a href='./selectLocationToUpdate.php' class='button'>Update A Location</a></td>
 		<td><a href='./selectCustomerToUpdate.php' class='button'>Update A Customer</a></td>
-	
+	</tr>
+	<tr>
+		<td><a href='./selectVendorToDelete.php' class='button'>Delete A Vendor</a></td>
+		<td><a href='./selectItemToDelete.php' class='button'>Delete An Item</a></td>
+		<td><a href='./selectLocationToDelete.php' class='button'>Delete A Location</a></td>
+		<td><a href='./selectCustomerToDelete.php' class='button'>Delete A Customer</a></td>
 	</tr>
 </table>
 
