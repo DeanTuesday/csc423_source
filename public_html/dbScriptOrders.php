@@ -127,7 +127,7 @@ if(isset($_POST['submit'])){
         echo '<tr><td colspan="4">No Rows Returned</td></tr>';
       }
 	  ?>
-	 
+	  else{
 		     <form method="POST" action="dbScriptOrderDetails.php" name="viewOrderDetails" id="viewOrderDetails" >
 <table border="2">
   <thead>
