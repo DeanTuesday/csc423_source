@@ -17,12 +17,8 @@ function customPageHeader(){
     //$config = include('./inc/config.php');
     //$conn = new mysqli($config['addr'], $config['user'], $config['pass'], $config['db']);
 	
-		$addr = 'localhost';
-								$user = 'wdean2';
-								$pass = 'csc423?';
-								$db = 'fal16_csc423_wdean2';
-
-								$conn = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
+		$config = include('./inc/config.php');
+    $conn = new mysqli($config['addr'], $config['user'], $config['pass'], $config['db']);
 								echo("Connected to Database<br>");
 	
 	

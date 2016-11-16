@@ -21,7 +21,8 @@ include_once('./templates/header.php');
 <table>
 	<tr>
 		<td><a href='./selectOrderVendor.php' class='button'>Create An Order</a></td>
-		<td><a href='./viewOrderLogin.php' class='button'>View a Order</a></td>
+		<td><a href='./viewOrderLogin.php' class='button'>View An Order</a></td>
+		<td><a href='./addItemToExistingOrder.php' class='button'>Add Item to <br> Existing Order</a></td>
 	</tr>	
 	<tr>
 		<td><a href='./addVendor.php' class='button'>Add A Vendor</a></td>

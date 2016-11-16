@@ -14,17 +14,11 @@ function customPageHeader(){
 // Run the DB Script and output any errors for debugging
 if(isset($_POST['submit'])){
     // Always connect to DB
-    $config = include('./inc/config.php');
+	
+	$config = include('./inc/config.php');
     $conn = new mysqli($config['addr'], $config['user'], $config['pass'], $config['db']);
-	/*
-		$addr = 'localhost';
-		                        $user = 'wdean2';
-								$pass = 'csc423?';
-								$db = 'fal16_csc423_wdean2';
-
-								$conn = new mysqli("$addr", "$user", "$pass", "$db") or die ("Unable to Connect");
 								echo("Connected to Database<br>");
-	*/
+	
 	
     if($conn->connect_error){
         echo "Error: Failed to make a MySQL connection, here is why:" ;
@@ -85,7 +79,7 @@ if(isset($_POST['submit'])){
 		// check to see if vendor id and password are valid
 		$vquery= "SELECT * FROM Vendor WHERE VendorId='$vendorId' AND Password='$password'";
 		
-}
+
 		$result = $conn->query($vquery);
 		if ($result->num_rows === 0) { 
 		
@@ -126,9 +120,10 @@ if(isset($_POST['submit'])){
       if( $result->num_rows==0 ){
         echo '<tr><td colspan="4">No Rows Returned</td></tr>';
       }
-	  ?>
+	  
 	  else{
-		     <form method="POST" action="dbScriptOrderDetails.php" name="viewOrderDetails" id="viewOrderDetails" >
+		?>
+		<form method="POST" action="dbScriptOrderDetails.php" name="viewOrderDetails" id="viewOrderDetails" >
 <table border="2">
   <thead>
     <tr>
@@ -184,10 +179,10 @@ if(isset($_POST['submit'])){
   
   $conn->close();
   }
+}
+}
 
 
-
-?>
 
 
 // Header
