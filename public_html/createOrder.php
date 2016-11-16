@@ -16,29 +16,40 @@ include_once('./templates/header.php');
 ?>
 
 <!-- Body Content Goes Here -->
-<h2 align='center'>Create an Order</h1>
+<h2 align='center'>Create an Order</h2>
 
-<h3 align='center'>Select a Store:</h2>
-<form id='selectVendorForm' name='updateVendor' method='POST' action='createOrder.php' onsubmit='setSelectedVendor();'>
+<h3 align='center'>Select a Store:</h3>
+<form id='createOrderForm' name='createOrderForm' method='POST' action='dbScriptCreateOrder.php'>
 	<table align='center'>
 		<tr>
-			<td>
-				<select id='vendorOptions'>";
-	        		<option>Select store:</option>";
-					<?php
-					// include db script for stores: include_once('dbScriptPopulateStores');
-					?>
-				</select>
+			<td colspan='2'>
+				<center>
+					<select id='vendorOptions'>";
+		        		<option>Select store:</option>";
+						<?php
+						// include db script for stores: include_once('dbScriptPopulateStores');
+						?>
+					</select>
+					<hr>
+				</center>
 			</td>
-			<hr>
+			
 		<tr>
-			<td>Complete Order Details:</td>
+			<td colspan='2'>
+				<h3 align='center'>Select Items for Order:</h3>
+			</td>
 		</tr>
-			<?php // include db script for items for sale stores: include_once('dbScriptPopulateItems');?>
+			<?php 
+			// include db script for items for sale stores: include_once('dbScriptPopulateItems');
+			?>
+		<tr>	
 			<td>
-				<input type='submit' value='Go'>
-				<input name='SubmitCheck' type='hidden' value='sent'>
+				<input type='submit' value='Create Order'>
+				<input type='hidden' name='createOrderFlag' value='true'>
 				<input name='vendorId' id='vendorId' type='hidden'>
+			</td>
+			<td>
+				<input type='button' value='Go Back (no changes)'>
 			</td>
 		</tr>
 	</table>
