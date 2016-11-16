@@ -23,24 +23,35 @@ if(isset($_POST['createOrderFlag']))
 	//$result = runDbQuery("");
 
 	$result = runDbQuery("Select * From InventoryItem Where VendorId=$vendorId");
+	$total=0;
 	while($row = $result->fetch_assoc())
 	{
 		$itemId = $row["ItemId"];
+		$description = $row["Description"];
+		$itemCost = $row["ItemCost"];
 		if(isset($_POST["$itemId"]) && $_POST["$itemId"] != 0)
 		{
-			echo "hi";
+			$quantityOrdered=$_POST["$itemId"];
+			echo"$description : $quantityOrdered : ".htmlspecialchars('$')."$itemCost<br>";
+			$total = $total + ($quantityOrdered * $itemCost);
 		}
 	}
 
-    echo"Order created successfully!";
+    echo"<br>Order successfully created! You may view this order at any time.<br>";
+    echo"Order total is: $total.<br>Press the button if you are ready to place order for delivery:<br>";
+    ?>
+    <input type="button" value="Confirm For Delivery.">
+    <?php
+
 }
     
 ?>
 <!-- Body Content Goes Here -->
-<table align="center">
+<br>
+<table>
     <tr>
         <td><a href='./index.php' class='button'>Home</a></td>
-        <td><a href='./addVendor.php' class='button'>Create an Order</a></td>
+        <td><a href='./selectOrderVendor.php' class='button'>Create an Order</a></td>
         <td><a href='./selectVendorToUpdate.php' class='button'>View an Order</a></td>
     </tr>
 </table>

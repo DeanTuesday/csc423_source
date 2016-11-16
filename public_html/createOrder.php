@@ -8,6 +8,7 @@ function customPageHeader(){
 ?>
 <!-- Add any CSS or JS files here -->
 	<script src="./js/setSelectedStore.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="./css/styles.css" />
 <?php }
 
 
@@ -16,17 +17,23 @@ include_once('./templates/header.php');
 include_once('./inc/runDbQuery.php');
 
 $vendorId=$_POST['vendorId'];
+$result= runDbQuery("Select VendorName, VendorCode from Vendor Where VendorId=$vendorId");
 
+while($row=$result->fetch_assoc())
+{
+	$vendorName=htmlspecialchars($row['VendorName']);
+	$vendorCode=htmlspecialchars($row['VendorCode']);
+}
 ?>
 
 <!-- Body Content Goes Here -->
-<h2 align='center'>Create an Order</h2>
+<h2 align='center'>Create an Order<br><?php echo"$vendorName<br>($vendorCode)";?></h2>
 
 <h3 align='center'>Select a Store:</h3>
 <form id='createOrderForm' name='createOrderForm' method='POST' action='dbScriptCreateOrder.php'>
 	<table align='center'>
 		<tr>
-			<td colspan='2'>
+			<td colspan='2' bgcolor="#FFFFFF">
 				<center>
 					<select id='storeOptions' onchange='setSelectedStore()'>";
 		        		<option>Select store:</option>";
@@ -38,9 +45,13 @@ $vendorId=$_POST['vendorId'];
 			</td>
 			
 		<tr>
-			<td colspan='2'>
+			<td colspan='2' bgcolor="#FFFFFF">
 				<h3 align='center'>Select Items for Order:</h3>
 			</td>
+		</tr>
+		<tr>
+			<td bgcolor="#FFFFFF"><center><h4>Item Description</h4></center></td>
+			<td bgcolor="#FFFFFF"><center><h4>Quantity</label></h4></td>
 		</tr>
 		<?php 
 		// include db script for items for sale stores: include_once('dbScriptPopulateItems');
@@ -67,7 +78,7 @@ $vendorId=$_POST['vendorId'];
 				<input type='hidden' name='createOrderFlag' value='true'>
 			</td>
 			<td>
-				<input type='button' value='Go Back (no changes)'>
+        		<input type='button' name='cancel' id='cancel' value='Home (no changes)' onclick="cancelClick();">
 			</td>
 		</tr>
 	</table>
