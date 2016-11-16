@@ -23,7 +23,11 @@ if(isset($_POST['submit'])){
     }
 
     // Always grab customer info from the form
-    $cId = $_POST['cId'];
+   
+
+    // Only run the following query if we are inserting
+    if(isset($_POST['addCustomer'])){
+		 $cId = $_POST['cId'];
     $name = $_POST['name'];
     $address = $_POST['address'];
     $city = $_POST['city'];
@@ -31,9 +35,6 @@ if(isset($_POST['submit'])){
     $zip = $_POST['zip'];
     $phone = $_POST['phone'];
     $email = $_POST['email'];
-
-    // Only run the following query if we are inserting
-    if(isset($_POST['addCustomer'])){
         $query =    "insert into Customer (CustomerId, Name, Address, City, State, ZIP, Phone, Email) ".
                     "values ('$cId', '$name', '$address', '$city', '$state', '$zip', '$phone', '$email')";
    
@@ -52,6 +53,14 @@ if(isset($_POST['submit'])){
 
     // Only run the following query if we are updating
     if(isset($_POST['updateCustomer'])){
+		 $cId = $_POST['cId'];
+    $name = $_POST['name'];
+    $address = $_POST['address'];
+    $city = $_POST['city'];
+    $state = $_POST['state'];
+    $zip = $_POST['zip'];
+    $phone = $_POST['phone'];
+    $email = $_POST['email'];
         $query= "update Customer ".
                 "set Name='$name', Address='$address', City='$city',State='$state', ZIP='$zip', Phone='$phone', Email='$email' ".
                 "where CustomerId='$cId'";
@@ -69,6 +78,24 @@ if(isset($_POST['submit'])){
         }
     }
 
+	    if(isset($_POST['deleteCustomer'])){
+			$cId = $_POST['chooseCustomer'];
+        $query= "DELETE FROM Customer where CustomerId='$cId'";
+
+        $result = $conn->query($query);
+        if(!$result) {
+            echo "Error: Our query failed to execute and here is why: \n";
+            echo "Query: " . $query . "\n";
+            echo "Errno: " . $mysqli->errno . "\n";
+            echo "Error: " . $mysqli->error . "\n";
+            exit;
+        }
+        else {
+            echo "Customer deleted successfully" ;
+        }
+    }
+	
+	
     // Always close the connection
     $conn->close();
 }
