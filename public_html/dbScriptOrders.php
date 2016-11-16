@@ -85,7 +85,7 @@ if(isset($_POST['submit'])){
 		// check to see if vendor id and password are valid
 		$vquery= "SELECT * FROM Vendor WHERE VendorId='$vendorId' AND Password='$password'";
 		
-}
+
 		$result = $conn->query($vquery);
 		if ($result->num_rows === 0) { 
 		
@@ -126,9 +126,10 @@ if(isset($_POST['submit'])){
       if( $result->num_rows==0 ){
         echo '<tr><td colspan="4">No Rows Returned</td></tr>';
       }
-	  ?>
+	  
 	  else{
-		     <form method="POST" action="dbScriptOrderDetails.php" name="viewOrderDetails" id="viewOrderDetails" >
+		?>
+		<form method="POST" action="dbScriptOrderDetails.php" name="viewOrderDetails" id="viewOrderDetails" >
 <table border="2">
   <thead>
     <tr>
@@ -184,7 +185,7 @@ if(isset($_POST['submit'])){
   
   $conn->close();
   }
-
+}
 
 
 ?>
