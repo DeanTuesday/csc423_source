@@ -31,10 +31,10 @@
 
 			$result = $this->conn->query($query);
 	        if(!$result) {
-	            echo "Error: Our query failed to execute and here is why: \n";
-	            echo "Query: " . $query . "\n";
-	            echo "Errno: " . $mysqli->errno . "\n";
-	            echo "Error: " . $mysqli->error . "\n";
+	            echo "Error: Our query failed to execute and here is why: <br>";
+	            echo "Query: " . $query . "<br>";
+	            echo "Errno: " . $this->conn->errno . "<br>";
+	            echo "Error: " . $this->conn->error . "<br>";
 	            $this->closeConnection();
 	            exit;
 	        }

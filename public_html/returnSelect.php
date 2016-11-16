@@ -9,7 +9,7 @@ $query = "select StoreId, StoreCode, StoreName from RetailStore";
 $stores = $dbHandler->runQuery($query);
 
 // Header file will use this to set the page title
-$PageTitle="Return Item Form";
+$PageTitle="Return Item To Vendor";
 
 // Header file will use this function to link your page to other css or js files
 function customPageHeader(){
@@ -22,12 +22,12 @@ include_once('./templates/header.php');
 ?>
 
 <!-- Body Content goes here -->
-<form method="POST" action="returnItem.php" name="returnSelect" id="returnSelect">
-    <h3>Return an Item</h3>
+<form method="POST" action="returnForm.php" name="returnSelect" id="returnSelect">
+    <h3>Choose Vendor and Store Location for Return</h3>
     <table>
         <tr>
             <td>
-                <select id='vendors'>";
+                <select name="chooseVendor" id="chooseVendor">";
                     <option>Select a Vendor</option>";
                     <?php
                         while($row = $vendors->fetch_row())
@@ -43,7 +43,7 @@ include_once('./templates/header.php');
         </tr>
         <tr>
             <td>
-                <select id='stores'>";
+                <select name="chooseStore" id="chooseStore">";
                     <option>Select a Retail Store</option>";
                     <?php
                         while($row = $stores->fetch_row())
@@ -65,7 +65,7 @@ include_once('./templates/header.php');
             <td><input type="reset"></td>
         </tr>
     </table>
-    <input type="hidden" name="date" id="date" value="<?= date("d/m/Y")?>">
+    <input type="hidden" name="date" id="date" value="<?= date("Y-m-d")?>">
 </form>
 
 <?php
