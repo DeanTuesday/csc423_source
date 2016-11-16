@@ -16,7 +16,7 @@ include_once('./templates/header.php');
 ?>
 
 <!-- Body Content Goes Here -->
-<h1>Login<h1>
+<h3>Enter the Vendor ID to view an existing order and add items to that order<h3><hr>
 <form  method="POST" action="dbScriptOrders.php" name="viewOrders" id="viewOrders" >
 <table cellspacing='5' align='center'>
 <tr><td>VendorId:</td><td><input type="text" name="vendorId"/></td></tr>
