@@ -8,7 +8,6 @@ if(isset($_POST['date'])){
     $vendorId = $_POST['chooseVendor'];
     $storeId = $_POST['chooseStore'];
     $date = $_POST['date'];
-    echo "$date";
 
     $query = "INSERT INTO ReturnToVendor (VendorId, StoreId, DateTimeOfReturn) ".
         "VALUES ($vendorId, $storeId, '$date'); ";
