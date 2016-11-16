@@ -14,7 +14,7 @@ function customPageHeader(){
 // Run the DB Script and output any errors for debugging
 if(isset($_POST['submit'])){
     // Always connect to DB
-    //$config = include('./inc/config.php');
+    $config = include('./inc/config.php');
     $conn = new mysqli($config['addr'], $config['user'], $config['pass'], $config['db']);
 	/*
 		$addr = 'localhost';

@@ -14,7 +14,6 @@ function customPageHeader(){
 // Header
 include_once('./templates/header.php');
 
-
 // Run the DB script and echo any errors to the screen so we can debug
 if(isset($_POST['createOrderFlag']))
 {

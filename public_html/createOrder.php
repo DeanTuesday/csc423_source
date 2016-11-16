@@ -27,10 +27,9 @@ include_once('./templates/header.php');
 					<select id='vendorOptions'>";
 		        		<option>Select store:</option>";
 						<?php
-						// include db script for stores: include_once('dbScriptPopulateStores');
+						include_once('./dbScriptPopulateStores.php');
 						?>
 					</select>
-					<hr>
 				</center>
 			</td>
 			
