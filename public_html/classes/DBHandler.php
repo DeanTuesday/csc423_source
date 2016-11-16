@@ -2,33 +2,17 @@
 
 	class DBHandler {
 		
-		$config = include('./inc/config.php');
-    	$conn;
-    	$result;
+		var $config;
+    	var $conn;
 
-    	// pass a string formatted as a query to this method
-    	// This will return the result of the query
-    	function runQuery($query){
-			openConnection();
+    	function __construct(){
+    		$this->config = include('./inc/config.php');
+    	}
 
-			$result = $conn->query($query);
-	        if(!$result) {
-	            echo "Error: Our query failed to execute and here is why: \n";
-	            echo "Query: " . $query . "\n";
-	            echo "Errno: " . $mysqli->errno . "\n";
-	            echo "Error: " . $mysqli->error . "\n";
-	            closeConnection();
-	            exit;
-	        }
-
-	        closeConnection();
-
-	        return ($result);
-		}
-
-		function openConnection(){
-			$conn = new mysqli($config['addr'], $config['user'], $config['pass'], $config['db']);
-		    if($conn->connect_errno){
+    	// Need to define these functions above any other function that may use them
+    	function openConnection(){
+			$this->conn = new mysqli($this->config['addr'], $this->config['user'], $this->config['pass'], $this->config['db']);
+		    if($this->conn->connect_errno){
 		        echo "Error: Failed to make a MySQL connection, here is why: \n";
 		        echo "Errno: " . $mysqli->connect_errno . "\n";
 		        echo "Error: " . $mysqli->connect_error . "\n";
@@ -37,7 +21,27 @@
 		}
 
 		function closeConnection(){
-			$conn->close();
+			$this->conn->close();
+		}
+
+    	// pass a string formatted as a query to this method
+    	// This will return the result of the query
+    	function runQuery($query){
+			$this->openConnection();
+
+			$result = $this->conn->query($query);
+	        if(!$result) {
+	            echo "Error: Our query failed to execute and here is why: \n";
+	            echo "Query: " . $query . "\n";
+	            echo "Errno: " . $mysqli->errno . "\n";
+	            echo "Error: " . $mysqli->error . "\n";
+	            $this->closeConnection();
+	            exit;
+	        }
+
+	        $this->closeConnection();
+
+	        return ($result);
 		}
 	}
 ?>
