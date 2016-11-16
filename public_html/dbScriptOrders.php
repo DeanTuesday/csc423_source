@@ -118,13 +118,21 @@ if(isset($_POST['submit'])){
     
     // Always close the connection
     
-
+   else{
 
       ?>
-    
+ 
+    <?php 
+      if( $result->num_rows==0 ){
+        echo '<tr><td colspan="4">No Rows Returned</td></tr>';
+      }
+	  ?>
+	  else{
+		     <form method="POST" action="dbScriptOrderDetails.php" name="viewOrderDetails" id="viewOrderDetails" >
 <table border="2">
   <thead>
     <tr>
+	  <th></th>
       <th>OrderId</th>
       <th>VendorId</th>
       <th>StoreId</th>
@@ -134,15 +142,10 @@ if(isset($_POST['submit'])){
     </tr>
   </thead>
   <tbody>
-    <?php 
-      if( $result->num_rows==0 ){
-        echo '<tr><td colspan="4">No Rows Returned</td></tr>';
-      }else{
-		  echo "<form action="dbScriptOrderDetails.php" >";
+		  <?php 
         while( $row = mysqli_fetch_array($result) ){
 			
 			$OrderId = $row['OrderId'];
-			
 			$StoreId = $row['StoreId'];
 			$DateTimeOfOrder = $row['DateTimeOfOrder'];
 			$Status = $row['Status'];
@@ -151,7 +154,7 @@ if(isset($_POST['submit'])){
 			
 			
 			
-          echo "<tr><td><input type='radio' id='$OrderId' name='$OrderId'></td><td>$OrderId</td><td>$vendorId</td><td>$StoreId</td><td>$DateTimeOfOrder</td><td>$Status</td><td>$DateTimeOfFulfillment </td></tr>\n";
+          echo "<tr><td><input class='radio' type='radio' name='order' value='$OrderId' ></td><td>$OrderId</td><td>$vendorId</td><td>$StoreId</td><td>$DateTimeOfOrder</td><td>$Status</td><td>$DateTimeOfFulfillment </td></tr>\n";
         
 		
 		
@@ -159,20 +162,32 @@ if(isset($_POST['submit'])){
 		
 		
 		}
-		echo"<tr><td></td><td><input type='submit' name='submit' value='Submit'/></td></tr>";
-		<input type="hidden" name="viewOrderDetails">
-		echo "</form>";
-      }
+		
+		
+		
+		 
+		 
+		
+		
+		
+		
+		 echo"<tr><td></td><td><input type='submit' name='submit' value='Submit Form'/></td></tr>";
+		echo "</table>";
+		
+		echo"<input type='hidden' name='viewOrderDetails'>";
+		//echo"<input type='hidden' name='$OrderId'>";
+      echo "</form>";
     }
+   }
   }
-  
+		
   
   $conn->close();
   }
+}
 
 
-
-
+?>
 
 
 // Header

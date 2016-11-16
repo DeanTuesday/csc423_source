@@ -12,7 +12,7 @@ function customPageHeader(){
 <?php }
 
 // Run the DB Script and output any errors for debugging
-if(isset($_POST['submit'])){
+//if(isset($_POST['submit'])){
     // Always connect to DB
     //$config = include('./inc/config.php');
     //$conn = new mysqli($config['addr'], $config['user'], $config['pass'], $config['db']);
@@ -33,28 +33,19 @@ if(isset($_POST['submit'])){
         exit;
     }
 
-    // Always grab customer info from the form
-    //$orderId = $_POST['orderId'];
-    //$vendorId = $_POST['VendorId'];
-    //$storeId = $_POST['storeId'];
-    //$datetimeOrder = $_POST['datetimeOrder'];
-    //$status = $_POST['status'];
-    //$datetimeFullfillment = $_POST['datetimeFullfillment'];
+   
     
 
     
-	// Only run the following query if we are viewing vendors orders
+	
     if(isset($_POST['viewOrderDetails'])){
-        $OrderId = $_POST['OrderId'];
 		
-		// check to see if vendor id and password are valid
-		
+		if(isset($_POST['order'])){
+        $OrderId = $_POST['order'];
 		
 
-		
-    
-    // Always close the connection
-    
+    $query= "SELECT *  FROM `OrderDetail`  WHERE OrderId = '$OrderId'";
+        $result = $conn->query($query);
 
 
       ?>
@@ -62,33 +53,32 @@ if(isset($_POST['submit'])){
 <table border="2">
   <thead>
     <tr>
+      <th>OrderDetailId</th>
       <th>OrderId</th>
-      <th>VendorId</th>
-      <th>StoreId</th>
-      <th>DateTimeOfOrder</th>
-	  <th>Status</th>
-	  <th>DateTimeOfFullfilment</th>
+      <th>ItemId</th>
+      <th>QuantityOrdered</th>
+	 
     </tr>
   </thead>
   <tbody>
     <?php 
       if( $result->num_rows==0 ){
         echo '<tr><td colspan="4">No Rows Returned</td></tr>';
-      }else{
-		  echo "<form action="dbScriptOrderDetails.php" >";
+      }
+	  else{
+		  
         while( $row = mysqli_fetch_array($result) ){
 			
+			$OrderDetailId = $row['OrderDetailId'];
 			$OrderId = $row['OrderId'];
-			
-			$StoreId = $row['StoreId'];
-			$DateTimeOfOrder = $row['DateTimeOfOrder'];
-			$Status = $row['Status'];
-			$DateTimeOfFulfillment  = $row['DateTimeOfFulfillment'];
+			$ItemId = $row['ItemId'];
+			$QuantityOrdered = $row['QuantityOrdered'];
 			
 			
 			
 			
-          echo "<tr><td><input type='radio' id='$OrderId' name='$OrderId'></td><td>$OrderId</td><td>$vendorId</td><td>$StoreId</td><td>$DateTimeOfOrder</td><td>$Status</td><td>$DateTimeOfFulfillment </td></tr>\n";
+			
+          echo "<tr><td>$OrderDetailId</td><td>$OrderId</td><td>$ItemId</td><td>$QuantityOrdered</td></tr>\n";
         
 		
 		
@@ -96,13 +86,14 @@ if(isset($_POST['submit'])){
 		
 		
 		}
-		echo"<tr><td></td><td><input type='submit' name='submit' value='Submit'/></td></tr>";
-		<input type="hidden" name="viewOrderDetails">
-		echo "</form>";
+		
+		
+		echo "</table>";
       }
     }
+	}
 	$conn->close();
-  }
+  //}
   
   
   
