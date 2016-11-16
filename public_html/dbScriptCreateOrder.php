@@ -8,15 +8,30 @@ function customPageHeader(){
 ?>
 <!-- Add any CSS or JS files here -->
     <link rel="stylesheet" href="./css/styles.css" />
-    <script src="./js/vendorFormValidator.js" type="text/javascript" language="javascript"></script>
 <?php }
 
 // Header
 include_once('./templates/header.php');
+include_once('./inc/runDbQuery.php');
 
 // Run the DB script and echo any errors to the screen so we can debug
 if(isset($_POST['createOrderFlag']))
 {
+	$vendorId=$_POST['vendorId'];
+	//$storeId=$_POST['storeId'];
+
+	//$result = runDbQuery("");
+
+	$result = runDbQuery("Select * From InventoryItem Where VendorId=$vendorId");
+	while($row = $result->fetch_assoc())
+	{
+		$itemId = $row["ItemId"];
+		if(isset($_POST["$itemId"]) && $_POST["$itemId"] != 0)
+		{
+			echo "hi";
+		}
+	}
+
     echo"Order created successfully!";
 }
     

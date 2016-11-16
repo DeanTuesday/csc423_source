@@ -1,18 +1,22 @@
 <?php
 
 // Header file will use this to set the page title
-$PageTitle="Select Vendor for Order";
+$PageTitle="Place Order";
 
 // Header file will use this function to link your page to other css or js files
 function customPageHeader(){
 ?>
 <!-- Add any CSS or JS files here -->
-	<script src="./js/setSelectedVendor.js" type="text/javascript"></script>
+	<script src="./js/setSelectedStore.js" type="text/javascript"></script>
 <?php }
 
 
 // Header
 include_once('./templates/header.php');
+include_once('./inc/runDbQuery.php');
+
+$vendorId=$_POST['vendorId'];
+
 ?>
 
 <!-- Body Content Goes Here -->
@@ -24,7 +28,7 @@ include_once('./templates/header.php');
 		<tr>
 			<td colspan='2'>
 				<center>
-					<select id='vendorOptions'>";
+					<select id='storeOptions' onchange='setSelectedStore()'>";
 		        		<option>Select store:</option>";
 						<?php
 						include_once('./dbScriptPopulateStores.php');
@@ -38,14 +42,29 @@ include_once('./templates/header.php');
 				<h3 align='center'>Select Items for Order:</h3>
 			</td>
 		</tr>
-			<?php 
-			// include db script for items for sale stores: include_once('dbScriptPopulateItems');
-			?>
+		<?php 
+		// include db script for items for sale stores: include_once('dbScriptPopulateItems');
+			$result = runDbQuery("Select * From InventoryItem Where VendorId=$vendorId");
+			while($row = $result->fetch_assoc())
+			{
+				$itemId = htmlspecialchars($row["ItemId"]);
+				$description = htmlspecialchars($row["Description"]);
+				echo"
+					<tr>
+						<td><label>$description</label></td>							
+						<td><input name='$itemId' id='$itemId' type='number' value='0'></td>
+					</tr>
+				";
+			}
+		?>
+	</table>
+	<table align = "center">
 		<tr>	
 			<td>
+				<input type='hidden' name='storeId' id='storeId' value=''>
+				<input type='hidden' name='vendorId' id='vendorId' value=<?php echo"'$vendorId'";?>>
 				<input type='submit' value='Create Order'>
 				<input type='hidden' name='createOrderFlag' value='true'>
-				<input name='vendorId' id='vendorId' type='hidden'>
 			</td>
 			<td>
 				<input type='button' value='Go Back (no changes)'>
