@@ -31,7 +31,7 @@
 	</table>
 	<hr>
 
-<form method="POST" action="updateOrderToAdd.php" name="addItem" onsubmit="return validate()">
+<form method="POST" action="updateOrderToAdd.php" name="addItem" ">
     <h3>Add an Item to Existing Order</h3>
     <table>
         <tr>
