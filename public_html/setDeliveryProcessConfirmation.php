@@ -17,7 +17,7 @@
     }*/
 	//session_start();
 	
-	$row = mysql_fetch_assoc($result);
+	//$row = mysql_fetch_assoc($result);
 	$oId = $_POST["oId"];
 	$status = 'Delivered';
 	$time = date("Y-m-d H:i:s");
