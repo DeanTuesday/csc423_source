@@ -13,6 +13,7 @@ include_once('./templates/header.php');
 ?>
 <!-- Add any CSS or JS files here -->
 	<script src="./js/itemFormValidator.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="./css/styles.css" />
 
 
 
@@ -29,14 +30,7 @@ include_once('./templates/header.php');
 </form>
 <?php include_once('./templates/header.php');
 ?>
-<br>
-<table>
-    <tr>
-        <td><a href='./index.php' class='button'>Home</a></td>
-        <td><a href='./selectOrderVendor.php' class='button'>Create an Order</a></td>
-        <td><a href='./selectOrderToAdd.php' class='button'>Add item to an existing Order</a></td>
-    </tr>
-</table>
+
 <?php
 // Footer
 include_once('./templates/footer.php');

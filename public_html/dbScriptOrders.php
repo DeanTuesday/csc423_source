@@ -17,7 +17,7 @@ if(isset($_POST['submit'])){
 	
 	$config = include('./inc/config.php');
     $conn = new mysqli($config['addr'], $config['user'], $config['pass'], $config['db']);
-								echo("Connected to Database<br>");
+								
 	
 	
     if($conn->connect_error){

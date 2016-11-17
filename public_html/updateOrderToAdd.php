@@ -10,7 +10,6 @@ if(!isset($_POST['submit'])){
 
 $orderId = $_POST['chooseOrder'];
 
-
 include("./classes/DBHandler.php");
 $dbHandler = new DBHandler();
 
@@ -21,7 +20,7 @@ $query = "SELECT ItemId, Description FROM InventoryItem WHERE VendorId = '$vendo
 $items = $dbHandler->runQuery($query);
 
 // Header file will use this to set the page title
-$PageTitle="Return Item To Vendor";
+$PageTitle="Update Order Form";
 
 // Header file will use this function to link your page to other css or js files
 function customPageHeader(){
@@ -39,10 +38,10 @@ include_once('./templates/header.php');
     <h3>Update an Order</h3>
     <p>Current Order Id: <?= isset($orderId) ? $orderId : "0"?></p>
     <hr/>
-    <h3>Add an Item to the Existing Order</h3>
+    <h3>Add an Item to Existing Order</h3>
     <table>
         <tr>
-            <td>Choose an Item</td>
+            <td>Choose an Item:</td>
             <td>
                 <select name="chooseItem" id="chooseItem">";
                     <?php
