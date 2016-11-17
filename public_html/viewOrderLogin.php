@@ -13,6 +13,7 @@ include_once('./templates/header.php');
 ?>
 <!-- Add any CSS or JS files here -->
 	<script src="./js/itemFormValidator.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="./css/styles.css" />
 
 
 
