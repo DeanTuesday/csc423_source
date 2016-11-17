@@ -34,6 +34,10 @@ if($quantity > $existingQuantity){
 else{
     $query = "UPDATE Inventory SET QuantityInStock = QuantityInStock - '$quantity' WHERE InventoryId = '$inventoryId';";
     $result = $dbHandler->runQuery($query);
+
+    $query = "INSERT INTO ReturnToVendorDetail (ReturnToVendorId, ItemId, QuantityReturned) ".
+        "VALUES ('$returnId', '$itemId', '$quantity'); ";
+    $insertResult = $dbHandler->runQuery($query);
 }
 
 // Header file will use this to set the page title
