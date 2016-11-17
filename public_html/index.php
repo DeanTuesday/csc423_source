@@ -38,10 +38,12 @@ include_once('./templates/header.php');
 		<td><a href='./selectCustomerToUpdate.php' class='button'>Update A Customer</a></td>
 	</tr>
 	<tr>
-		//<td><a href='./selectVendorToDelete.php' class='button'>Delete A Vendor</a></td>
-		//<td><a href='./selectItemToDelete.php' class='button'>Delete An Item</a></td>
-		//<td><a href='./selectLocationToDelete.php' class='button'>Delete A Location</a></td>
-		//<td><a href='./selectCustomerToDelete.php' class='button'>Delete A Customer</a></td>
+<!--
+		<td><a href='./selectVendorToDelete.php' class='button'>Delete A Vendor</a></td>
+		<td><a href='./selectItemToDelete.php' class='button'>Delete An Item</a></td>
+		<td><a href='./selectLocationToDelete.php' class='button'>Delete A Location</a></td>
+		<td><a href='./selectCustomerToDelete.php' class='button'>Delete A Customer</a></td>
+-->
 		<td><a href='./selectDeliveryToProcess.php' class='button'>Process a Delivery</a></td>
 	</tr>
 </table>
