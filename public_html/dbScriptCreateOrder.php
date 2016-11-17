@@ -49,7 +49,8 @@ if(isset($_POST['createOrderFlag']))
 		}
 	}
 
-    echo"Order total is: $total.<br>";
+    echo"Order ID is $orderId<br>";
+    echo"Order total is: ".htmlspecialchars('$')."$total.<br>";
     echo"<br>Order successfully created! You may view this order at any time.<br>";
     ?>
     <?php
