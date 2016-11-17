@@ -1,31 +1,51 @@
 <?php
 
+include("./classes/DBHandler.php");
+
+$dbHandler = new DBHandler();
+$query = "SELECT OrderId FROM `Order`;";
+$orders = $dbHandler->runQuery($query);
+
 // Header file will use this to set the page title
-$PageTitle="View Existing Order";
+$PageTitle="Return Item To Vendor";
 
 // Header file will use this function to link your page to other css or js files
 function customPageHeader(){
 ?>
 <!-- Add any CSS or JS files here -->
-	<script src="./js/itemFormValidator.js" type="text/javascript"></script>
-
 <?php }
 
 // Header
 include_once('./templates/header.php');
 ?>
 
-<!-- Body Content Goes Here -->
-<h3>Enter the Order ID to view an existing order and add items to that order<h3><hr>
-<form  method="POST" action="updateOrderToAdd.php" name="updateItemsToOrder" id="updateItemsToOrder" >
-<table cellspacing='5' align='center'>
-<tr><td>OrderId:</td><td><input type="text" name="OrderId"/></td></tr>
-<tr><td></td><td><input type='submit' name="submit" value="Submit"/></td></tr>
-</table>
-   
-    <input type="hidden" name="updateItemsToOrder">
+<!-- Body Content goes here -->
+<form method="POST" action="updateOrderToAdd.php" name="orderSelect" id="orderSelect">
+    <h3>Select existing Order ID to view and existing order and add to it</h3>
+    <table>
+        <tr>
+            <td>
+                <select name="chooseOrder" id="chooseOrder">";
+                    <option>Select an Order</option>";
+                    <?php
+                        while($row = $orders->fetch_row())
+                        {
+                            $oId = $row[0];
+                            echo"<option value='$oId'>$oId</option>";
+                        }
+                    ?>
+                </select>
+            </td>
+        </tr>
+    </table>
+    <hr/>
+    <table>
+        <tr>
+            <td><button type="submit" name="submit">Submit</button></td>
+            <td><input type="reset"></td>
+        </tr>
+    </table>
 </form>
-
 
 <?php
 // Footer

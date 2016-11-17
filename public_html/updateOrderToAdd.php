@@ -1,68 +1,77 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<!-- Appropriate Title and meta tags -->
-	<title>Add Item To Existing Order</title>
-	<meta http-equiv="Content-Type" content="text/html charset=utf-8" />
-	<meta http-equiv="Content-Language" content="en-us" />
-	<meta name="description" content="CSC 423 Group Project" />
-	<meta name="keywords" content="dean mondy, william dean, brian scarbrough, cory easton, mason mascle, marlin mei, csc 423, group 2" />
-	<meta name="author" content="Dean Mondy, William Dean, Cory Easton, Marlin Mei, Mason Mascle, Brian Scarbrough" />
-	<meta name="copyright" content="SUNY Brockport CSC 423 2016" />
+<?php
 
-	<!-- include the basic style sheet referenced by the header and footer -->
-	<link rel="stylesheet" href="./css/header.css" />
+if(!isset($_POST['submit'])){
+    // TODO The selection page was skipped so kill the process
+    echo "Error - Page was accessed illegally <br>";
+    echo "<a href='./selectOrderToAdd.php'>Start an Update</a> <br>";
+    echo "<a href='./index.php'>Home</a>";
+    exit;
+}
 
-	<!-- Custom Page Header for loading css or js files -->
-	<!-- Add any CSS or JS files here -->
-	<script src="./js/itemFormValidator.js" type="text/javascript"></script>
-</head>
-<!-- Open the body here, close the body in footer -->
-<body>
-<div class="page-container">
-<!-- Body Content Goes Here -->
+$orderId = $_POST['chooseOrder'];
 
-<h3>Current Order</h3>
-	<table>
-		<tr>
-			<td align="right">Current Order:</td>
-			<td><input type="text" name="currentOrder" id="currentOrder"></td>
-		</tr>
-	</table>
-	<hr>
 
-<form method="POST" action="updateOrderToAdd.php" name="addItem" onsubmit="return validate()">
-    <h3>Add an Item to Existing Order</h3>
+include("./classes/DBHandler.php");
+$dbHandler = new DBHandler();
+
+$query = "SELECT VendorId FROM `Order` WHERE OrderId = '$orderId';";
+$vendor = $dbHandler->runQuery($query)->fetch_row()[0];
+
+$query = "SELECT ItemId, Description FROM InventoryItem WHERE VendorId = '$vendor';";
+$items = $dbHandler->runQuery($query);
+
+// Header file will use this to set the page title
+$PageTitle="Return Item To Vendor";
+
+// Header file will use this function to link your page to other css or js files
+function customPageHeader(){
+?>
+<!-- Add any CSS or JS files here -->
+    <script src="./js/returnValidator.js" type="text/javascript"></script>
+<?php }
+
+// Header
+include_once('./templates/header.php');
+?>
+
+<!-- Body Content goes here -->
+<form method="POST" action="updateOrderProcessor.php" name="updateOrderForm" id="updateOrderForm" onsubmit="return validate()">
+    <h3>Update an Order</h3>
+    <p>Current Order Id: <?= isset($orderId) ? $orderId : "0"?></p>
+    <hr/>
+    <h3>Add an Item to the Existing Order</h3>
     <table>
         <tr>
-            <td align="right">Item Id:</td>
-            <td><input type="text" name="itemId" id="itemId"></td>
+            <td>Choose an Item</td>
+            <td>
+                <select name="chooseItem" id="chooseItem">";
+                    <?php
+                        while($row = $items->fetch_row())
+                        {
+                            $iId = $row[0];
+                            $iDescription = $row[1];
+                            echo"<option value='$iId'>$iId - $iDescription</option>";
+                        }
+                    ?>
+                </select>
+            </td>
         </tr>
         <tr>
-            <td align="right">Item Quantity:</td>
-            <td><input type="text" name="description" id="description"></td>
+            <td>Quantity:</td>
+            <td><input type="text" name="quantity" id="quantity"></td>
         </tr>
-    </table><br>
+    </table>
     <hr/>
     <table>
         <tr>
-            <td><button type="submit">Submit Information</button></td>
+            <td><button type="submit" name="submit">Submit Information</button></td>
             <td><input type="reset"></td>
-			<td><a href='./index.php' class='button'>Home</a></td>
         </tr>
     </table>
-    <input type="hidden" name="addItem">
+    <input type="hidden" name="orderId" value="<?= $orderId?>">
 </form>
 
-	<!-- page footer is inside of a page-container -->
-	<footer>
-		<p>
-            Last updated: <!-- #BeginDate format:Am1 -->November 16th, 2016<!-- #EndDate -->
-        </p>
-	</footer>
-<!-- close page-container -->
-</div>
-<!-- close body -->
-</body>
-<!-- close html -->
-</html>
+<?php
+// Footer
+include_once('./templates/footer.php');
+?>
