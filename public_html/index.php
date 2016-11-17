@@ -22,7 +22,7 @@ include_once('./templates/header.php');
 	<tr>
 		<td><a href='./selectOrderVendor.php' class='button'>Create An Order</a></td>
 		<td><a href='./viewOrderLogin.php' class='button'>View An Order</a></td>
-		<td><a href='./selectOrderToAdd.php' class='button'>Add Item to <br> Existing Order</a></td>
+		<td><a href='./selectOrderToAdd.php' class='button'>Add Item to Existing Order</a></td>
 		<td><a href='./returnSelect.php' class='button'>Return An <br>Item</a></td>
 	</tr>	
 	<tr>
