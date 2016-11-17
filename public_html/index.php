@@ -45,7 +45,7 @@ include_once('./templates/header.php');
 	</tr>-->
 	<tr>
 		<td><a href='./selectDeliveryToProcess.php' class='button'>Process a Delivery</a></td>
-	cs</tr>
+	</tr>
 </table>
 
 <?php
