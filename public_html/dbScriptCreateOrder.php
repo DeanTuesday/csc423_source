@@ -18,7 +18,15 @@ include_once('./inc/runDbQuery.php');
 if(isset($_POST['createOrderFlag']))
 {
 	$vendorId=$_POST['vendorId'];
-	//$storeId=$_POST['storeId'];
+	$storeId=$_POST['storeId'];
+	$month = date('m');
+	$day = date('d');
+	$year = date('Y');
+	$t = $month.$day.$year;
+
+    $sql = "INSERT INTO `Order`(`VendorId`, `StoreId`, `DateTimeOfOrder`, `Status`, `DateTimeOfFulfillment`) VALUES ($vendorId, $storeId, $t, 'Pending', 000000);";
+
+    $orderId = runDbInsertQuery($sql);
 
 	//$result = runDbQuery("");
 
@@ -32,17 +40,19 @@ if(isset($_POST['createOrderFlag']))
 		if(isset($_POST["$itemId"]) && $_POST["$itemId"] != 0)
 		{
 			$quantityOrdered=$_POST["$itemId"];
+
+		    $sql = "INSERT INTO `OrderDetail` (`OrderId` , `ItemId`, `QuantityOrdered` ) VALUES ($orderId, $itemId, $quantityOrdered)";
+			$insertId=runDbInsertQuery($sql);
+
 			echo"$description : $quantityOrdered : ".htmlspecialchars('$')."$itemCost<br>";
 			$total = $total + ($quantityOrdered * $itemCost);
 		}
 	}
 
+    echo"Order total is: $total.<br>";
     echo"<br>Order successfully created! You may view this order at any time.<br>";
-    echo"Order total is: $total.<br>Press the button if you are ready to place order for delivery:<br>";
     ?>
-    <input type="button" value="Confirm For Delivery.">
     <?php
-
 }
     
 ?>
