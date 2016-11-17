@@ -23,6 +23,7 @@ include_once('./templates/header.php');
 		<td><a href='./selectOrderVendor.php' class='button'>Create An Order</a></td>
 		<td><a href='./viewOrderLogin.php' class='button'>View An Order</a></td>
 		<td><a href='./selectOrderToAdd.php' class='button'>Add Item to <br> Existing Order</a></td>
+		<td><a href='./returnSelect.php' class='button'>Return An <br>Item</a></td>
 	</tr>	
 	<tr>
 		<td><a href='./addVendor.php' class='button'>Add A Vendor</a></td>
@@ -41,10 +42,6 @@ include_once('./templates/header.php');
 		<td><a href='./selectItemToDelete.php' class='button'>Delete An Item</a></td>
 		<td><a href='./selectLocationToDelete.php' class='button'>Delete A Location</a></td>
 		<td><a href='./selectCustomerToDelete.php' class='button'>Delete A Customer</a></td>
-	</tr>
-	<tr>
-		<td></td>
-		<td><a href='./returnSelect.php' class='button'>Return an Item</a></td>
 	</tr>
 </table>
 
