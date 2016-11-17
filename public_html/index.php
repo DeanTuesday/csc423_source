@@ -42,12 +42,10 @@ include_once('./templates/header.php');
 		<td><a href='./selectItemToDelete.php' class='button'>Delete An Item</a></td>
 		<td><a href='./selectLocationToDelete.php' class='button'>Delete A Location</a></td>
 		<td><a href='./selectCustomerToDelete.php' class='button'>Delete A Customer</a></td>
-<<<<<<< HEAD
 	</tr>-->
-=======
+	<tr>
 		<td><a href='./selectDeliveryToProcess.php' class='button'>Process a Delivery</a></td>
-	</tr>
->>>>>>> 3e0b867974fa2df618ef45446a30cf93d4e7f165
+	cs</tr>
 </table>
 
 <?php
