@@ -49,7 +49,8 @@ if(isset($_POST['createOrderFlag']))
 		}
 	}
 
-    echo"Order total is: $total.<br>";
+    echo"Order ID is $orderId<br>";
+    echo"Order total is: ".htmlspecialchars('$')."$total.<br>";
     echo"<br>Order successfully created! You may view this order at any time.<br>";
     ?>
     <?php
@@ -62,7 +63,7 @@ if(isset($_POST['createOrderFlag']))
     <tr>
         <td><a href='./index.php' class='button'>Home</a></td>
         <td><a href='./selectOrderVendor.php' class='button'>Create an Order</a></td>
-        <td><a href='./selectVendorToUpdate.php' class='button'>View an Order</a></td>
+        <td><a href='./viewOrderLogin.php' class='button'>View an Order</a></td>
     </tr>
 </table>
 
