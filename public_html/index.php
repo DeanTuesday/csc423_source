@@ -42,6 +42,7 @@ include_once('./templates/header.php');
 		<td><a href='./selectItemToDelete.php' class='button'>Delete An Item</a></td>
 		<td><a href='./selectLocationToDelete.php' class='button'>Delete A Location</a></td>
 		<td><a href='./selectCustomerToDelete.php' class='button'>Delete A Customer</a></td>
+		<td><a href='./selectDeliveryToProcess.php' class='button'>Delete A Location</a></td>
 	</tr>
 </table>
 
