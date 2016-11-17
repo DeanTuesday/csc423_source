@@ -16,14 +16,14 @@ include_once('./templates/header.php');
 ?>
 
 <!-- Body Content Goes Here -->
-<h3>Enter the Vendor ID to view an existing order and add items to that order<h3><hr>
-<form  method="POST" action="dbScriptOrders.php" name="viewOrders" id="viewOrders" >
+<h3>Enter the Order ID to view an existing order and add items to that order<h3><hr>
+<form  method="POST" action="updateOrderToAdd.php" name="updateItemsToOrder" id="updateItemsToOrder" >
 <table cellspacing='5' align='center'>
-<tr><td>VendorId:</td><td><input type="text" name="vendorId"/></td></tr>
+<tr><td>OrderId:</td><td><input type="text" name="OrderId"/></td></tr>
 <tr><td></td><td><input type='submit' name="submit" value="Submit"/></td></tr>
 </table>
    
-    <input type="hidden" name="viewOrders">
+    <input type="hidden" name="updateItemsToOrder">
 </form>
 
 
