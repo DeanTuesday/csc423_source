@@ -34,7 +34,7 @@ include_once('./templates/header.php');
     <tr>
         <td><a href='./index.php' class='button'>Home</a></td>
         <td><a href='./selectOrderVendor.php' class='button'>Create an Order</a></td>
-        <td><a href='./selectVendorToUpdate.php' class='button'>Add item to an existing Order</a></td>
+        <td><a href='./selectOrderToAdd.php' class='button'>Add item to an existing Order</a></td>
     </tr>
 </table>
 <?php
