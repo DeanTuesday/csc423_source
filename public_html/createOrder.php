@@ -78,7 +78,8 @@ while($row=$result->fetch_assoc())
 				<input type='hidden' name='createOrderFlag' value='true'>
 			</td>
 			<td>
-        		<input type='button' name='cancel' id='cancel' value='Home (no changes)' onclick="index.php">
+        		<!--<input type='button' name='cancel' id='cancel' value='Home (no changes)' onclick="index.php">-->
+				<a href='./index.php' class='button'>Home</a>
 			</td>
 		</tr>
 	</table>
