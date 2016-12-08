@@ -19,7 +19,7 @@ include_once('./templates/header.php');
 <h2 align='center'>Process Customer Purchase</h1>
 
 <h3 align='center'>Select Store:</h2>
-	<form id='storeOptions' name='storeOptions' method='POST' action='customerPurchase.php'>
+	<form id='selectStoreForm' name='selectStoreForm' method='POST' action='customerPurchase.php'>
 		<table align='center'>
 			<tr>
 				<td bgcolor="#FFFFFF">
