@@ -28,8 +28,16 @@ else{
 $query = "SELECT ReturnToVendorId FROM ReturnToVendor;";
 $returns = $dbHandler->runQuery($query);
 
+// Get all ReturnToVendor entries
+$query = "SELECT VendorId FROM ReturnToVendor
+            WHERE ReturnToVendorId = $lastReturnId;";
+$vId2 = $dbHandler->runQuery($query)->fetch_row()[0];
+
 // Get all Items
-$query = "SELECT ItemId, Description FROM InventoryItem;";
+$query = "SELECT ItemId, Description
+            FROM InventoryItem
+            WHERE VendorId = '$vId2'
+            ;";
 $items = $dbHandler->runQuery($query);
 
 // Header file will use this to set the page title

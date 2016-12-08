@@ -19,7 +19,7 @@ $beforeDate = $_POST['beforeYear']."-".$_POST['beforeMonth']."-".$_POST['beforeD
 $afterDate = $_POST['afterYear']."-".$_POST['afterMonth']."-".$_POST['afterDay'];
 
 // find the top 10 highest quantity items returned for the chosen vendor
-$query = "  SELECT t1.ItemId, Description, QuantityReturned
+$query = "  SELECT t1.ItemId, Description, SUM(QuantityReturned) AS TotalQuantityReturned
             FROM (
                 SELECT ItemId, QuantityReturned
                 FROM `ReturnToVendor`
@@ -27,10 +27,12 @@ $query = "  SELECT t1.ItemId, Description, QuantityReturned
                 WHERE VendorId = '$vendor'
                     AND DateTimeOfReturn <= CAST( '$beforeDate' AS DATE )
                     AND DateTimeOfReturn >= CAST( '$afterDate' AS DATE )
-                ORDER BY QuantityReturned DESC
-                LIMIT 0 , 10
             ) AS t1
-            INNER JOIN InventoryItem ON t1.ItemId = InventoryItem.ItemId;";
+            INNER JOIN InventoryItem ON t1.ItemId = InventoryItem.ItemId
+            GROUP BY t1.ItemId
+            ORDER BY TotalQuantityReturned DESC
+            LIMIT 0, 10;";
+
 $result = $dbHandler->runQuery($query);
 
 // Header file will use this to set the page title
