@@ -74,7 +74,7 @@ include_once('./templates/header.php');
 <table>
     <tr>
         <td><a href='./returnSearchForm.php' class='button'>Start A New<br>Search</a></td>
-        <td><a href='./index.php' class='button'>Home Page</a></td>
+        <td><a href='./index.php' class='button'>Home Page<br>&nbsp;</a></td>
     </tr>
 </table>
 
