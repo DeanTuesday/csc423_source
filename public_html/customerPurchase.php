@@ -17,6 +17,7 @@ include_once('./templates/header.php');
 include_once('./inc/runDbQuery.php');
 
 $storeId=$_POST['storeId'];
+
 $result= runDbQuery("Select * From RetailStore where StoreId=$storeId");
 while($row=$result->fetch_assoc())
 {
@@ -29,10 +30,12 @@ while($row=$result->fetch_assoc())
 <h2 align='center'><?php echo"$storeName";?><br>Select Items to Purhcase</h2>
 
 <h3 align='center'>Enter Customer ID:</h3>
-<center>
-<input type="text" id="customerId" name="customerId">
-</center>
-<form id='createOrderForm' name='createOrderForm' method='POST' action='dbScriptCreateOrder.php'>
+
+<form id='purchaseForm' name='purchaseForm' method='POST' action='processPurchase.php'>
+	<input type="hidden" id="storeId" name="storeId" value=<?php echo"'$storeId'"; ?>>
+	<center>
+	<input type="text" id="customerId" name="customerId">
+	</center>
 	<table align='center'>
 
 			<td colspan='4' bgcolor="#FFFFFF">
@@ -69,7 +72,6 @@ while($row=$result->fetch_assoc())
 	<table align = "center">
 		<tr>	
 			<td>
-				<input type='hidden' name='storeId' id='storeId' value=''>
 				<input type='submit' value='Place Order'>
 				<input type='hidden' name='createOrderFlag' value='true'>
 			</td>
