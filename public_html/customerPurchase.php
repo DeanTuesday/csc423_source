@@ -13,6 +13,7 @@ function customPageHeader(){
 
 
 // Header
+
 include_once('./templates/header.php');
 include_once('./inc/runDbQuery.php');
 
@@ -66,6 +67,7 @@ while($row=$result->fetch_assoc())
 					<td>
 				</tr>
 			";
+
 		}
 		?>
 	</table>
