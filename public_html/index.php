@@ -18,38 +18,38 @@ include_once('./templates/header.php');
 <h2>CSC 423 Team 2 - Nanno's Foods</h2>
 <hr/>
 <p>This website should currently implement functionality to register vendors, modify/delete vendors, add/modify/delete store locations, add/modify/delete stocked items, and add/modify/delete customers.</p>
-<table>
+<table class="indexTable">
 	<tr>
-		<td><a href='./selectStorePurchase.php' class='button'>Customer Purchase</a></td>
-		<td><a href='./selectStoreInventory.php' class='button'>View Store Inventory</a></td>
+		<td><a href='./selectStorePurchase.php' class='indexButton'>Customer <br> Purchase</a></td>
+		<td><a href='./selectStoreInventory.php' class='indexButton'>View Store <br> Inventory</a></td>
 	</tr>	
 	<tr>
-		<td><a href='./selectOrderVendor.php' class='button'>Create An Order</a></td>
-		<td><a href='./viewOrderLogin.php' class='button'>View An Order</a></td>
-		<td><a href='./selectOrderToAdd.php' class='button'>Add Item to <br> Existing Order</a></td>
-		<td><a href='./returnSelect.php' class='button'>Return An <br>Item</a></td>
+		<td><a href='./selectOrderVendor.php' class='indexButton'>Create An <br> Order</a></td>
+		<td><a href='./viewOrderLogin.php' class='indexButton'>View An <br> Order</a></td>
+		<td><a href='./selectOrderToAdd.php' class='indexButton'>Add Item to <br> Existing Order</a></td>
+		<td><a href='./returnSelect.php' class='indexButton'>Return An <br> Item</a></td>
 	</tr>	
 	<tr>
-		<td><a href='./addVendor.php' class='button'>Add A Vendor</a></td>
-		<td><a href='./addItem.php' class='button'>Add An Item</a></td>
-		<td><a href='./addLocation.php' class='button'>Add A Location</a></td>
-		<td><a href='./addCustomer.php' class='button'>Add A Customer</a></td>
+		<td><a href='./addVendor.php' class='indexButton'>Add A <br> Vendor</a></td>
+		<td><a href='./addItem.php' class='indexButton'>Add An <br> Item</a></td>
+		<td><a href='./addLocation.php' class='indexButton'>Add A <br> Location</a></td>
+		<td><a href='./addCustomer.php' class='indexButton'>Add A <br> Customer</a></td>
 	</tr>
 	<tr>
-		<td><a href='./selectVendorToUpdate.php' class='button'>Update A Vendor</a></td>
-		<td><a href='./selectItemToUpdate.php' class='button'>Update An Item</a></td>
-		<td><a href='./selectLocationToUpdate.php' class='button'>Update A Location</a></td>
-		<td><a href='./selectCustomerToUpdate.php' class='button'>Update A Customer</a></td>
+		<td><a href='./selectVendorToUpdate.php' class='indexButton'>Update A <br> Vendor</a></td>
+		<td><a href='./selectItemToUpdate.php' class='indexButton'>Update An <br> Item</a></td>
+		<td><a href='./selectLocationToUpdate.php' class='indexButton'>Update A <br> Location</a></td>
+		<td><a href='./selectCustomerToUpdate.php' class='indexButton'>Update A <br> Customer</a></td>
 	</tr>
 	<!--<tr>
-		<td><a href='./selectVendorToDelete.php' class='button'>Delete A Vendor</a></td>//
-		<td><a href='./selectItemToDelete.php' class='button'>Delete An Item</a></td>
-		<td><a href='./selectLocationToDelete.php' class='button'>Delete A Location</a></td>
-		<td><a href='./selectCustomerToDelete.php' class='button'>Delete A Customer</a></td>
+		<td><a href='./selectVendorToDelete.php' class='indexButton'>Delete A Vendor</a></td>//
+		<td><a href='./selectItemToDelete.php' class='indexButton'>Delete An Item</a></td>
+		<td><a href='./selectLocationToDelete.php' class='indexButton'>Delete A Location</a></td>
+		<td><a href='./selectCustomerToDelete.php' class='indexButton'>Delete A Customer</a></td>
 	</tr>-->
 	<tr>
-		<td><a href='./selectDeliveryToProcess.php' class='button'>Process a Delivery</a></td>
-		<td><a href='./reportQuantityOverstocked.php' class='button'>View Quantity OverStocked</a></td>
+		<td><a href='./selectDeliveryToProcess.php' class='indexButton'>Process a <br> Delivery</a></td>
+		<td><a href='./reportQuantityOverstocked.php' class='indexButton'>View Quantity <br> OverStocked</a></td>
 	</tr>
 </table>
 
